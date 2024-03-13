@@ -1,0 +1,21 @@
+{
+  "name": "boshi",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "autoprefixer": "^10.4.14",
+    "eleventy-plugin-postcss": "^1.0.4",
+    "postcss-import": "^15.1.0",
+    "postcss-simple-vars": "^7.0.1"
+  }
+}

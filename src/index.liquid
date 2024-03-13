@@ -1,0 +1,15 @@
+---
+layout: Page.liquid
+root: home
+title: boshi's place
+description: welcome to boshi's place
+---
+
+<h1 class="HomeTitle">
+  welcome to boshi's <span class="HomeTitle-shake">place</span>
+</h1>
+
+<!-- ~*~ Events ~*~ -->
+<section class="HomeEvents">
+  {% render "home/HomeEvent.liquid" for collections.events as event %}
+</section>

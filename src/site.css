@@ -1,0 +1,42 @@
+/* -- includes --*/
+@import "_includes/shared.css";
+@import "_includes/home.css";
+
+/* -- resets (more) -- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.2;
+}
+
+/* -- .Loader -- */
+.Loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background-color: #ff00ff;
+}
+
+.Loading.is-loading {
+  width: 66%;
+  animation: Loading, Loading-wait;
+  animation-duration: 1s, 1s;
+  animation-delay: 0s, 1s;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: initial, ease-in-out;
+  animation-direction: normal, alternate;
+}
+
+@keyframes Loading {
+  from { width: 0%; }
+  to   { width: 69%; }
+}
+
+@keyframes Loading-wait {
+  from { width: 69%; }
+  to   { width: 69.5%; }
+}
