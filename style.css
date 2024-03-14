@@ -1,0 +1,36 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("img/boshis-all.png");
+  background-color: white;
+  color: #BB5F61;
+  font-size: xx-large;
+}
+
+.Title {
+  padding: 10px;
+  background-color: #5B9ED2;
+}
+
+.Events {
+  padding: 10px;
+  margin: 20px;
+  width: 60%;
+  background-color: #5B9ED2;
+}
+
+.Links {
+  padding: 10px;
+  background-color: #5B9ED2;
+  margin-bottom: 20px;
+}
+
+li {
+  padding: 20px;
+}
