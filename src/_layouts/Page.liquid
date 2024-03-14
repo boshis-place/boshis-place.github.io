@@ -5,7 +5,7 @@
 
     <!-- title -->
     {% if title == null %}
-      {% assign title = root | camelize %}
+      {% assign title = section | camelize %}
       {% if name != null %}
         {% assign title = title | append: " - " | append: name %}
       {% endif %}
@@ -19,10 +19,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 
     <!-- preview -->
-    {% assign previewTitle = "boshis place" %}
+    {% assign previewTitle = "boshi's place" %}
     {% assign host = "https://boshis.place" %}
 
-    {% if root != "home" %}
+    {% if section != "home" %}
       {% assign previewTitle = previewTitle | append: " - " | append: title %}
     {% endif %}
 
@@ -42,13 +42,8 @@
   </head>
 
   <body>
-    <div id="page" class="Page {{ root | camelize }}">
-      <!-- ~*~ Content ~*~ -->
-      <div class="Page-center">
-        <main class="Page-content">
-          {{ content }}
-        </main>
-      </div>
+    <div id="page" class="Page {{ section | camelize }}">
+      {{ content }}
     </div>
 
     <div id="loading" class="Loading"></div>

@@ -1,35 +1,62 @@
 /* -- Home -- */
 .Home {
+  &-events {
+    margin-top: $spacing2;
+  }
 }
 
+/* -- HomeTitle -- */
 .HomeTitle {
-  font-size: $fontSize5;
-}
+  font-size: $fontSize4;
 
-.HomeTitle-shake {
-  display: inline-block;
-  animation: Shake 0.3s infinite linear;
-}
-
-@keyframes Shake {
-  0% {
-    transform: rotate(0deg);
+  @mixin desktop {
+    font-size: $fontSize5;
   }
 
-  25% {
-    transform: rotate(2deg);
+  &-shake {
+    display: inline-block;
+    animation: Shake 0.3s infinite linear;
   }
 
-  75% {
-    transform: rotate(-2deg);
-  }
+  @keyframes Shake {
+    0% {
+      transform: rotate(0deg);
+    }
 
-  100% {
-    transform: rotate(0deg);
+    25% {
+      transform: rotate(2deg);
+    }
+
+    75% {
+      transform: rotate(-2deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
   }
 }
 
 /* -- HomeEvent -- */
-.HomeEvent-name {
-  font-size: $fontSize3;
+.HomeEvent {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: $spacing0;
+  padding: $spacing2;
+  border: 1px dashed black;
+
+  &-name {
+    font-size: $fontSize2;
+
+    @mixin desktop {
+      font-size: $fontSize3;
+    }
+  }
+
+  &-poster {
+    width: auto;
+    height: auto;
+    max-width: calc(300px - $spacing2 * 2);
+  }
 }

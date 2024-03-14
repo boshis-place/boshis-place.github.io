@@ -1,2 +1,9 @@
+/* -- config -- */
 $desktop: 550px;
-$desktop-maxWidth: 1060px;
+
+/* -- mixins -- */
+@define-mixin desktop {
+  @media (min-width: $desktop) {
+    @mixin-content;
+  }
+}

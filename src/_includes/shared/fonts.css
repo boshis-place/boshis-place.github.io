@@ -1,6 +1,6 @@
 /* -- config -- */
-$fontSans: sans;
-$fontSize-base: 16px;
+$fontFamily: serif;
+$fontSizeBase: 16px;
 
 /* -- sizes -- */
 $fontSize0: 1.1rem;

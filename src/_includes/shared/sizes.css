@@ -1,3 +1,9 @@
+/* -- page margins -- */
+$marginMobileVertical: 15px;
+$marginMobileHorizontal: 25px;
+$marginDesktopVertical: 25px;
+$marginDesktopHorizontal: 50px;
+
 /* -- spacings -- */
 $spacing0: 5px;
 $spacing1: 10px;

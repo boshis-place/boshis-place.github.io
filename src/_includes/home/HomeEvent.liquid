@@ -1,4 +1,17 @@
-<section class="HomeEvent">
-  <h1 class="HomeEvent-name">{{event.data.name}}</h1>
-  <p>{{event.content}}</p>
-</section>
+<article class="HomeEvent">
+  <h1 class="HomeEvent-name">
+    {{event.data.name}}
+  </h1>
+
+  <div class="HomeEvent-body">
+    {{event.content}}
+  </div>
+
+  <img
+    class="HomeEvent-poster"
+    src="{{event.data.poster.url}}"
+    alt="{{event.data.poster.alt}}"
+    width="268"
+    height="268"
+  >
+</article>

@@ -11,14 +11,25 @@ body {
   line-height: 1.2;
 }
 
-/* -- .Loader -- */
+/* -- Page -- */
+.Page {
+  font-family: $fontFamily;
+  font-size: $fontSizeBase;
+  margin: $marginMobileVertical $marginMobileHorizontal;
+
+  @mixin desktop {
+    margin: $marginDesktopVertical $marginDesktopHorizontal;
+  }
+}
+
+/* -- Loading -- */
 .Loading {
   position: fixed;
   top: 0;
   left: 0;
   width: 0%;
   height: 5px;
-  background-color: #ff00ff;
+  background-color: $colorPrimary;
 }
 
 .Loading.is-loading {
