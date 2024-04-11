@@ -34,6 +34,11 @@ description: welcome to boshi's place
 </h1>
 
 <!-- ~*~ Events ~*~ -->
-<section class="Home-events">
-  {% render "home/HomeEvent.liquid" for collections.events as event %}
+<section class="Home-events HomeEvents">
+  <h1 class="HomeEvents-title">past events</h1>
+
+  {% assign events = collections.events | reverse %}
+  {% for event in events %}
+    {% render "home/HomeEvent.liquid", event: event, forloop: forloop %}
+  {% endfor %}
 </section>

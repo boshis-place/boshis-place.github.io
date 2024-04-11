@@ -1,7 +1,7 @@
 /* -- Home -- */
 .Home {
   &-events {
-    margin-top: $spacing2;
+    margin-top: $spacing3;
   }
 }
 
@@ -9,6 +9,7 @@
 .HomeTitle {
   position: relative;
   font-size: $font-size4;
+  color: $white;
 
   @mixin desktop {
     font-size: $font-size5;
@@ -29,6 +30,7 @@
     position: absolute;
     visibility: hidden;
     font-size: $font-size0;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
   }
 
   dt:hover + dd {
@@ -54,14 +56,65 @@
   }
 }
 
+/* -- HomeEvents -- */
+.HomeEvents {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing5;
+}
+
+.HomeEvents-title {
+  font-size: $font-size2;
+  color: $white;
+  margin-bottom: $spacing2;
+
+  @mixin desktop {
+    font-size: $font-size3;
+  }
+}
+
 /* -- HomeEvent -- */
 .HomeEvent {
   display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  gap: $spacing0;
-  padding: $spacing2;
-  border: 1px dashed black;
+  max-width: $desktop-max;
+
+  &-poster {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    z-index: -1;
+  }
+
+  &-posterImage {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border: 2px dashed $white;
+    transform: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
+    mix-blend-mode: multiply;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: $spacing1;
+    padding: $spacing2;
+    background: $white;
+    border: 2px dashed black;
+    transform: rotate(calc(-1deg + var(--rand) * 2deg));
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &-title {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing1;
+  }
 
   &-name {
     font-size: $font-size2;
@@ -71,9 +124,11 @@
     }
   }
 
-  &-poster {
-    width: auto;
-    height: auto;
-    max-width: calc(300px - $spacing2 * 2);
+  &-date {
+    font-size: $font-size0;
+
+    @mixin desktop {
+      font-size: $font-size1;
+    }
   }
 }

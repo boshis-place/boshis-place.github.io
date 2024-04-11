@@ -1,17 +1,30 @@
-<article class="HomeEvent">
-  <h1 class="HomeEvent-name">
-    {{event.data.name}}
-  </h1>
-
-  <div class="HomeEvent-body">
-    {{event.content}}
+<article
+  class="HomeEvent"
+  style="z-index: {{forloop.length | minus: forloop.index}}"
+>
+  <div class="HomeEvent-poster Rand--{{100 | rand}}">
+    <img
+      class="HomeEvent-posterImage"
+      src="{{event.data.poster.url}}"
+      alt="{{event.data.poster.alt}}"
+      width="268"
+      height="268"
+    >
   </div>
 
-  <img
-    class="HomeEvent-poster"
-    src="{{event.data.poster.url}}"
-    alt="{{event.data.poster.alt}}"
-    width="268"
-    height="268"
-  >
+  <div class="HomeEvent-body Rand--{{100 | rand}}">
+    <div class="HomeEvent-title">
+      <h1 class="HomeEvent-name">
+        {{event.data.name}}
+      </h1>
+
+      <h2 class="HomeEvent-date">
+        {{event.data.date | toShortDate}}
+      </h2>
+    </div>
+
+    <div class="HomeEvent-desc">
+      {{event.content}}
+    </div>
+  </div>
 </article>

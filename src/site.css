@@ -8,17 +8,32 @@
 }
 
 body {
+  height: 100vh;
   line-height: 1.2;
+  background: $color-secondary;
+}
+
+/* -- Bg -- */
+.Bg {
+  &-tex {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    mix-blend-mode: overlay;
+  }
 }
 
 /* -- Page -- */
 .Page {
-  font-family: $font-family;
+  position: relative;
+  padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
-  margin: $margin-mobile-vertical $margin-mobile-horizontal;
+  font-family: $font-family;
 
   @mixin desktop {
-    margin: $margin-desktop-vertical $margin-desktop-horizontal;
+    padding: $margin-desktop-vertical $margin-desktop-horizontal;
   }
 }
 
