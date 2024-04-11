@@ -1,15 +1,15 @@
 /* -- config -- */
-$fontFamily: serif;
-$fontSizeBase: 16px;
+$font-family: serif;
+$font-size-base: 16px;
 
 /* -- sizes -- */
-$fontSize0: 1.1rem;
-$fontSize1: 1.3rem;
-$fontSize2: 2.5rem;
-$fontSize3: 3rem;
-$fontSize4: 4rem;
-$fontSize5: 5.4rem;
+$font-size0: 1.1rem;
+$font-size1: 1.3rem;
+$font-size2: 2.5rem;
+$font-size3: 3rem;
+$font-size4: 4rem;
+$font-size5: 5.4rem;
 
 /* -- weights -- */
-$fontWeightRegular: 400;
-$fontWeightMedium: 500;
+$font-weight-regular: 400;
+$font-weight-medium: 500;

@@ -6,7 +6,31 @@ description: welcome to boshi's place
 ---
 
 <h1 class="HomeTitle">
-  welcome to boshi's <span class="HomeTitle-shake">place</span>
+  <dl>
+    {%
+      render "home/HomeWord.liquid"
+      text: "welcome"
+      defn: "a friendly greeting"
+    %}
+
+    {%
+      render "home/HomeWord.liquid"
+      text: "to"
+      defn: "a preposition linking the greeting to what follows"
+    %}
+
+    {%
+      render "home/HomeWord.liquid"
+      text: "boshi's"
+      defn: "a blue thing articulated by their sunglasses and spiked accessories"
+    %}
+
+    {%
+      render "home/HomeWord.liquid"
+      text: "place"
+      defn: "a space, residence, home"
+    %}
+  </dl>
 </h1>
 
 <!-- ~*~ Events ~*~ -->

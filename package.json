@@ -5,7 +5,9 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
+    "start:debug": "DEBUG=Eleventy* eleventy --serve",
     "build": "eleventy",
+    "build:debug": "DEBUG=Eleventy* eleventy",
     "clean": "rm -rf dist"
   },
   "keywords": [],

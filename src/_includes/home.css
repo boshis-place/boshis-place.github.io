@@ -7,32 +7,49 @@
 
 /* -- HomeTitle -- */
 .HomeTitle {
-  font-size: $fontSize4;
+  position: relative;
+  font-size: $font-size4;
 
   @mixin desktop {
-    font-size: $fontSize5;
+    font-size: $font-size5;
+  }
+}
+
+.HomeWord {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+    animation: Shake 0.3s infinite linear;
+    z-index: 1;
   }
 
-  &-shake {
-    display: inline-block;
-    animation: Shake 0.3s infinite linear;
+  dd {
+    position: absolute;
+    visibility: hidden;
+    font-size: $font-size0;
+  }
+
+  dt:hover + dd {
+    visibility: visible;
   }
 
   @keyframes Shake {
     0% {
-      transform: rotate(0deg);
+      transform: translateX(+0px);
     }
 
     25% {
-      transform: rotate(2deg);
+      transform: translateX(-1px) rotate(-0.5deg);
     }
 
     75% {
-      transform: rotate(-2deg);
+      transform: translateX(+1px) rotate(+0.5deg);
     }
 
     100% {
-      transform: rotate(0deg);
+      transform: translateX(+0px);
     }
   }
 }
@@ -47,10 +64,10 @@
   border: 1px dashed black;
 
   &-name {
-    font-size: $fontSize2;
+    font-size: $font-size2;
 
     @mixin desktop {
-      font-size: $fontSize3;
+      font-size: $font-size3;
     }
   }
 
