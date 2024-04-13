@@ -34,18 +34,14 @@ description: welcome to boshi's place
 </h1>
 
 <!-- ~*~ Events ~*~ -->
-<section class="Home-events HomeEvents">
-  <h1 class="HomeEvents-title">upcoming events</h1>
+{%
+  render "home/HomeEvents"
+  name: "upcoming events"
+  events: collections.upcomingEvents
+%}
 
-  {% for event in collections.upcomingEvents %}
-    {% render "home/HomeEvent", event: event, forloop: forloop %}
-  {% endfor %}
-</section>
-
-<section class="Home-events HomeEvents">
-  <h1 class="HomeEvents-title">past events</h1>
-
-  {% for event in collections.pastEvents %}
-    {% render "home/HomeEvent", event: event, forloop: forloop %}
-  {% endfor %}
-</section>
+{%
+  render "home/HomeEvents"
+  name: "past events"
+  events: collections.pastEvents
+%}

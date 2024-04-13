@@ -12,6 +12,19 @@ body {
   line-height: 1.2;
 }
 
+/* -- Page -- */
+.Page {
+  position: relative;
+  padding: $margin-mobile-vertical $margin-mobile-horizontal;
+  font-size: $font-size-base;
+  font-family: $font-family;
+  overflow-x: hidden;
+
+  @mixin desktop {
+    padding: $margin-desktop-vertical $margin-desktop-horizontal;
+  }
+}
+
 /* -- Core -- */
 .Noise {
   width: 100%;
@@ -21,18 +34,6 @@ body {
   &-rect {
     width: 100%;
     height: 100%;
-  }
-}
-
-/* -- Page -- */
-.Page {
-  position: relative;
-  padding: $margin-mobile-vertical $margin-mobile-horizontal;
-  font-size: $font-size-base;
-  font-family: $font-family;
-
-  @mixin desktop {
-    padding: $margin-desktop-vertical $margin-desktop-horizontal;
   }
 }
 

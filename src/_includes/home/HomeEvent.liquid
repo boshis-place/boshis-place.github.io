@@ -1,7 +1,9 @@
+{% assign offset = 75 %}
+
 <article
   class="HomeEvent"
   style="
-    margin-left: {{ forloop.index | times: 75 }}px;
+    margin-left: {{ forloop.index | times: offset }}px;
     z-index: {{forloop.length | minus: forloop.index}};
   "
 >
