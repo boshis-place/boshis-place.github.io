@@ -1,0 +1,20 @@
+<svg
+  class="Noise"
+  viewBox="0 0 500 200"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <filter id="noise">
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.3"
+      numOctaves="3"
+      stitchTiles="stitch"
+    />
+  </filter>
+
+  <rect
+    class="Noise-rect"
+    filter="url(#noise)"
+  />
+</svg>

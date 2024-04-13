@@ -12,6 +12,38 @@ module.exports = function (config) {
   config.addPassthroughCopy(`${srcDir}/font`)
   config.addPassthroughCopy(`${srcDir}/**/*.js`)
 
+  // -- collections --
+  let _partitionedEvents = null
+
+  function partitionedEvents(collections) {
+    if (_partitionedEvents != null) {
+      return _partitionedEvents
+    }
+
+    const events = collections
+      .getFilteredByTag("events")
+      .reverse()
+
+    const now = new Date()
+    const upcomingEventIndex = events
+      .findIndex((evt) => evt.date - now > 0)
+
+    _partitionedEvents = [
+      events.slice(0, upcomingEventIndex + 1),
+      events.slice(upcomingEventIndex + 1)
+    ]
+
+    return _partitionedEvents
+  }
+
+  config.addCollection("upcomingEvents", (collections) => {
+    return partitionedEvents(collections)[0]
+  })
+
+  config.addCollection("pastEvents", (collections) => {
+    return partitionedEvents(collections)[1]
+  })
+
   // -- filters --
   /// camelize a string
   function camelize(value, isLower) {

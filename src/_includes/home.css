@@ -1,7 +1,7 @@
 /* -- Home -- */
 .Home {
   &-events {
-    margin-top: $spacing3;
+    margin-top: $spacing5;
   }
 }
 
@@ -9,7 +9,6 @@
 .HomeTitle {
   position: relative;
   font-size: $font-size4;
-  color: $white;
 
   @mixin desktop {
     font-size: $font-size5;
@@ -22,7 +21,7 @@
 
   &:hover {
     color: $color-primary;
-    animation: Shake 0.3s infinite linear;
+    animation: Shake 0.3s linear;
     z-index: 1;
   }
 
@@ -60,12 +59,11 @@
 .HomeEvents {
   display: flex;
   flex-direction: column;
-  gap: $spacing5;
+  gap: $spacing6;
 }
 
 .HomeEvents-title {
   font-size: $font-size2;
-  color: $white;
   margin-bottom: $spacing2;
 
   @mixin desktop {
@@ -96,18 +94,29 @@
   }
 
   &-body {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: $spacing1;
     padding: $spacing2;
-    background: $white;
-    border: 2px dashed black;
+    border: 2px dashed $black;
     transform: rotate(calc(-1deg + var(--rand) * 2deg));
+    mix-blend-mode: hard-light;
 
     &:hover {
       border-color: $color-primary;
     }
+  }
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $color-secondary;
+    z-index: -1;
   }
 
   &-title {

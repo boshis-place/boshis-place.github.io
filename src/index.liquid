@@ -8,25 +8,25 @@ description: welcome to boshi's place
 <h1 class="HomeTitle">
   <dl>
     {%
-      render "home/HomeWord.liquid"
+      render "home/HomeWord"
       text: "welcome"
       defn: "a friendly greeting"
     %}
 
     {%
-      render "home/HomeWord.liquid"
+      render "home/HomeWord"
       text: "to"
       defn: "a preposition linking the greeting to what follows"
     %}
 
     {%
-      render "home/HomeWord.liquid"
+      render "home/HomeWord"
       text: "boshi's"
       defn: "a blue thing articulated by their sunglasses and spiked accessories"
     %}
 
     {%
-      render "home/HomeWord.liquid"
+      render "home/HomeWord"
       text: "place"
       defn: "a space, residence, home"
     %}
@@ -35,10 +35,17 @@ description: welcome to boshi's place
 
 <!-- ~*~ Events ~*~ -->
 <section class="Home-events HomeEvents">
+  <h1 class="HomeEvents-title">upcoming events</h1>
+
+  {% for event in collections.upcomingEvents %}
+    {% render "home/HomeEvent", event: event, forloop: forloop %}
+  {% endfor %}
+</section>
+
+<section class="Home-events HomeEvents">
   <h1 class="HomeEvents-title">past events</h1>
 
-  {% assign events = collections.events | reverse %}
-  {% for event in events %}
-    {% render "home/HomeEvent.liquid", event: event, forloop: forloop %}
+  {% for event in collections.pastEvents %}
+    {% render "home/HomeEvent", event: event, forloop: forloop %}
   {% endfor %}
 </section>

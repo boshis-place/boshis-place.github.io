@@ -10,18 +10,17 @@
 body {
   height: 100vh;
   line-height: 1.2;
-  background: $color-secondary;
 }
 
-/* -- Bg -- */
-.Bg {
-  &-tex {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    mix-blend-mode: overlay;
+/* -- Core -- */
+.Noise {
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: hard-light;
+
+  &-rect {
+    width: 100%;
+    height: 100%;
   }
 }
 
