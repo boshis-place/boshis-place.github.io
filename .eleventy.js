@@ -13,29 +13,6 @@ module.exports = function (config) {
   config.addPassthroughCopy(`${srcDir}/**/*.js`)
 
   // -- collections --
-  let _partitionedEvents = null
-
-  function partitionedEvents(collections) {
-    if (_partitionedEvents != null) {
-      return _partitionedEvents
-    }
-
-    const events = collections
-      .getFilteredByTag("events")
-      .reverse()
-
-    const now = new Date()
-    const upcomingEventIndex = events
-      .findIndex((evt) => evt.date - now > 0)
-
-    _partitionedEvents = [
-      events.slice(0, upcomingEventIndex + 1),
-      events.slice(upcomingEventIndex + 1)
-    ]
-
-    return _partitionedEvents
-  }
-
   config.addCollection("upcomingEvents", (collections) => {
     return partitionedEvents(collections)[0]
   })
@@ -43,6 +20,35 @@ module.exports = function (config) {
   config.addCollection("pastEvents", (collections) => {
     return partitionedEvents(collections)[1]
   })
+
+  // -- c/helpers
+  let _partitionedEvents = null
+
+  function partitionedEvents(collections) {
+    if (_partitionedEvents == null) {
+      _partitionedEvents = partitionEvents(collections)
+    }
+
+    return _partitionedEvents
+  }
+
+  function partitionEvents(collections) {
+    const events = collections.getFilteredByTag("events")
+
+    const now = new Date()
+    const upcomingEventIndex = events.findIndex((evt) => evt.date - now > 0)
+    if (upcomingEventIndex < 0) {
+      return [
+        [],
+        events.reverse(),
+      ]
+    }
+
+    return [
+      events.slice(upcomingEventIndex),
+      events.slice(0, upcomingEventIndex).reverse(),
+    ]
+  }
 
   // -- filters --
   /// camelize a string

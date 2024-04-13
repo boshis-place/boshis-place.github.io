@@ -74,7 +74,7 @@
 /* -- HomeEvent -- */
 .HomeEvent {
   display: flex;
-  max-width: $desktop-max;
+  width: $desktop-max;
 
   &-poster {
     position: relative;
