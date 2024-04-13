@@ -1,10 +1,10 @@
-<section class="Home-events HomeEvents">
-  <header class="HomeEvents-header">
-    <h1 class="HomeEvents-title">
+<section class="Home-eventList HomeEventList">
+  <header class="HomeEventList-header">
+    <h1 class="HomeEventList-title">
       {{ name }}
     </h1>
 
-    <form class="HomeEvents-archiveToggle">
+    <form class="HomeEventList-archiveToggle">
       {% assign toggleId = name | id | concat: "-archive" %}
       <input id="{{ toggleId }}" type="checkbox">
       <label for="{{ toggleId }}">archive mode</label>

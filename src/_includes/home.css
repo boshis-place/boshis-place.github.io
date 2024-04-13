@@ -1,6 +1,10 @@
 /* -- Home -- */
 .Home {
   &-events {
+    padding-bottom: $spacing5;
+  }
+
+  &-eventList {
     margin-top: $spacing5;
   }
 }
@@ -55,8 +59,8 @@
   }
 }
 
-/* -- HomeEvents -- */
-.HomeEvents {
+/* -- HomeEventList -- */
+.HomeEventList {
   display: flex;
   flex-direction: column;
   gap: $spacing6;
