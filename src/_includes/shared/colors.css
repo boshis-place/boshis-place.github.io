@@ -1,6 +1,7 @@
 /* -- colors -- */
-$color-primary: #0000ff;
-$color-secondary: #3e88fb;
+$blue0: #0000ff;
+$blue1: #3e88fb;
+$blue2: #f0f8ff;
 
 /* -- grays -- */
 $black: #000000;

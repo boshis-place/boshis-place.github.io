@@ -10,15 +10,18 @@
 body {
   height: 100vh;
   line-height: 1.2;
+  background: linear-gradient($blue2, $blue2 50%, $blue0 50%, $blue0);
+  background-attachment: fixed;
 }
 
 /* -- Page -- */
 .Page {
+  overflow-x: hidden;
   position: relative;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
-  overflow-x: hidden;
+  background: linear-gradient($blue2, $blue0);
 
   @mixin desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;
@@ -44,7 +47,7 @@ body {
   left: 0;
   width: 0%;
   height: 5px;
-  background-color: $color-primary;
+  background-color: $blue0;
 }
 
 .Loading.is-loading {

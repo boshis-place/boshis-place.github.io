@@ -1,11 +1,8 @@
 /* -- Home -- */
 .Home {
-  &-events {
-    padding-bottom: $spacing5;
-  }
-
   &-eventList {
     margin-top: $spacing5;
+    padding-bottom: $spacing5;
   }
 }
 
@@ -24,7 +21,7 @@
   position: relative;
 
   &:hover {
-    color: $color-primary;
+    color: $blue0;
     animation: Shake 0.3s linear;
     z-index: 1;
   }
@@ -72,6 +69,7 @@
     margin-bottom: $spacing2;
   }
 
+  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
   &-header:has(input:checked) ~ .HomeEvent {
     margin-left: 0px !important;
   }
@@ -102,7 +100,6 @@
     position: absolute;
     width: 268px;
     height: 268px;
-    border: 2px dashed $white;
     transform: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
     mix-blend-mode: multiply;
 
@@ -123,7 +120,7 @@
     mix-blend-mode: hard-light;
 
     &:hover {
-      border-color: $color-primary;
+      border-color: $blue0;
     }
   }
 
@@ -133,7 +130,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $color-secondary;
+    background-color: $blue1;
     z-index: -1;
   }
 
@@ -161,20 +158,24 @@
 }
 
 .HomeEventBorder {
+  --border-width: 2px;
+  --border-offset: -1px;
+  --border-dash: 6px;
+
   overflow: visible;
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
+  top: var(--border-offset);
+  left: var(--border-offset);
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
 
   &-shape {
     width: 100%;
     height: 100%;
     fill: $clear;
     stroke: $black;
-    stroke-width: 2px;
-    stroke-dasharray: 6px 6px;
+    stroke-width: var(--border-width);
+    stroke-dasharray: var(--border-dash) var(--border-dash);
     stroke-dashoffset: 0;
   }
 
@@ -182,10 +183,15 @@
     stroke: $white;
   }
 
+  &--rainbow {
+    --border-width: 4px;
+    --border-offset: -2px;
+  }
+
   &--rainbow &-shape {
     animation:
       BorderMarch 3s linear forwards infinite,
-      BorderRainbow 3s linear infinite;
+      BorderRainbow 1s linear infinite;
   }
 
   @keyframes BorderMarch {
@@ -194,12 +200,11 @@
   }
 
   @keyframes BorderRainbow {
-    0%   { stroke: #ff0000; }
-    10%  { stroke: #ff0000; }
-    30%  { stroke: #ffff00; }
-    50%  { stroke: #00ffff; }
-    70%  { stroke: #0000ff; }
-    90%  { stroke: #ff00ff; }
-    100% { stroke: #ff0000; }
+    0%    { stroke: #ff0000; }
+    12.5% { stroke: #ffff00; }
+    37.5% { stroke: #00ff00; }
+    62.5% { stroke: #00ffff; }
+    87.5% { stroke: #ff00ff; }
+    100%  { stroke: #ff0000; }
   }
 }
