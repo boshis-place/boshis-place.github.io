@@ -4,23 +4,44 @@
   class="HomeEvent"
   style="
     margin-left: {{ forloop.index | times: offset }}px;
-    z-index: {{forloop.length | minus: forloop.index}};
+    z-index: {{ forloop.length | minus: forloop.index }};
   "
 >
   <div class="HomeEvent-poster Rand--{{100 | rand}}">
-    <img
-      class="HomeEvent-posterImage"
-      src="{{event.data.poster.url}}"
-      alt="{{event.data.poster.alt}}"
-      width="268"
-      height="268"
-    >
+    <div class="HomeEvent-posterImage">
+      <svg class="
+        HomeEventBorder
+        {% if rainbow %}
+          HomeEventBorder--rainbow
+        {% else  %}
+          HomeEventBorder--white
+        {% endif %}
+      ">
+        <rect class="HomeEventBorder-shape" />
+      </svg>
+
+      <img
+        src="{{event.data.poster.url}}"
+        alt="{{event.data.poster.alt}}"
+        width="268"
+        height="268"
+      >
+    </div>
   </div>
 
   <div class="HomeEvent-body Rand--{{100 | rand}}">
     <div class="HomeEvent-bg">
       {% render "core/Noise" %}
     </div>
+
+      <svg class="
+        HomeEventBorder
+        {% if rainbow %}
+          HomeEventBorder--rainbow
+        {% endif %}
+      ">
+        <rect class="HomeEventBorder-shape" />
+      </svg>
 
     <div class="HomeEvent-title">
       <h1 class="HomeEvent-name">

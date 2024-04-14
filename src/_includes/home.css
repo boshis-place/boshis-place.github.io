@@ -100,11 +100,16 @@
 
   &-posterImage {
     position: absolute;
-    width: 240px;
-    height: 240px;
+    width: 268px;
+    height: 268px;
     border: 2px dashed $white;
     transform: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
     mix-blend-mode: multiply;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &-body {
@@ -114,7 +119,6 @@
     flex: 1;
     gap: $spacing1;
     padding: $spacing2;
-    border: 2px dashed $black;
     transform: rotate(calc(-1deg + var(--rand) * 2deg));
     mix-blend-mode: hard-light;
 
@@ -153,5 +157,49 @@
     @mixin desktop {
       font-size: $font-size1;
     }
+  }
+}
+
+.HomeEventBorder {
+  overflow: visible;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+
+  &-shape {
+    width: 100%;
+    height: 100%;
+    fill: $clear;
+    stroke: $black;
+    stroke-width: 2px;
+    stroke-dasharray: 6px 6px;
+    stroke-dashoffset: 0;
+  }
+
+  &--white &-shape {
+    stroke: $white;
+  }
+
+  &--rainbow &-shape {
+    animation:
+      BorderMarch 3s linear forwards infinite,
+      BorderRainbow 3s linear infinite;
+  }
+
+  @keyframes BorderMarch {
+    0%   { stroke-dashoffset: 0 }
+    100% { stroke-dashoffset: -60px; }
+  }
+
+  @keyframes BorderRainbow {
+    0%   { stroke: #ff0000; }
+    10%  { stroke: #ff0000; }
+    30%  { stroke: #ffff00; }
+    50%  { stroke: #00ffff; }
+    70%  { stroke: #0000ff; }
+    90%  { stroke: #ff00ff; }
+    100% { stroke: #ff0000; }
   }
 }

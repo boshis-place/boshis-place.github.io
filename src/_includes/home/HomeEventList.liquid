@@ -11,7 +11,14 @@
     </form>
   </header>
 
-  {% for event in events %}
-    {% render "home/HomeEvent", event: event, forloop: forloop %}
-  {% endfor %}
+  {{ content }}
+  {% comment %} {% for event in events %}
+    {% assign rainbow = rainbow and forloop.index == 1 %}
+    {%
+      render "home/HomeEvent"
+      event: event
+      forloop: forloop
+      rainbow: rainbow
+    %}
+  {% endfor %} {% endcomment %}
 </section>

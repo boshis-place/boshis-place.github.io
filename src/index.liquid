@@ -35,15 +35,37 @@ description: welcome to boshi's place
 
 <!-- ~*~ Events ~*~ -->
 <section class="Home-events">
+  {% capture upcoming %}
+    {% for event in collections.upcomingEvents %}
+      {% assign rainbow = forloop.index == 1 %}
+      {%
+        render "home/HomeEvent"
+        event: event
+        forloop: forloop
+        rainbow: rainbow
+      %}
+    {% endfor %}
+  {% endcapture %}
+
   {%
     render "home/HomeEventList"
     name: "upcoming events"
-    events: collections.upcomingEvents
+    content: upcoming
   %}
+
+  {% capture past %}
+    {% for event in collections.pastEvents %}
+      {%
+        render "home/HomeEvent"
+        event: event
+        forloop: forloop
+      %}
+    {% endfor %}
+  {% endcapture %}
 
   {%
     render "home/HomeEventList"
     name: "past events"
-    events: collections.pastEvents
+    content: past
   %}
 </section>
