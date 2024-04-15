@@ -8,22 +8,21 @@
   "
 >
   <div class="HomeEvent-poster">
-    {% if (2 | randi) == 0 %}
-      {% assign max = 2 %}
-    {% else %}
-      {% assign max = 3 %}
-    {% endif  %}
-
+    {% assign max = 3 | randint | plus: 1 %}
+    {{ max }}
     {% for i in (1..max)  %}
       <figure
         class="HomeEvent-posterBoshi"
-        style="--rand: {{ 1 | rand }}"
+        style="{% randvar %}"
       >
         {% render "core/Boshi" %}
       </figure>
     {% endfor  %}
 
-    <figure class="HomeEvent-posterFrame Rand--{{100 | randi}}">
+    <figure
+      class="HomeEvent-posterFrame"
+      style="{% randvar %}"
+    >
       <svg class="
         HomeEventBorder
         {% if rainbow %}
@@ -44,7 +43,10 @@
     </figure>
   </div>
 
-  <div class="HomeEvent-body Rand--{{100 | randi}}">
+  <div
+    class="HomeEvent-body"
+    style="{% randvar %}"
+  >
     <div class="HomeEvent-bg">
       {% render "core/Noise" %}
     </div>
