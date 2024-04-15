@@ -8,3 +8,8 @@ $black: #000000;
 $white: #ffffff;
 $gray0: #eeeeee;
 $clear: #ffffff00;
+
+/* -- semantic -- */
+$color-border0: #00000033;
+$color-border1: #ffffffaa;
+$color-shadow0: #ff00ff44;

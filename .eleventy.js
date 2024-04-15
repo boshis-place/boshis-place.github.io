@@ -129,12 +129,19 @@ module.exports = function (config) {
   config.addFilter("named", named)
 
   // -- filters/misc
-  /// sample a random integer up to a maximum (exclusive)
+  /// sample a random number up to a maximum (exclusive)
   function rand(max) {
-    return Math.floor(Math.random() * max)
+    return Math.random() * max
   }
 
   config.addFilter("rand", rand)
+
+  /// sample a random integer up to a maximum (exclusive)
+  function randi(max) {
+    return Math.floor(rand(max))
+  }
+
+  config.addFilter("randi", randi)
 
   // -- output --
   return {

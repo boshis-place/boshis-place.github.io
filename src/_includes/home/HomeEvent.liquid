@@ -3,12 +3,27 @@
 <article
   class="HomeEvent"
   style="
-    margin-left: {{ forloop.index | times: offset }}px;
+    --inset: {{ forloop.index | times: offset }}px;
     z-index: {{ forloop.length | minus: forloop.index }};
   "
 >
-  <div class="HomeEvent-poster Rand--{{100 | rand}}">
-    <div class="HomeEvent-posterImage">
+  <div class="HomeEvent-poster">
+    {% if (2 | randi) == 0 %}
+      {% assign max = 2 %}
+    {% else %}
+      {% assign max = 3 %}
+    {% endif  %}
+
+    {% for i in (1..max)  %}
+      <figure
+        class="HomeEvent-posterBoshi"
+        style="--rand: {{ 1 | rand }}"
+      >
+        {% render "core/Boshi" %}
+      </figure>
+    {% endfor  %}
+
+    <figure class="HomeEvent-posterFrame Rand--{{100 | randi}}">
       <svg class="
         HomeEventBorder
         {% if rainbow %}
@@ -23,38 +38,40 @@
       <img
         src="{{event.data.poster.url}}"
         alt="{{event.data.poster.alt}}"
-        width="268"
-        height="268"
+        width="200"
+        height="200"
       >
-    </div>
+    </figure>
   </div>
 
-  <div class="HomeEvent-body Rand--{{100 | rand}}">
+  <div class="HomeEvent-body Rand--{{100 | randi}}">
     <div class="HomeEvent-bg">
       {% render "core/Noise" %}
     </div>
 
-      <svg class="
-        HomeEventBorder
-        {% if rainbow %}
-          HomeEventBorder--rainbow
-        {% endif %}
-      ">
-        <rect class="HomeEventBorder-shape" />
-      </svg>
+    <svg class="
+      HomeEventBorder
+      {% if rainbow %}
+        HomeEventBorder--rainbow
+      {% endif %}
+    ">
+      <rect class="HomeEventBorder-shape" />
+    </svg>
 
-    <div class="HomeEvent-title">
-      <h1 class="HomeEvent-name">
-        {{event.data.name}}
-      </h1>
+    <div class="HomeEvent-text">
+      <header class="HomeEvent-title">
+        <h1 class="HomeEvent-name">
+          {{event.data.name}}
+        </h1>
 
-      <h2 class="HomeEvent-date">
-        {{event.data.date | toShortDate}}
-      </h2>
-    </div>
+        <h2 class="HomeEvent-date">
+          {{event.data.date | toShortDate}}
+        </h2>
+      </header>
 
-    <div class="HomeEvent-desc">
-      {{event.content}}
+      <div class="HomeEvent-desc">
+        {{event.content}}
+      </div>
     </div>
   </div>
 </article>

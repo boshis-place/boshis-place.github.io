@@ -2,7 +2,6 @@
 .Home {
   &-eventList {
     margin-top: $spacing5;
-    padding-bottom: $spacing5;
   }
 }
 
@@ -58,10 +57,6 @@
 
 /* -- HomeEventList -- */
 .HomeEventList {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing6;
-
   &-header {
     display: flex;
     align-items: center;
@@ -70,7 +65,7 @@
   }
 
   /* TODO: this won't work on older browsers; maybe need a js fallback solution */
-  &-header:has(input:checked) ~ .HomeEvent {
+  &:has(input:checked) .HomeEvent {
     margin-left: 0px !important;
   }
 
@@ -81,31 +76,76 @@
       font-size: $font-size3;
     }
   }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing0;
+  }
 }
 
 /* -- HomeEvent -- */
 .HomeEvent {
   display: flex;
+  align-items: center;
   width: $desktop-max;
+  margin-left: var(--inset);
+
+  &:hover {
+    z-index: 420 !important;
+  }
 
   &-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  $poster-width: 200px;
+
+  &-posterFrame {
+    $poster-rotate: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
+
     position: relative;
     display: flex;
     align-items: center;
-    width: 200px;
-    z-index: -1;
-  }
-
-  &-posterImage {
-    position: absolute;
-    width: 268px;
-    height: 268px;
-    transform: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
-    mix-blend-mode: multiply;
+    width: $poster-width;
+    height: $poster-width;
+    transform: $poster-rotate;
+    transition: transform 0.3s;
 
     & > img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+
+    ^&:hover & {
+      transform: $poster-rotate skew(-2deg, -2deg);
+    }
+  }
+
+  &-posterBoshi {
+    $rot-dist: calc($poster-width / 2 * sqrt(2));
+    $rot-min: 90deg;
+    $rot-span: 180deg;
+
+    position: absolute;
+    height: 50px;
+    z-index: -1;
+    transition: transform 0.3s;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0px 0px 10px $color-shadow0);
+    }
+
+    ^&:hover & {
+      transform:
+        translateX(calc($rot-dist * cos($rot-min + var(--rand) * $rot-span)))
+        translateY(calc($rot-dist * sin($rot-min + var(--rand) * $rot-span)));
     }
   }
 
@@ -114,13 +154,16 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 140px;
     gap: $spacing1;
     padding: $spacing2;
     transform: rotate(calc(-1deg + var(--rand) * 2deg));
+    box-shadow: 10px 10px 20px $color-shadow0;
     mix-blend-mode: hard-light;
+    transition: transform 0.3s;
 
-    &:hover {
-      border-color: $blue0;
+    ^&:hover & {
+      transform: skew(-1deg, -1deg);
     }
   }
 
@@ -130,7 +173,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $blue1;
+    background: linear-gradient(to right, $blue1, transparent);
     z-index: -1;
   }
 
@@ -141,10 +184,11 @@
   }
 
   &-name {
-    font-size: $font-size2;
+    flex: 1;
+    font-size: $font-size1;
 
     @mixin desktop {
-      font-size: $font-size3;
+      font-size: $font-size2;
     }
   }
 
@@ -158,8 +202,8 @@
 }
 
 .HomeEventBorder {
-  --border-width: 2px;
-  --border-offset: -1px;
+  --border-width: 3px;
+  --border-offset: -1.5px;
   --border-dash: 6px;
 
   overflow: visible;
@@ -173,14 +217,14 @@
     width: 100%;
     height: 100%;
     fill: $clear;
-    stroke: $black;
+    stroke: $color-border0;
     stroke-width: var(--border-width);
     stroke-dasharray: var(--border-dash) var(--border-dash);
     stroke-dashoffset: 0;
   }
 
   &--white &-shape {
-    stroke: $white;
+    stroke: $color-border1;
   }
 
   &--rainbow {
