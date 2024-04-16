@@ -1,6 +1,7 @@
 const PostCSSPlugin = require("eleventy-plugin-postcss")
 const addCollections = require("./cfg/addCollections")
 const addDateFilters = require("./cfg/addDateFilters")
+const addImage = require("./cfg/addImage")
 const addRand = require("./cfg/addRand")
 const addStringFilters = require("./cfg/addStringFilters")
 
@@ -19,6 +20,7 @@ module.exports = function (config) {
   // -- modules --
   addCollections(config)
   addDateFilters(config)
+  addImage(config, srcDir, dstDir)
   addRand(config)
   addStringFilters(config)
 

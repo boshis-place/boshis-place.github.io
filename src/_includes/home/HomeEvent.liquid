@@ -33,12 +33,7 @@
         <rect class="HomeEventBorder-shape" />
       </svg>
 
-      <img
-        src="{{event.data.poster.url}}"
-        alt="{{event.data.poster.alt}}"
-        width="200"
-        height="200"
-      >
+      {% img event.data.poster "(max-width: 200px)" %}
     </figure>
   </div>
 
