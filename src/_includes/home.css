@@ -89,7 +89,8 @@
   display: flex;
   align-items: center;
   width: $desktop-max;
-  margin-left: var(--inset);
+  margin-left: calc(var(--index) * 75px);
+  opacity: calc(1 - var(--index) * 0.1);
 
   &:hover {
     z-index: 420 !important;
@@ -157,7 +158,7 @@
     min-height: 140px;
     gap: $spacing1;
     padding: $spacing2;
-    transform: rotate(calc(-1deg + var(--rand) * 2deg));
+    transform: rotate(calc(var(--rand) * 10deg));
     box-shadow: 10px 10px 20px $color-shadow0;
     mix-blend-mode: hard-light;
     transition: transform 0.3s;
@@ -193,10 +194,20 @@
   }
 
   &-date {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding-left: $spacing4;
+    padding-right: $spacing4;
     font-size: $font-size0;
+    text-align: right;
+    text-wrap: nowrap;
+    transform: scale(80%);
+    color: $white;
+    mix-blend-mode: overlay;
 
     @mixin desktop {
-      font-size: $font-size1;
+      font-size: 8rem;
     }
   }
 }
@@ -228,8 +239,8 @@
   }
 
   &--rainbow {
-    --border-width: 4px;
-    --border-offset: -2px;
+    --border-width: 16px;
+    --border-offset: -8px;
   }
 
   &--rainbow &-shape {

@@ -1,9 +1,7 @@
-{% assign offset = 75 %}
-
 <article
   class="HomeEvent"
   style="
-    --inset: {{ forloop.index | times: offset }}px;
+    --index: {{ forloop.index }};
     z-index: {{ forloop.length | minus: forloop.index }};
   "
 >
@@ -55,14 +53,14 @@
     </svg>
 
     <div class="HomeEvent-text">
+      <h2 class="HomeEvent-date">
+        {{event.data.date | toShortDate}}
+      </h2>
+
       <header class="HomeEvent-title">
         <h1 class="HomeEvent-name">
           {{event.data.name}}
         </h1>
-
-        <h2 class="HomeEvent-date">
-          {{event.data.date | toShortDate}}
-        </h2>
       </header>
 
       <div class="HomeEvent-desc">
