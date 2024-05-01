@@ -20,7 +20,7 @@ there's only one dependency to install to get the project running locally.
 
 if possible install nodejs version **18.19.1**. this is the version specified in the [`.node-version`](./.node-version) file. other versions may work, but you may also encounter weird errors!
 
-there are [many](https://github.com/asdf-vm/asdf-nodejs) [ways](https://github.com/nvm-sh/nvm) [to](https://formulae.brew.sh/formula/node@16) [install](https://community.chocolatey.org/packages/nodejs-lts) [nodejs](https://nodejs.org/download/release/v16.20.2/), and how you choose to do so will depend on your system.
+there are [many](https://github.com/asdf-vm/asdf-nodejs) [ways](https://github.com/nvm-sh/nvm) [to](https://formulae.brew.sh/formula/node@18) [install](https://community.chocolatey.org/packages/nodejs-lts) [nodejs](https://nodejs.org/download/release/v18.19.1/), and how you choose to do so will depend on your system.
 
 ## setup
 
