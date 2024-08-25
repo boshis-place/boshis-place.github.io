@@ -1,0 +1,13 @@
+/* -- Landing -- */
+.Landing {
+}
+
+/* -- LandingTitle -- */
+.LandingTitle {
+  position: relative;
+  font-size: $font-size4;
+
+  @mixin desktop {
+    font-size: $font-size5;
+  }
+}
