@@ -4,125 +4,257 @@
 <head>
   <title>boshi's website</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module">
+    const events = [
+      // documentation
+      // {
+      //   when: "YYYY-MM-dd hh:mmPM", // the start date of the event
+      //   end: "YYYY-MM-dd hh:mmPM", // optional, the end of the event (if its multiple days)
+      //   url: "https://www.website.com", // optional, a link
+      //   description: "a description", // a description/title
+      // },
+      {
+        when: "2024-09-18 7:30pm",
+        description: "boshi's cinema presents: castaway on the moon",
+      },
+      {
+        when: "2024-09-22 7:00pm",
+        description: "farewell summer",
+      },
+      {
+        when: "2024-09-11 7:00pm",
+        url: "https://www.instagram.com/p/C_Ybtzvu4K-/",
+        description: "lan party night: warcraft 3 mods",
+      },
+      {
+        when: "2024-08-29 7:00pm",
+        url: "https://www.instagram.com/p/C-DdekQuRyv/",
+        description: "music show: onu blu, casual salad, gushes, awryly; with games curated by flan",
+      },
+      {
+        when: "2024-08-07 7:30pm",
+        url: "https://www.instagram.com/p/C-DdekQuRyv/",
+        description: "boshi's cinema presents: one cut of the dead",
+      },
+      {
+        when: "2024-07-26 7:30pm",
+        url: "https://www.instagram.com/p/C9vW6g_yCcZ/",
+        description: "olympic games opening ceremony + curated games",
+      },
+      {
+        when: "2024-07-19",
+        end: "2024-07-20",
+        url: "events/2024-07-19-young-egg-dog-city.html",
+        description: "young egg dog city: an exhibition of pointy-clicky games made between 1988 and 2024",
+      },
+      {
+        when: "2024-05-14 7:30pm",
+        url: "https://www.instagram.com/p/C6Z-r89Nr1t/",
+        description: "live concert feat. dreamcrusher, pain chain, professor a, and compactor",
+      },
+      {
+        when: "2024-04-27 7:00pm",
+        url: "https://www.instagram.com/p/C6IJXSxNF4C/",
+        description: "which came first, the chicken or the egg? prototype playtest and pitch night!",
+      },
+      {
+        when: "2024-04-26 7:00pm",
+        url: "https://www.instagram.com/p/C6Enhs1OT2e/",
+        description: "boshi's cinema presents: speed racer (2008)",
+      },
+      {
+        when: "2024-04-19 7:00pm",
+        url: "https://www.instagram.com/p/C5q-EAIx8QZ/",
+        description: "games for a rainy day launch party featuring McTheProfessor.gov",
+      },
+      {
+        when: "2024-04-12 7:00pm",
+        url: "https://www.instagram.com/p/C4ipBolOXL3/",
+        description: "boshi noise show featuring: Holy Wisdom LLC, Luciform, Mercury Symbol, Jenn Taiga, Chthonic Streams",
+      },
+      {
+        when: "2024-04-06 7:00pm",
+        url: "soon.html",
+        description: "boshi's first birthday!!!!",
+      },
+      {
+        when: "2024-03-30 7:00pm",
+        url: "https://www.instagram.com/reel/C4qwUCjO1Ce/",
+        description: "eggztravaganza",
+      },
+      {
+        when: "2024-03-08 7:00pm",
+        url: "https://www.instagram.com/p/C3-vcb-u759/",
+        description: "boshi's cinema presents: Bacurau (2019)",
+      },
+      {
+        when: "2024-03-02 7:00pm",
+        url: "https://www.instagram.com/p/C3lbuneOcZV/",
+        description: "live concert feat. No One and the Somebodies, Alan Worm, Old Table Reunion, Crystal Lies, Timeless Clock",
+      },
+      {
+        when: "2024-02-16",
+        url: "https://www.instagram.com/p/C3ZPgxdN4on/",
+        description: "boshi's cinema presents: wings of desire (1987)",
+      },
+      {
+        when: "2024-02-09",
+        url: "https://www.instagram.com/p/C2sL16QuRU6/",
+        description: "teach in: nyc resists with gaza",
+      },
+      {
+        when: "2023-12-16",
+        url: "https://www.instagram.com/p/C0ucdVsyiuV/",
+        description: "prototype showcase",
+      },
+      {
+        when: "2023-12-9",
+        url: "https://www.instagram.com/p/Cz9rmO2ux9i/",
+        description: "raindrop races: an ambient play showcase",
+      },
+      {
+        when: "2023-12-07",
+        url: "https://www.instagram.com/p/C0e2J0DO3wl/",
+        description: "open studio - come cowork with us!",
+      },
+      {
+        when: "2023-12-02 7:00pm",
+        url: "https://www.instagram.com/p/C0MoA_6u8Lx/",
+        description: "boshi's cinema presents: first cow (2019)",
+      },
+      {
+        when: "2023-11-27",
+        url: "https://www.eventbrite.com/e/barnyardia-direct-cyber-monday-the-first-scrapeboard-kit-auction-live-tickets-754801209737",
+        description: "Barnyardia Direct: CYBER MONDAY - the first Scrapeboard kit auction live!",
+      },
+      {
+        when: "2023-11-11 7:00pm",
+        url: "https://www.instagram.com/p/CzW9yieO6MH/",
+        description: "boshi's cinema presents: mind game",
+      },
+      {
+        when: "2023-11-03",
+        url: "https://www.instagram.com/p/CzE4LaUOAyn/",
+        description: "documentary screening: gaza fights for freedom (2019)",
+      },
+      {
+        when: "2023-10-21",
+        url: "events/dayOfDryBones_2023.html",
+        description: "day of dry bones",
+      },
+      {
+        when: "2023-10-12",
+        url: "https://www.instagram.com/p/CyG32I5OdJE/",
+        description: "NIGHTMARE NIGHTMARE NIGHTMARE: noise + experimental music + performances feat. phagocyte, seventh trumpet, ZACARAMA!, cancer cult, LUCIFORM",
+      },
+      {
+        when: "2023-09-22",
+        url: "https://www.instagram.com/p/CxQ1evju_c1/",
+        description: "spontaneous compositon: a music and games performance",
+      },
+      {
+        when: "2023-09-22",
+        end:"2023-09-24",
+        url: "https://artsinbushwick.org/bos2023-map-1/",
+        description: "Bushwick Open Studios 2023",
+      },
+      {
+        when: "2023-09-16",
+        end: "2023-09-17",
+        url: "https://www.eventbrite.com/e/tableau-vivant-a-weekend-of-experiential-games-tickets-707095420437",
+        description: " Tableau Vivant: a weekend of experiential games",
+      },
+      {
+        when: "2023-08-19",
+        url: "https://www.instagram.com/p/CwHCTIsuPG7/",
+        description: "live drawing @ Boshi",
+      },
+      {
+        when: "2023-08-18",
+        url: "https://www.instagram.com/p/CwHBv-FuvlJ/",
+        description: "music art show: soft lives, simpe, thanks god, misty xelibri & stuttersprite",
+      },
+      {
+        when: "2023-07-14",
+        url: "none",
+        description: " White Death (larp)",
+      },
+      {
+        when: "2023-07-08",
+        url: "https://www.eventbrite.com/e/folk-drinking-game-jam-tickets-670371257477",
+        description: "Folk Drinking Game Jam",
+      },
+      {
+        when: "2023-06-24",
+        url: "https://www.eventbrite.com/e/thanks-for-shopping-with-us-a-salute-to-big-bag-tickets-649806026317",
+        description: "Thanks for Shopping With Us - A Salute to Big Bag",
+      },
+      {
+        when: "2023-06-18",
+        url: "https://www.eventbrite.com/e/continental-breakfast-select-flash-games-from-2001-2008-tickets-660688315537",
+        description: " Continental Breakfast: select flash game from 2001 to 2008",
+      },
+      {
+        when: "2023-06-17",
+        url: "https://www.eventbrite.com/e/zine-jam-tickets-660691495047",
+        description: "zine jam!!!",
+      },
+    ]
+
+    const now = Date.now()
+    const eventsParsed = events.map(e => ({
+      ...e,
+      date: Date.parse((e.end ?? e.when)),
+    })).sort((a, b) => b.date - a.date)
+
+
+    var $upcoming = document.getElementById("upcoming-events")
+    var $past = document.getElementById("past-events")
+    for (const event of eventsParsed) {
+      const description = !event.url
+        ? `${event.description}`
+        : `<a href=${event.url}>${event.description}</a>`
+
+      const date = !event.end
+      ? `${event.when}`
+      : `${event.when} ~ ${event.end}`
+
+      const $event = document.createElement("li")
+      $event.innerHTML = `[${event.when}] - ${description}`
+
+      if (event.date < now) {
+        $past.appendChild($event)
+      } else {
+        $upcoming.prepend($event)
+      }
+    }
+  </script>
 </head>
+
 <body class="Boshy">
   <h1 class="Title">welcome to boshi's website</h1>
   <div class="Links">
     <a href="https://comradery.co/boshisplace">comradery</a>
     <a href="https://twitter.com/boshisplace">twitter</a>
     <a href="https://www.instagram.com/boshisplace">instagram</a>
+    <a href="https://discord.gg/t76bS6dKJh">discord</a>
   </div>
   <div class="Events">
     <div>
       upcoming events
     </div>
-    <ul>
-      <li>
-        [05-14-2024 7:30pm] <a href="https://www.instagram.com/p/C9vW6g_yCcZ/">olympic games opening ceremony + curated games</a>
-      </li>
+    <ul id="upcoming-events">
     </ul>
   </div>
-  <div  class="Events">
+  <div class="Events">
     <hr>
   </div>
   <div class="Events">
     <div>
       past events
     </div>
-    <ul>
-      <li>
-        [07-19-2024 ~ 07-20-2024] <a href="events/2024-07-19-young-egg-dog-city.html">young egg dog city: an exhibition of pointy-clicky games made between 1988 and 2024</a>
-      </li>
-      <li>
-        [05-14-2024 7:30pm] <a href="https://www.instagram.com/p/C6Z-r89Nr1t/">live concert feat. dreamcrusher, pain chain, professor a, and compactor</a>
-      </li>
-      <li>
-        [04-27-2024 7pm] <a href="https://www.instagram.com/p/C6IJXSxNF4C/">which came first, the chicken or the egg? prototype playtest and pitch night!</a>
-      </li>
-      <li>
-        [04-26-2024 7pm] <a href="https://www.instagram.com/p/C6Enhs1OT2e/">boshi's cinema presents: speed racer (2008)</a>
-      </li>
-      <li>
-        [04-19-2024 7pm] <a href="https://www.instagram.com/p/C5q-EAIx8QZ/"/>games for a rainy day launch party featuring McTheProfessor.gov</a>
-      </li>
-      <li>
-        [04-12-2024 7pm] <a href="https://www.instagram.com/p/C4ipBolOXL3/">boshi noise show featuring: Holy Wisdom LLC, Luciform, Mercury Symbol, Jenn Taiga, Chthonic Streams</a>
-      </li>
-      <li>
-        [04-06-2024 7pm] <a href="soon.html">boshi's first birthday!!!!</a>
-      </li>
-      <li>
-        [03-30-2024 7pm] <a href="https://www.instagram.com/reel/C4qwUCjO1Ce/">eggztravaganza</a>
-      </li>
-      <li>
-        [03-08-2024 7pm] <a href="https://www.instagram.com/p/C3-vcb-u759/">boshi's cinema presents: Bacurau (2019)</a>
-      </li>
-      <li>
-        [03-02-2024 7pm] <a href="https://www.instagram.com/p/C3lbuneOcZV/">live concert feat. No One and the Somebodies, Alan Worm, Old Table Reunion, Crystal Lies, Timeless Clock</a>
-      </li>
-      <li>
-        [02-16-2024] <a href="https://www.instagram.com/p/C3ZPgxdN4on/">boshi's cinema presents: wings of desire (1987)</a>
-      </li>
-      <li>
-        [02-09-2024] <a href="https://www.instagram.com/p/C2sL16QuRU6/">teach in: nyc resists with gaza</a>
-      </li>
-      <li>
-        [12-16-2023] <a href="https://www.instagram.com/p/C0ucdVsyiuV/">prototype showcase</a>
-      </li>
-      <li>
-        [12-9-2023] <a href="https://www.instagram.com/p/Cz9rmO2ux9i/">raindrop races: an ambient play showcase</a>
-      </li>
-      <li>
-        [12-07-2023] <a href="https://www.instagram.com/p/C0e2J0DO3wl/">open studio - come cowork with us!</a>
-      </li>
-      <li>
-        [12-02-2023 7pm-9pm] <a href="https://www.instagram.com/p/C0MoA_6u8Lx/">boshi's cinema presents: first cow (2019)</a>
-      </li>
-      <li>
-        [11-27-2023] <a href="https://www.eventbrite.com/e/barnyardia-direct-cyber-monday-the-first-scrapeboard-kit-auction-live-tickets-754801209737">Barnyardia Direct: CYBER MONDAY - the first Scrapeboard kit auction live!</a>
-      </li>
-      <li>
-        [11-11-2023 7pm-9pm] <a href="https://www.instagram.com/p/CzW9yieO6MH/">boshi's cinema presents: mind game</a>
-      </li>
-      <li>
-        [11-03-2023] <a href="https://www.instagram.com/p/CzE4LaUOAyn/">documentary screening: gaza fights for freedom (2019)</a>
-      </li>
-      <li>
-        [10-21-2023] <a href="events/dayOfDryBones_2023.html">day of dry bones</a>
-      </li>
-      <li>
-        [10-12-2023] <a href="https://www.instagram.com/p/CyG32I5OdJE/">NIGHTMARE NIGHTMARE NIGHTMARE: noise + experimental music + performances feat. phagocyte, seventh trumpet, ZACARAMA!, cancer cult, LUCIFORM</a>
-      </li>
-      <li>
-        [09-22-2023] <a href="https://www.instagram.com/p/CxQ1evju_c1/">spontaneous compositon: a music and games performance</a>
-      </li>
-      <li>
-        [09-22-2023 ~ 09-24-2023] <a href="https://artsinbushwick.org/bos2023-map-1/">Bushwick Open Studios 2023</a> : showcasing some of the work of our current members and if we get some critical mass playing some games outside.
-      </li>
-      <li>
-        [09-16-2023 ~ 09-17-2023] <a href="https://www.eventbrite.com/e/tableau-vivant-a-weekend-of-experiential-games-tickets-707095420437"> Tableau Vivant: a weekend of experiential games</a>
-      </li>
-      <li>
-        [08-19-2023] <a href="https://www.instagram.com/p/CwHCTIsuPG7/">live drawing @ Boshi</a>
-      </li>
-      <li>
-        [08-18-2023] <a href="https://www.instagram.com/p/CwHBv-FuvlJ/">music art show: soft lives, simpe, thanks god, misty xelibri & stuttersprite</a>
-      </li>
-      <li>
-        [07-14-2023] White Death (larp)
-      </li>
-      <li>
-        [07-08-2023] <a href="https://www.eventbrite.com/e/folk-drinking-game-jam-tickets-670371257477">Folk Drinking Game Jam</a>
-      </li>
-      <li>
-        [06-24-2023] <a href="https://www.eventbrite.com/e/thanks-for-shopping-with-us-a-salute-to-big-bag-tickets-649806026317">Thanks for Shopping With Us - A Salute to Big Bag</a>
-      </li>
-      <li>
-        [06-18-2023] <a href="https://www.eventbrite.com/e/continental-breakfast-select-flash-games-from-2001-2008-tickets-660688315537"> Continental Breakfast: select flash game from 2001 to 2008</a>
-      </li>
-      <li>
-        [06-17-2023] <a href="https://www.eventbrite.com/e/zine-jam-tickets-660691495047">zine jam!!!</a>
-      </li>
+    <ul id="past-events">
+
     </ul>
   </div>
 </body>
