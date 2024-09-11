@@ -3,15 +3,13 @@
   &-eventList {
     margin-top: $spacing5;
   }
-}
+  &Title {
+    position: relative;
+    font-size: $font-size4;
 
-/* -- HomeTitle -- */
-.HomeTitle {
-  position: relative;
-  font-size: $font-size4;
-
-  @mixin desktop {
-    font-size: $font-size5;
+    @mixin desktop {
+      font-size: $font-size5;
+    }
   }
 }
 
