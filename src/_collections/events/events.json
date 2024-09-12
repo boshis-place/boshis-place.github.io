@@ -1,5 +1,5 @@
 {
   "tags": "events",
-  "layout": "event.liquid",
+  "layout": "EventDetailPage.liquid",
   "permalink": "events/{{ page.fileSlug }}.html"
 }

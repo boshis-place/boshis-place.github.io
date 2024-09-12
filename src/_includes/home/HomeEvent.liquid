@@ -1,73 +1,73 @@
 <a href="/{{event.data.tags}}/{{event.fileSlug}}">
-<article
-  class="HomeEvent"
-  style="
-    --index: {{ forloop.index }};
-    z-index: {{ forloop.length | minus: forloop.index }};
-  "
->
-  <div class="HomeEvent-poster">
-    {% assign max = 3 | randint | plus: 1 %}
-    {% for i in (1..max)  %}
+  <article
+    class="HomeEvent"
+    style="
+      --index: {{ forloop.index }};
+      z-index: {{ forloop.length | minus: forloop.index }};
+    "
+  >
+    <div class="HomeEvent-poster">
+      {% assign max = 3 | randint | plus: 1 %}
+      {% for i in (1..max)  %}
+        <figure
+          class="HomeEvent-posterBoshi"
+          style="{% randvar %}"
+        >
+          {% render "core/Boshi" %}
+        </figure>
+      {% endfor  %}
+
       <figure
-        class="HomeEvent-posterBoshi"
+        class="HomeEvent-posterFrame"
         style="{% randvar %}"
       >
-        {% render "core/Boshi" %}
-      </figure>
-    {% endfor  %}
+        <svg class="
+          HomeEventBorder
+          {% if rainbow %}
+            HomeEventBorder--rainbow
+          {% else  %}
+            HomeEventBorder--white
+          {% endif %}
+        ">
+          <rect class="HomeEventBorder-shape" />
+        </svg>
 
-    <figure
-      class="HomeEvent-posterFrame"
+        {% img event.data.poster "(max-width: 200px)" %}
+      </figure>
+    </div>
+
+    <div
+      class="HomeEvent-body"
       style="{% randvar %}"
     >
+      <div class="HomeEvent-bg">
+        {% render "core/Noise" %}
+      </div>
+
       <svg class="
         HomeEventBorder
         {% if rainbow %}
           HomeEventBorder--rainbow
-        {% else  %}
-          HomeEventBorder--white
         {% endif %}
       ">
         <rect class="HomeEventBorder-shape" />
       </svg>
 
-      {% img event.data.poster "(max-width: 200px)" %}
-    </figure>
-  </div>
+      <div class="HomeEvent-text">
+        <h2 class="HomeEvent-date">
+          {{event.data.date | toShortDate}}
+        </h2>
 
-  <div
-    class="HomeEvent-body"
-    style="{% randvar %}"
-  >
-    <div class="HomeEvent-bg">
-      {% render "core/Noise" %}
-    </div>
+        <header class="HomeEvent-title">
+          <h1 class="HomeEvent-name">
+            {{event.data.name}}
+          </h1>
+        </header>
 
-    <svg class="
-      HomeEventBorder
-      {% if rainbow %}
-        HomeEventBorder--rainbow
-      {% endif %}
-    ">
-      <rect class="HomeEventBorder-shape" />
-    </svg>
-
-    <div class="HomeEvent-text">
-      <h2 class="HomeEvent-date">
-        {{event.data.date | toShortDate}}
-      </h2>
-
-      <header class="HomeEvent-title">
-        <h1 class="HomeEvent-name">
-          {{event.data.name}}
-        </h1>
-      </header>
-
-      <div class="HomeEvent-desc">
-        {{event.content}}
+        <div class="HomeEvent-desc">
+          {{event.content}}
+        </div>
       </div>
     </div>
-  </div>
-</article>
+  </article>
 </a>

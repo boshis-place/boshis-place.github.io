@@ -1,10 +1,12 @@
 .About {
-  &Title {
-    position: relative;
-    font-size: $font-size4;
 
-    @mixin desktop {
-      font-size: $font-size5;
-    }
+}
+
+.AboutTitle {
+  position: relative;
+  font-size: $font-size4;
+
+  @mixin desktop {
+    font-size: $font-size5;
   }
 }
