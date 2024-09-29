@@ -1,5 +1,6 @@
 /* -- includes --*/
 @import "_includes/shared.css";
+@import "_includes/nav.css";
 @import "_includes/home.css";
 @import "_includes/about.css";
 @import "_includes/landing.css";
@@ -21,10 +22,12 @@ body {
 .Page {
   overflow-x: hidden;
   position: relative;
+  min-height: 100%;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
   background: linear-gradient($blue2, $blue0);
+  background: $blue1;
 
   @mixin desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;

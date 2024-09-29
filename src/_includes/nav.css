@@ -1,0 +1,74 @@
+.Nav {
+  --radius: 150px;
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+  &-links {
+    position: ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--radius) * 2);
+    height: calc(var(--radius) * 2);
+
+    > ul {
+      display: contents;
+    }
+  }
+
+  &-link {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    pointer-events: all;
+    list-style-type: none;
+
+    &:nth-child(1) {
+      transform: translate(
+        calc(var(--radius) * cos(0deg)),
+        calc(var(--radius) * sin(0deg))
+      );
+    }
+
+    &:nth-child(2) {
+      transform: translate(
+        calc(var(--radius) * cos(60deg)),
+        calc(var(--radius) * sin(60deg))
+      );
+    }
+
+    &:nth-child(3) {
+      transform: translate(
+        calc(var(--radius) * cos(120deg)),
+        calc(var(--radius) * sin(120deg))
+      );
+    }
+
+    &:nth-child(4) {
+      transform: translate(
+        calc(var(--radius) * cos(180deg)),
+        calc(var(--radius) * sin(180deg))
+      );
+    }
+
+    &:nth-child(5) {
+      transform: translate(
+        calc(var(--radius) * cos(240deg)),
+        calc(var(--radius) * sin(240deg))
+      );
+    }
+
+    &:nth-child(6) {
+      transform: translate(
+        calc(var(--radius) * cos(300deg)),
+        calc(var(--radius) * sin(300deg))
+      );
+    }
+  }
+}

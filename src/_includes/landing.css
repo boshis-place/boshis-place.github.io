@@ -1,5 +1,15 @@
 .Landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  .Nav {
+    --radius: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .LandingTitle {

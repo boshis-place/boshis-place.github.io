@@ -44,6 +44,7 @@
   <body>
     <div id="page" class="Page {{ section | camelize }}">
       {{ content }}
+      {% render "Nav.liquid" %}
     </div>
 
     <div id="loading" class="Loading"></div>
