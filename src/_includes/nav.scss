@@ -27,7 +27,7 @@
     list-style-type: none;
 
     $n: 7;
-    $a: 360 / $n;
+    $a: math.div(360, $n);
 
     @for $i from 0 to $n + 1 {
       &:nth-child(#{$i + 1}) {
