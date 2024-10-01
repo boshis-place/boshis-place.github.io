@@ -1,34 +1,25 @@
 <a href="/{{event.data.tags}}/{{event.fileSlug}}">
-  <article
-    class="HomeEvent"
-    style="
-      --index: {{ forloop.index }};
-      z-index: {{ forloop.length | minus: forloop.index }};
-    "
-  >
+  <article class="HomeEvent" style="
+            --index: {{ forloop.index }};
+            z-index: {{ forloop.length | minus: forloop.index }};
+          ">
     <div class="HomeEvent-poster">
       {% assign max = 3 | randint | plus: 1 %}
-      {% for i in (1..max)  %}
-        <figure
-          class="HomeEvent-posterBoshi"
-          style="{% randvar %}"
-        >
+      {% for i in (1..max) %}
+        <figure class="HomeEvent-posterBoshi" style="{% randvar %}">
           {% render "core/Boshi" %}
         </figure>
-      {% endfor  %}
+      {% endfor %}
 
-      <figure
-        class="HomeEvent-posterFrame"
-        style="{% randvar %}"
-      >
-        <svg class="
+      <figure class="HomeEvent-posterFrame" style="{% randvar %}">
+        <svg
+          class="
           HomeEventBorder
           {% if rainbow %}
             HomeEventBorder--rainbow
-          {% else  %}
+          {% else %}
             HomeEventBorder--white
-          {% endif %}
-        ">
+          {% endif %}">
           <rect class="HomeEventBorder-shape" />
         </svg>
 
@@ -36,36 +27,33 @@
       </figure>
     </div>
 
-    <div
-      class="HomeEvent-body"
-      style="{% randvar %}"
-    >
+    <div class="HomeEvent-body" style="{% randvar %}">
       <div class="HomeEvent-bg">
         {% render "core/Noise" %}
       </div>
 
-      <svg class="
+      <svg
+        class="
         HomeEventBorder
         {% if rainbow %}
           HomeEventBorder--rainbow
-        {% endif %}
-      ">
+        {% endif %}">
         <rect class="HomeEventBorder-shape" />
       </svg>
 
       <div class="HomeEvent-text">
         <h2 class="HomeEvent-date">
-          {{event.data.date | toShortDate}}
+          {{ event.data.date | toShortDate }}
         </h2>
 
         <header class="HomeEvent-title">
           <h1 class="HomeEvent-name">
-            {{event.data.name}}
+            {{ event.data.name }}
           </h1>
         </header>
 
         <div class="HomeEvent-desc">
-          {{event.content}}
+          {{ event.content }}
         </div>
       </div>
     </div>
