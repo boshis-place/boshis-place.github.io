@@ -3,8 +3,8 @@ $desktop-min: 550px;
 $desktop-max: 800px;;
 
 /* -- mixins -- */
-@define-mixin desktop {
+@mixin desktop {
   @media (min-width: $desktop-min) {
-    @mixin-content;
+    @content;
   }
 }

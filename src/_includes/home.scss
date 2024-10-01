@@ -27,7 +27,7 @@
   position: relative;
   font-size: $font-size4;
 
-  @mixin desktop {
+  @include desktop {
     font-size: $font-size5;
   }
 }
@@ -89,7 +89,7 @@
   &-title {
     font-size: $font-size2;
 
-    @mixin desktop {
+    @include desktop {
       font-size: $font-size3;
     }
   }
@@ -103,6 +103,8 @@
 
 /* -- HomeEvent -- */
 .HomeEvent {
+  $c: &;
+
   display: flex;
   align-items: center;
   width: $desktop-max;
@@ -139,7 +141,7 @@
       object-fit: cover;
     }
 
-    ^&:hover & {
+    #{$c}:hover & {
       transform: $poster-rotate skew(-2deg, -2deg);
     }
   }
@@ -160,7 +162,7 @@
       filter: drop-shadow(0px 0px 10px $color-shadow0);
     }
 
-    ^&:hover & {
+    #{$c}:hover & {
       transform:
         translateX(calc($rot-dist * cos($rot-min + var(--rand) * $rot-span)))
         translateY(calc($rot-dist * sin($rot-min + var(--rand) * $rot-span)));
@@ -180,7 +182,7 @@
     mix-blend-mode: hard-light;
     transition: transform 0.3s;
 
-    ^&:hover & {
+    #{$c}:hover & {
       transform: skew(-1deg, -1deg);
     }
   }
@@ -205,7 +207,7 @@
     flex: 1;
     font-size: $font-size1;
 
-    @mixin desktop {
+    @include desktop {
       font-size: $font-size2;
     }
   }
@@ -223,7 +225,7 @@
     color: $white;
     mix-blend-mode: overlay;
 
-    @mixin desktop {
+    @include desktop {
       font-size: 8rem;
     }
   }

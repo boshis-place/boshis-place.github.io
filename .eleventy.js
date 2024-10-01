@@ -3,6 +3,7 @@ const addCollections = require("./cfg/addCollections")
 const addDateFilters = require("./cfg/addDateFilters")
 const addImage = require("./cfg/addImage")
 const addRand = require("./cfg/addRand")
+const addSass = require("./cfg/addSass")
 const addStringFilters = require("./cfg/addStringFilters")
 
 // -- config --
@@ -22,6 +23,7 @@ module.exports = function (config) {
   addDateFilters(config)
   addImage(config, srcDir, dstDir)
   addRand(config)
+  addSass(config)
   addStringFilters(config)
 
   // -- output --
