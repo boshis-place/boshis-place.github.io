@@ -14,12 +14,30 @@
       //   description: "a description", // a description/title
       // },
       {
+        when: "2024-11-07 all day",
+        description: "boshis radical day (more info coming)",
+      },
+      {
+        when: "2024-10-26 7:30pm",
+        description: "day of dry bones",
+      },
+      {
+        when: "2024-10-03 10am-5pm",
+        description: "open coworking thursday!",
+      },
+      {
+        when: "2024-09-28 8:00pm",
+        description: "BIG gaming event (with mario party)",
+        url: "https://www.instagram.com/p/DAMA3foyHh6/"
+      },
+      {
         when: "2024-09-18 7:30pm",
         description: "boshi's cinema presents: castaway on the moon",
       },
       {
         when: "2024-09-22 7:00pm",
         description: "farewell summer",
+        url: "https://itch.io/c/4812830/farewell-summer-2024"
       },
       {
         when: "2024-09-11 7:00pm",
@@ -38,7 +56,7 @@
       },
       {
         when: "2024-07-26 7:30pm",
-        url: "https://www.instagram.com/p/C9vW6g_yCcZ/",
+        url: "https://itch.io/c/4617669/olympics-show-2024",
         description: "olympic games opening ceremony + curated games",
       },
       {
@@ -46,6 +64,17 @@
         end: "2024-07-20",
         url: "events/2024-07-19-young-egg-dog-city.html",
         description: "young egg dog city: an exhibition of pointy-clicky games made between 1988 and 2024",
+      },
+      {
+        when: "2024-07-14 2:00pm",
+        end: "2024-07-21",
+        url: "https://itch.io/jam/plunderludics-workshop-jam",
+        description: "plunderludics workshop",
+      },
+      {
+        when: "2024-06-15 8:00pm",
+        url: "https://itch.io/c/4633134/crockpot-launch-party",
+        description: "crockpot launch party",
       },
       {
         when: "2024-05-14 7:30pm",
@@ -208,8 +237,10 @@
     })).sort((a, b) => b.date - a.date)
 
 
-    var $upcoming = document.getElementById("upcoming-events")
-    var $past = document.getElementById("past-events")
+    const $upcoming = document.getElementById("upcoming-events")
+    const $past = document.getElementById("past-events")
+    let pastEvents = 0;
+    const jumbleScale= 0.02;
     for (const event of eventsParsed) {
       const description = !event.url
         ? `${event.description}`
@@ -220,10 +251,13 @@
       : `${event.when} ~ ${event.end}`
 
       const $event = document.createElement("li")
+      $event.classList.add("Event")
       $event.innerHTML = `[${event.when}] - ${description}`
 
       if (event.date < now) {
         $past.appendChild($event)
+        $event.style.transform = `rotate(${(Math.random() * 2 - 1) * pastEvents * pastEvents * jumbleScale}deg)`
+        pastEvents++
       } else {
         $upcoming.prepend($event)
       }
@@ -234,10 +268,11 @@
 <body class="Boshy">
   <h1 class="Title">welcome to boshi's website</h1>
   <div class="Links">
-    <a href="https://comradery.co/boshisplace">comradery</a>
-    <a href="https://twitter.com/boshisplace">twitter</a>
-    <a href="https://www.instagram.com/boshisplace">instagram</a>
-    <a href="https://discord.gg/t76bS6dKJh">discord</a>
+    <a class="Link" href="https://comradery.co/boshisplace">comradery</a>
+    <a class="Link" href="https://twitter.com/boshisplace">twitter</a>
+    <a class="Link" href="https://www.instagram.com/boshisplace">instagram</a>
+    <a class="Link" href="https://discord.gg/t76bS6dKJh">discord</a>
+    <a class="Link" href="https://discord.gg/t76bS6dKJh">itch</a>
   </div>
   <div class="Events">
     <div>

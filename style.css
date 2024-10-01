@@ -13,6 +13,24 @@ body {
   font-size: xx-large;
 }
 
+::selection {
+  background-color: #5B9ED2;
+  color: #5B9ED2;
+}
+
+a:visited {
+  color: #9b7487;
+  outline-color: #5B9ED2
+}
+
+a:hover {
+  color: #5B9ED2;
+}
+
+a {
+  color: #BB5F61;
+}
+
 .Title {
   padding: 10px;
   background-color: #5B9ED2;
@@ -31,6 +49,10 @@ body {
   margin-bottom: 20px;
 }
 
-li {
+.Link {
+}
+
+.Event {
   padding: 20px;
+  background-color: #5B9ED2;
 }
