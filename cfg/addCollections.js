@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.addCollection("upcomingEvents", (collections) => {
     return partitionedEvents(collections)[0]
   })
@@ -24,10 +24,7 @@ module.exports = function(config) {
     const now = new Date()
     const upcomingEventIndex = events.findIndex((evt) => evt.date - now > 0)
     if (upcomingEventIndex < 0) {
-      return [
-        [],
-        events.reverse(),
-      ]
+      return [[], events.reverse()]
     }
 
     return [

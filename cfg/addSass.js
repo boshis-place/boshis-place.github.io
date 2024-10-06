@@ -16,22 +16,17 @@ module.exports = function (config) {
 
       // compile sass file relative to its dir
       const sassResult = sass.compileString(input, {
-        loadPaths: [
-          inputDir ?? ".",
-        ]
+        loadPaths: [inputDir ?? "."],
       })
 
       // link this scss file to any included files for recompilation
-      this.addDependencies(
-        inputPath,
-        sassResult.loadedUrls
-      )
+      this.addDependencies(inputPath, sassResult.loadedUrls)
 
       css = sassResult.css
 
       // apply autoprefixer
       const autoprefixResult = await autoprefix.process(css, {
-        from: inputPath
+        from: inputPath,
       })
 
       for (const warning in autoprefixResult.warnings()) {
@@ -44,6 +39,6 @@ module.exports = function (config) {
       return async (_data) => {
         return css
       }
-    }
+    },
   })
 }
