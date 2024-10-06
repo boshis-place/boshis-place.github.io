@@ -68,11 +68,19 @@ body {
 }
 
 @keyframes Loading {
-  from { width: 0%; }
-  to   { width: 69%; }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 69%;
+  }
 }
 
 @keyframes Loading-wait {
-  from { width: 69%; }
-  to   { width: 69.5%; }
+  from {
+    width: 69%;
+  }
+  to {
+    width: 69.5%;
+  }
 }

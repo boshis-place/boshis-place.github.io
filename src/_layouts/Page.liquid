@@ -13,12 +13,14 @@
 
     <!-- page -->
     <title>{{ title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- favicon -->
-    <link rel="shortcut icon"
+    <link
+      rel="shortcut icon"
       type="image/x-icon"
-      href="/img/favicon.ico">
+      href="/img/favicon.ico"
+    >
 
     <!-- preview -->
     {% assign previewTitle = "boshi's place" %}
@@ -46,7 +48,7 @@
   <body>
     <div id="page" class="Page {{ section | camelize }}">
       {{ content }}
-      {% render "Nav/Nav" %}
+      {% render "nav/Nav" %}
     </div>
 
     <div id="loading" class="Loading"></div>

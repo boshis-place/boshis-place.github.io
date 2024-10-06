@@ -1,8 +1,11 @@
 <a href="/{{event.data.tags}}/{{event.fileSlug}}">
-  <article class="HomeEvent" style="
-            --index: {{ forloop.index }};
-            z-index: {{ forloop.length | minus: forloop.index }};
-          ">
+  <article
+    class="HomeEvent"
+    style="
+      --index: {{ forloop.index }};
+      z-index: {{ forloop.length | minus: forloop.index }};
+    "
+  >
     <div class="HomeEvent-poster">
       {% assign max = 3 | randint | plus: 1 %}
       {% for i in (1..max) %}
@@ -14,12 +17,14 @@
       <figure class="HomeEvent-posterFrame" style="{% randvar %}">
         <svg
           class="
-          HomeEventBorder
-          {% if rainbow %}
-            HomeEventBorder--rainbow
-          {% else %}
-            HomeEventBorder--white
-          {% endif %}">
+            HomeEventBorder
+            {% if rainbow %}
+              HomeEventBorder--rainbow
+            {% else %}
+              HomeEventBorder--white
+            {% endif %}
+          "
+        >
           <rect class="HomeEventBorder-shape" />
         </svg>
 
@@ -34,10 +39,12 @@
 
       <svg
         class="
-        HomeEventBorder
-        {% if rainbow %}
-          HomeEventBorder--rainbow
-        {% endif %}">
+          HomeEventBorder
+          {% if rainbow %}
+            HomeEventBorder--rainbow
+          {% endif %}
+        "
+      >
         <rect class="HomeEventBorder-shape" />
       </svg>
 

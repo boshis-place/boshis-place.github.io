@@ -1,35 +1,36 @@
 {% unless name %}
   {% case 13 | randint %}
     {% when 0 %}
-    {% assign name = "big-boshi" %}
+      {% assign name = "big-boshi" %}
     {% when 1 %}
-    {% assign name = "big-cat" %}
+      {% assign name = "big-cat" %}
     {% when 2 %}
-    {% assign name = "big-mouse" %}
+      {% assign name = "big-mouse" %}
     {% when 3 %}
-    {% assign name = "bird" %}
+      {% assign name = "bird" %}
     {% when 4 %}
-    {% assign name = "bunny" %}
+      {% assign name = "bunny" %}
     {% when 5 %}
-    {% assign name = "dog" %}
+      {% assign name = "dog" %}
     {% when 6 %}
-    {% assign name = "frog" %}
+      {% assign name = "frog" %}
     {% when 7 %}
-    {% assign name = "goat" %}
+      {% assign name = "goat" %}
     {% when 8 %}
-    {% assign name = "pombo" %}
+      {% assign name = "pombo" %}
     {% when 9 %}
-    {% assign name = "small-boshi" %}
+      {% assign name = "small-boshi" %}
     {% when 10 %}
-    {% assign name = "small-cat" %}
+      {% assign name = "small-cat" %}
     {% when 11 %}
-    {% assign name = "small-rat" %}
-  {% else %}
-    {% assign name = "snail" %}
+      {% assign name = "small-rat" %}
+    {% else %}
+      {% assign name = "snail" %}
   {% endcase %}
 {% endunless %}
 
 <img
   class="Boshi"
   src="img/boshis/{{name}}.png"
-  alt="a boshi">
+  alt="a boshi"
+>

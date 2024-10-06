@@ -125,7 +125,10 @@
   $poster-width: 200px;
 
   &-posterFrame {
-    $poster-rotate: translateX(calc(-10px + var(--rand) * 20px)) rotate(calc(-1deg + var(--rand) * 2deg));
+    $poster-rotate: (
+      translateX(calc(-10px + var(--rand) * 20px))
+        rotate(calc(-1deg + var(--rand) * 2deg))
+    );
 
     position: relative;
     display: flex;
@@ -163,9 +166,10 @@
     }
 
     #{$c}:hover & {
-      transform:
+      transform: (
         translateX(calc($rot-dist * cos($rot-min + var(--rand) * $rot-span)))
-        translateY(calc($rot-dist * sin($rot-min + var(--rand) * $rot-span)));
+          translateY(calc($rot-dist * sin($rot-min + var(--rand) * $rot-span)))
+      );
     }
   }
 
@@ -269,16 +273,32 @@
   }
 
   @keyframes BorderMarch {
-    0%   { stroke-dashoffset: 0 }
-    100% { stroke-dashoffset: -60px; }
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -60px;
+    }
   }
 
   @keyframes BorderRainbow {
-    0%    { stroke: #ff0000; }
-    12.5% { stroke: #ffff00; }
-    37.5% { stroke: #00ff00; }
-    62.5% { stroke: #00ffff; }
-    87.5% { stroke: #ff00ff; }
-    100%  { stroke: #ff0000; }
+    0% {
+      stroke: #ff0000;
+    }
+    12.5% {
+      stroke: #ffff00;
+    }
+    37.5% {
+      stroke: #00ff00;
+    }
+    62.5% {
+      stroke: #00ffff;
+    }
+    87.5% {
+      stroke: #ff00ff;
+    }
+    100% {
+      stroke: #ff0000;
+    }
   }
 }
