@@ -1,6 +1,5 @@
 node_modules
 dist
 raw
-.DS_store
-.vscode
 .cache
+.DS_store
