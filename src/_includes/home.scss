@@ -1,25 +1,7 @@
 /* -- Home -- */
 .Events {
-  .Nav {
-    --radius: 100px;
-
-    &-links {
-      animation: Rotate 100s linear infinite;
-    }
-  }
-
   &-eventList {
     margin-top: $spacing5;
-  }
-}
-
-@keyframes Rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(359deg);
   }
 }
 
