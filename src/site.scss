@@ -1,9 +1,10 @@
 /* -- includes --*/
-@import "_includes/shared.css";
-@import "_includes/home.css";
-@import "_includes/about.css";
-@import "_includes/landing.css";
-@import "_includes/event-detail.css";
+@import "_includes/shared";
+@import "_includes/nav";
+@import "_includes/home";
+@import "_includes/about";
+@import "_includes/landing";
+@import "_includes/event-detail";
 
 /* -- resets (more) -- */
 * {
@@ -21,10 +22,12 @@ body {
 .Page {
   overflow-x: hidden;
   position: relative;
+  min-height: 100%;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
   background: linear-gradient($blue2, $blue0);
+  background: $blue1;
 
   @mixin desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;
@@ -65,11 +68,19 @@ body {
 }
 
 @keyframes Loading {
-  from { width: 0%; }
-  to   { width: 69%; }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 69%;
+  }
 }
 
 @keyframes Loading-wait {
-  from { width: 69%; }
-  to   { width: 69.5%; }
+  from {
+    width: 69%;
+  }
+  to {
+    width: 69.5%;
+  }
 }

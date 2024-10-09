@@ -4,30 +4,22 @@ section: events
 title: boshi's place | events
 description: welcome to boshi's place
 ---
-
 <h1 class="HomeTitle">
   <dl>
-    {%
-      render "home/HomeWord"
-      text: "welcome"
-      defn: "a friendly greeting"
-    %}
+    {% render "home/HomeWord", text: "welcome", defn: "a friendly greeting" %}
 
-    {%
-      render "home/HomeWord"
-      text: "to"
+    {% render "home/HomeWord",
+      text: "to",
       defn: "a preposition linking the greeting to what follows"
     %}
 
-    {%
-      render "home/HomeWord"
-      text: "boshi's"
+    {% render "home/HomeWord",
+      text: "boshi's",
       defn: "a creature, blue, articulated by sunglasses and spiked accessories"
     %}
 
-    {%
-      render "home/HomeWord"
-      text: "place"
+    {% render "home/HomeWord",
+      text: "place",
       defn: "a space, residence, home"
     %}
   </dl>
@@ -47,11 +39,7 @@ description: welcome to boshi's place
     {% endfor %}
   {% endcapture %}
 
-  {%
-    render "home/HomeEventList"
-    name: "upcoming events"
-    content: upcoming
-  %}
+  {% render "home/HomeEventList", name: "upcoming events", content: upcoming %}
 
   {% capture past %}
     {% for event in collections.pastEvents %}
@@ -63,9 +51,5 @@ description: welcome to boshi's place
     {% endfor %}
   {% endcapture %}
 
-  {%
-    render "home/HomeEventList"
-    name: "past events"
-    content: past
-  %}
+  {% render "home/HomeEventList", name: "past events", content: past %}
 </section>

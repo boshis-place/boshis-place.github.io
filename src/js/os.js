@@ -8,7 +8,7 @@ const kId = {
 
 /// a map of class names
 const kClass = {
-  isLoading: "is-loading"
+  isLoading: "is-loading",
 }
 
 /// an enum of visit types

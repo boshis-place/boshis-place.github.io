@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   /// camelize a string
   function camelize(value, isLower) {
     if (value == null) {
