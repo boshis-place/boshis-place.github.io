@@ -5,6 +5,7 @@ const addImage = require("./cfg/addImage")
 const addRand = require("./cfg/addRand")
 const addSass = require("./cfg/addSass")
 const addStringFilters = require("./cfg/addStringFilters")
+const addRemoveTrailingSlash = require("./cfg/addRemoveTrailingSlash")
 
 // -- config --
 module.exports = function (config) {
@@ -25,6 +26,7 @@ module.exports = function (config) {
   addRand(config)
   addSass(config)
   addStringFilters(config)
+  addRemoveTrailingSlash(config)
 
   // -- output --
   return {
