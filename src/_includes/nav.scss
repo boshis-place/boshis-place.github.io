@@ -1,7 +1,8 @@
 @use "sass:math";
 
 .Nav {
-  --radius: 150px;
+  $radius: 100px;
+  --scale: 1;
 
   position: fixed;
   width: 100%;
@@ -10,17 +11,26 @@
   left: 0;
   pointer-events: none;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &-links {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(var(--radius) * 2);
-    height: calc(var(--radius) * 2);
+    width: calc($radius * var(--scale) * 2);
+    height: calc($radius * var(--scale) * 2);
 
     > ul {
       display: contents;
+      .Boshi {
+        transform: scale(calc(var(--scale) * 0.5));
+      }
     }
+
+    animation: Rotate 100s linear infinite;
   }
 
   &-item {
@@ -34,8 +44,8 @@
     @for $i from 0 to $n + 1 {
       &:nth-child(#{$i + 1}) {
         transform: translate(
-          calc(var(--radius) * cos($i * #{$a}deg)),
-          calc(var(--radius) * sin($i * #{$a}deg))
+          calc($radius * var(--scale) * cos($i * #{$a}deg)),
+          calc($radius * var(--scale) * sin($i * #{$a}deg))
         );
       }
     }
@@ -69,5 +79,15 @@
         (math.random() - 0.5) * 2 * 60px
       );
     }
+  }
+}
+
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
