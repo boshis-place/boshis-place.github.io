@@ -1,5 +1,7 @@
 @use "sass:math";
 
+$nav: null;
+
 .Nav {
   $radius: 100px;
   --scale: 1;
@@ -16,12 +18,15 @@
   align-items: center;
 
   &-links {
+    $nav: &;
+
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: calc($radius * var(--scale) * 2);
     height: calc($radius * var(--scale) * 2);
+    animation: Rotate 100s linear infinite;
 
     > ul {
       display: contents;
@@ -29,8 +34,6 @@
         transform: scale(calc(var(--scale) * 0.5));
       }
     }
-
-    animation: Rotate 100s linear infinite;
   }
 
   &-item {
@@ -53,31 +56,37 @@
 }
 
 .NavItem {
-  $c: &;
-
+  $c:&;
+  height:calc(80px * var(--scale));
+  width:calc(80px * var(--scale));
   display: flex;
   justify-content: center;
   align-items: center;
 
   &-link {
-    display: contents;
+    animation: Rotate 100s linear infinite reverse;
   }
 
   &-name {
     position: absolute;
     display: block;
     opacity: 0;
-    transform: translate(0, 0);
-    transition:
-      transform 2s,
-      opacity 0.2s;
+    color: $black;
+    text-shadow: darkorange 0px 0 2px;
+    font-size: $font-size1;
+    transition: opacity 0.2s, font-size 0.2s;
+
+    @include desktop {
+      font-size: $font-size2;
+    }
+
+    #{$nav}:hover & {
+      opacity: 0.5;
+    }
 
     #{$c}:hover & {
       opacity: 1;
-      transform: translate(
-        (math.random() - 0.5) * 2 * 60px,
-        (math.random() - 0.5) * 2 * 60px
-      );
+      font-size: $font-size4;
     }
   }
 }
