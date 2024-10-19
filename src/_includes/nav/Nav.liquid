@@ -1,13 +1,13 @@
 <div class="Nav">
-  <nav class="Nav-links">
-    <ul>
-      {% render "./NavLink", url: "/home", name: "events" %}
-      {% render "./NavLink", url: "/about", name: "about" %}
-      {% render "./NavLink", name: "archive" %}
-      {% render "./NavLink", name: "blog" %}
-      {% render "./NavLink", name: "merch" %}
-      {% render "./NavLink", name: "community board" %}
-      {% render "./NavLink", name: "comradery" %}
-    </ul>
+  <nav class="Nav-items">
+    <menu class="Nav-menu">
+      {% render "./NavItem", url: "/home", name: "events", boshi: "big-boshi" %}
+      {% render "./NavItem", url: "/about", name: "about", boshi: "bird" %}
+      {% render "./NavItem", name: "archive", boshi: "dog" %}
+      {% render "./NavItem", name: "blog", boshi: "frog" %}
+      {% render "./NavItem", name: "merch", boshi: "big-cat" %}
+      {% render "./NavItem", name: "board", boshi: "pombo" %}
+      {% render "./NavItem", name: "comradery", boshi: "big-mouse" %}
+    </menu>
   </nav>
 </div>

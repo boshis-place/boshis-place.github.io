@@ -12,10 +12,12 @@
 }
 
 body {
+  position: relative;
   height: 100vh;
   line-height: 1.2;
   background: linear-gradient($blue2, $blue2 50%, $blue0 50%, $blue0);
   background-attachment: fixed;
+  z-index: 0;
 }
 
 /* -- Page -- */
@@ -28,6 +30,7 @@ body {
   font-family: $font-family;
   background: linear-gradient($blue2, $blue0);
   background: $blue1;
+  z-index: 0;
 
   @mixin desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;
@@ -55,6 +58,7 @@ body {
   width: 0%;
   height: 5px;
   background-color: $blue0;
+  z-index: 2;
 }
 
 .Loading.is-loading {
