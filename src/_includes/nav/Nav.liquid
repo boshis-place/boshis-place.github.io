@@ -1,7 +1,11 @@
 <div class="Nav">
   <nav class="Nav-items">
     <menu class="Nav-menu">
-      {% render "./NavItem", url: "/home", name: "events", boshi: "big-boshi" %}
+      {% render "./NavItem",
+        url: "/events",
+        name: "events",
+        boshi: "big-boshi"
+      %}
       {% render "./NavItem", url: "/about", name: "about", boshi: "bird" %}
       {% render "./NavItem", name: "archive", boshi: "dog" %}
       {% render "./NavItem", name: "blog", boshi: "frog" %}
