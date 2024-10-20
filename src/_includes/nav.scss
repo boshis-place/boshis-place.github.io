@@ -1,38 +1,83 @@
 @use "sass:math";
 
-$nav: null;
+$items: null;
+$item-label: null;
+$event-nav-item-selected: ".Events ~ .Nav .Nav-events";
+$about-nav-item-selected: ".About ~ .Nav .Nav-about";
+
+@mixin scale-transition($properties...) {
+  transition: 1s ease-in-out;
+  transition-property: $properties;
+}
 
 .Nav {
   $radius: 100px;
+  $radius-label: 60px;
+  $rotate-speed: 100s;
+
   --scale: 1;
 
+  @include fill();
+  @include scale-transition(background-color);
+
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
   pointer-events: none;
+  background-color: transparent;
+  z-index: 1;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &-items {
+    $items: & !global;
+    $inset: 100px;
 
-  &-links {
-    $nav: &;
+    @include scale-transition(width, height, top, right);
 
-    position: relative;
+    position: absolute;
+    width: calc($radius * var(--scale) * 2);
+    height: calc($radius * var(--scale) * 2);
+    top: $inset;
+    right: $inset;
+  }
+
+  &-menu {
+    @include scale-transition(margin-top, margin-left);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc($radius * var(--scale) * 2);
-    height: calc($radius * var(--scale) * 2);
-    animation: Rotate 100s linear infinite;
+    width: 100%;
+    height: 100%;
+    animation: Rotate $rotate-speed linear infinite forwards;
 
-    > ul {
-      display: contents;
-      .Boshi {
-        transform: scale(calc(var(--scale) * 0.5));
-      }
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+  }
+
+  &-itemImage {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+
+    > .Boshi {
+      @include scale-transition(transform);
+
+      transform: scale(calc(var(--scale) * 0.5));
+    }
+  }
+
+  &-itemLabel {
+    $item-label: & !global;
+
+    position: absolute;
+  }
+
+  &-itemName {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
     }
   }
 
@@ -46,47 +91,84 @@ $nav: null;
 
     @for $i from 0 to $n + 1 {
       &:nth-child(#{$i + 1}) {
+        @include scale-transition(transform);
+
         transform: translate(
           calc($radius * var(--scale) * cos($i * #{$a}deg)),
           calc($radius * var(--scale) * sin($i * #{$a}deg))
         );
+
+        #{$item-label} {
+          @include scale-transition(transform);
+
+          transform: translate(
+            calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
+            calc($radius-label * var(--scale) * sin($i * #{$a}deg))
+          );
+        }
       }
     }
   }
 }
 
 .NavItem {
-  $c:&;
-  height:calc(80px * var(--scale));
-  width:calc(80px * var(--scale));
+  $c: &;
+  $hover-speed: 0.2s;
+
+  @include scale-transition(width, height);
+
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(80px * var(--scale));
+  height: calc(80px * var(--scale));
+
+  @at-root &:hover,
+    #{$event-nav-item-selected},
+    #{$about-nav-item-selected} {
+    z-index: 1;
+  }
+
+  @at-root #{$event-nav-item-selected},
+    #{$about-nav-item-selected} {
+    pointer-events: none;
+  }
 
   &-link {
-    animation: Rotate 100s linear infinite reverse;
+    display: flex;
+    justify-content: center;
+    transition: transform $hover-speed;
+  }
+
+  &:hover &-link,
+  #{$event-nav-item-selected} &-link,
+  #{$about-nav-item-selected} &-link {
+    transform: perspective(1000px) translateZ(200px);
   }
 
   &-name {
-    position: absolute;
+    @include scale-transition(font-size);
+
     display: block;
     opacity: 0;
-    color: $black;
-    text-shadow: darkorange 0px 0 2px;
-    font-size: $font-size1;
-    transition: opacity 0.2s, font-size 0.2s;
+    color: $white;
+    text-shadow: $coral 0px 0 6px;
+    font-size: calc($font-size1 * var(--scale));
+    text-align: center;
+    transition: opacity $hover-speed;
 
     @include desktop {
-      font-size: $font-size2;
+      font-size: calc($font-size2 * var(--scale));
     }
 
-    #{$nav}:hover & {
+    #{$items}:hover & {
       opacity: 0.5;
     }
 
-    #{$c}:hover & {
+    #{$c}:hover &,
+    #{$event-nav-item-selected} &,
+    #{$about-nav-item-selected} & {
       opacity: 1;
-      font-size: $font-size4;
     }
   }
 }
