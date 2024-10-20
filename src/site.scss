@@ -19,6 +19,28 @@ body {
   z-index: 0;
 }
 
+a:not([class]) {
+  color: $black;
+  text-decoration-color: $coral;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    color: $blue0;
+  }
+}
+
+a[class] {
+  text-decoration: unset;
+
+  &:hover {
+    color: unset;
+  }
+
+  &:visited {
+    color: unset;
+  }
+}
+
 /* -- Page -- */
 .Page {
   @include background();
@@ -84,19 +106,5 @@ body {
   }
   to {
     width: 69.5%;
-  }
-}
-
-a {
-  color: $black;
-  text-decoration-color: $coral;
-  text-decoration-thickness: 3px;
-
-  &:visited {
-    text-shadow: $color-shadow0 2px 0 2px;
-  }
-
-  &:hover {
-    color: $blue0;
   }
 }

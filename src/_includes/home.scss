@@ -67,6 +67,8 @@
   /* TODO: this won't work on older browsers; maybe need a js fallback solution */
   &:has(input:checked) .HomeEvent {
     margin-left: 0px !important;
+    opacity: 0.9 !important;
+    z-index: 3 !important;
   }
 
   &-title {
@@ -194,8 +196,15 @@
   }
 
   &-name {
-    flex: 1;
     font-size: $font-size1;
+    text-shadow: $color-shadow1 3px 0 4px;
+    text-decoration: underline $coral 2px;
+
+    #{$c}:hover & {
+      background-color: $coral-alpha0;
+      background-image: url("/img/textures/riso3.png");
+      background-blend-mode: luminosity;
+    }
 
     @include desktop {
       font-size: $font-size2;
