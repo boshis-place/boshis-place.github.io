@@ -18,12 +18,21 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
   --scale: 1;
 
   @include fill();
-  @include scale-transition(background-color);
 
   position: fixed;
   pointer-events: none;
-  background-color: transparent;
   z-index: 1;
+
+  &::before {
+    content: "";
+
+    @include fill();
+    @include background();
+    @include scale-transition(opacity);
+
+    position: absolute;
+    opacity: 0;
+  }
 
   &-items {
     $items: & !global;

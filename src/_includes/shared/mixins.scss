@@ -4,3 +4,9 @@
   top: 0;
   left: 0;
 }
+
+@mixin background {
+  background-image: url("/img/textures/riso1.png");
+  background-blend-mode: luminosity;
+  background-color: $blue1;
+}

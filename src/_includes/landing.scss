@@ -6,7 +6,9 @@
   & ~ .Nav {
     --scale: 2;
 
-    background-color: $blue1;
+    &::before {
+      opacity: 1;
+    }
 
     .Nav-items {
       top: 50%;

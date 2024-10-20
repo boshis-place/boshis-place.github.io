@@ -21,18 +21,16 @@ body {
 
 /* -- Page -- */
 .Page {
+  @include background();
   overflow: hidden;
   position: relative;
   min-height: 100%;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
-  background: $blue1;
-  background-image: url("/img/textures/riso1.png");
-  background-blend-mode: luminosity;
   z-index: 0;
 
-  @mixin desktop {
+  @include desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;
   }
 }
