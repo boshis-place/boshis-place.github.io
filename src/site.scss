@@ -22,7 +22,7 @@ body {
 
 /* -- Page -- */
 .Page {
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
   min-height: 100%;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
