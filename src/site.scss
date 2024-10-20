@@ -15,7 +15,6 @@ body {
   position: relative;
   height: 100vh;
   line-height: 1.2;
-  background: linear-gradient($blue2, $blue2 50%, $blue0 50%, $blue0);
   background-attachment: fixed;
   z-index: 0;
 }
@@ -28,8 +27,9 @@ body {
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
-  background: linear-gradient($blue2, $blue0);
   background: $blue1;
+  background-image: url("/img/textures/riso1.png");
+  background-blend-mode: luminosity;
   z-index: 0;
 
   @mixin desktop {
@@ -86,5 +86,19 @@ body {
   }
   to {
     width: 69.5%;
+  }
+}
+
+a {
+  color: $black;
+  text-decoration-color: $coral;
+  text-decoration-thickness: 3px;
+
+  &:visited {
+    text-shadow: $color-shadow0 2px 0 2px;
+  }
+
+  &:hover {
+    color: $blue0;
   }
 }

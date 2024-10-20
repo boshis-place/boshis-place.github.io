@@ -8,6 +8,7 @@
 .HomeTitle {
   position: relative;
   font-size: $font-size4;
+  text-shadow: $color-shadow1 3px 0 4px;
 
   @include desktop {
     font-size: $font-size5;
@@ -70,6 +71,7 @@
 
   &-title {
     font-size: $font-size2;
+    text-shadow: $color-shadow1 3px 0 4px;
 
     @include desktop {
       font-size: $font-size3;
@@ -179,7 +181,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to right, $blue1, transparent);
+    background-color: $blue1;
+    background-image: url("/img/textures/riso3.png");
+    background-blend-mode: luminosity;
     z-index: -1;
   }
 
@@ -208,6 +212,7 @@
     text-align: right;
     text-wrap: nowrap;
     transform: scale(80%);
+    text-transform: lowercase;
     color: $white;
     mix-blend-mode: overlay;
 
