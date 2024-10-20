@@ -2,6 +2,8 @@
 
 $items: null;
 $item-label: null;
+$event-nav-item-selected: ".Events ~ .Nav .Nav-events";
+$about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
 @mixin scale-transition($properties...) {
   transition: 1s ease-in-out;
@@ -121,8 +123,15 @@ $item-label: null;
   width: calc(80px * var(--scale));
   height: calc(80px * var(--scale));
 
-  &:hover {
+  @at-root &:hover,
+    #{$event-nav-item-selected},
+    #{$about-nav-item-selected} {
     z-index: 1;
+  }
+
+  @at-root #{$event-nav-item-selected},
+    #{$about-nav-item-selected} {
+    pointer-events: none;
   }
 
   &-link {
@@ -131,7 +140,9 @@ $item-label: null;
     transition: transform $hover-speed;
   }
 
-  &:hover &-link {
+  &:hover &-link,
+  #{$event-nav-item-selected} &-link,
+  #{$about-nav-item-selected} &-link {
     transform: perspective(1000px) translateZ(200px);
   }
 
@@ -154,7 +165,9 @@ $item-label: null;
       opacity: 0.5;
     }
 
-    #{$c}:hover & {
+    #{$c}:hover &,
+    #{$event-nav-item-selected} &,
+    #{$about-nav-item-selected} & {
       opacity: 1;
     }
   }
