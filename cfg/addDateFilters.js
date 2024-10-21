@@ -7,6 +7,7 @@ module.exports = function (config) {
       day: "numeric",
     })
   }
+
   config.addFilter("toShortDate", toShortDate)
 
   function toLongDate(date) {
@@ -15,14 +16,18 @@ module.exports = function (config) {
       year: "numeric",
       month: "long",
       day: "numeric",
+      timeZone: "America/New_York",
     })
 
     const timeString = date.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "2-digit",
+      timeZone: "America/New_York",
+      timeZoneName: "short",
     })
 
     return `${dateString} @ ${timeString}`
   }
+
   config.addFilter("toLongDate", toLongDate)
 }

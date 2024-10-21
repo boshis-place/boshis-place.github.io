@@ -5,7 +5,6 @@
 
   &-title {
     text-shadow: $color-shadow1 3px 0 4px;
-    position: relative;
     font-size: $font-size4;
 
     @mixin desktop {
@@ -15,8 +14,8 @@
 
   &-date {
     text-shadow: $color-shadow1 3px 0 4px;
-    position: relative;
     font-size: $font-size1;
+    text-transform: lowercase;
 
     @mixin desktop {
       font-size: $font-size2;
@@ -26,7 +25,6 @@
   &-posterFrame {
     $poster-width: 100%;
 
-    position: relative;
     width: $poster-width;
     margin-top: 20px;
 
