@@ -13,6 +13,10 @@ module.exports = function (config, srcDir, dstDir) {
         media = altOrMedia
       }
 
+      if (src == null && alt == null) {
+        return ""
+      }
+
       const isRemoteUrl = Image.Util.isRemoteUrl(src)
       if (!isRemoteUrl) {
         src = `${srcDir}/img/${src}`

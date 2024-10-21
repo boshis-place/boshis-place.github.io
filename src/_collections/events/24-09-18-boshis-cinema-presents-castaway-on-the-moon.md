@@ -1,7 +1,7 @@
 ---
 version: 1
-name: "boshi's first birthday!!!!"
-date: 2024-04-06T19:00:00-04:00
+name: "boshi's cinema presents: castaway on the moon"
+date: 2024-09-18T19:30:00-04:00
 poster:
   src:
   alt:
@@ -11,6 +11,6 @@ links:
   bluesky:
   instagram:
   twitter:
-  other: soon.html
+  other:
 description:
 ---

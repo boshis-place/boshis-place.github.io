@@ -1,7 +1,7 @@
 ---
 version: 1
-name: "boshi's first birthday!!!!"
-date: 2024-04-06T19:00:00-04:00
+name: "games against empire"
+date: 2024-11-21T00:00:00-05:00
 poster:
   src:
   alt:
@@ -11,6 +11,6 @@ links:
   bluesky:
   instagram:
   twitter:
-  other: soon.html
+  other:
 description:
 ---

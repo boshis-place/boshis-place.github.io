@@ -1,7 +1,7 @@
 ---
 version: 1
-name: "boshi's first birthday!!!!"
-date: 2024-04-06T19:00:00-04:00
+name: "open coworking thursday!"
+date: 2024-10-17T10:00:00-04:00
 poster:
   src:
   alt:
@@ -11,6 +11,6 @@ links:
   bluesky:
   instagram:
   twitter:
-  other: soon.html
+  other:
 description:
 ---

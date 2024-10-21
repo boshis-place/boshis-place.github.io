@@ -1,25 +1,16 @@
 ---
-name: spring salad
+version: 1
+name: "spring salad"
 date: 2023-02-25T15:00:00-05:00
 poster:
   src: events/23-02-25-spring-salad/poster.jpg
   alt: the poster for the "spring salad" event
 links:
   tickets:
+  itch:
   bluesky:
   instagram:
   twitter:
+  other:
 description: a plunder ludic gathering
 ---
-
-# time
-- saturday 7-10pm
-- sunday 12-5pm
-
-# works showcased
-- Touch Love, blueberrysoft
-- fess plane, frogstore
-- Subway Adventure, increpare
-- Southbank Portrait, Ian Maclarty
-- to a jumbled slop of game assets i brought a certain... "order," if you will. but now, alas, koff koff, etc, i will not ... , Marek Kapolka
-- "The Great Order of the Universe," Christian Bok
