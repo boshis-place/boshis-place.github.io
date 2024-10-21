@@ -181,9 +181,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $blue1;
-    background-image: url("/img/textures/riso3.png");
-    background-blend-mode: luminosity;
+    @include background($riso: 3);
     z-index: -1;
   }
 
@@ -199,9 +197,7 @@
     text-decoration: underline $coral 2px;
 
     #{$c}:hover & {
-      background-color: $coral-alpha0;
-      background-image: url("/img/textures/riso3.png");
-      background-blend-mode: luminosity;
+      @include background($riso: 3, $color: $coral-alpha0);
     }
 
     @include desktop {

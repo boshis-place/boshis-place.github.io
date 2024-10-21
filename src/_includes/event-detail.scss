@@ -1,11 +1,61 @@
 .EventDetail {
-}
+  &-body {
+    max-width: $max-width-0;
+  }
 
-.EventDetailTitle {
-  position: relative;
-  font-size: $font-size4;
+  &-title {
+    text-shadow: $color-shadow1 3px 0 4px;
+    position: relative;
+    font-size: $font-size4;
 
-  @mixin desktop {
-    font-size: $font-size5;
+    @mixin desktop {
+      font-size: $font-size5;
+    }
+  }
+
+  &-date {
+    text-shadow: $color-shadow1 3px 0 4px;
+    position: relative;
+    font-size: $font-size1;
+
+    @mixin desktop {
+      font-size: $font-size2;
+    }
+  }
+
+  &-posterFrame {
+    $poster-width: 100%;
+
+    position: relative;
+    width: $poster-width;
+    margin-top: 20px;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top;
+    }
+  }
+
+  &-content {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    color: $black;
+    padding: 20px;
+
+    h1 {
+      font-size: $font-size2;
+
+      @mixin desktop {
+        font-size: $font-size3;
+      }
+    }
+
+    li::before {
+      content: "+";
+      margin-right: 10px;
+    }
   }
 }

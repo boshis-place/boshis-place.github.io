@@ -5,8 +5,8 @@
   left: 0;
 }
 
-@mixin background {
-  background-image: url("/img/textures/riso1.png");
+@mixin background($riso: 1, $color: $blue1) {
+  background-image: url("/img/textures/riso#{$riso}.png");
   background-blend-mode: luminosity;
-  background-color: $blue1;
+  background-color: $color;
 }
