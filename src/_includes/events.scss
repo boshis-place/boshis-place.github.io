@@ -1,0 +1,298 @@
+.Events {
+  &-eventList {
+    margin-top: $spacing5;
+  }
+}
+
+.HomeTitle {
+  position: relative;
+  font-size: $font-size4;
+  text-shadow: $color-shadow1 3px 0 4px;
+
+  @include desktop {
+    font-size: $font-size5;
+  }
+}
+
+.HomeWord {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    color: $blue0;
+    animation: Shake 0.3s linear;
+    z-index: 1;
+  }
+
+  dd {
+    position: absolute;
+    visibility: hidden;
+    font-size: $font-size0;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
+  }
+
+  dt:hover + dd {
+    visibility: visible;
+  }
+
+  @keyframes Shake {
+    0% {
+      transform: translateX(+0px);
+    }
+
+    25% {
+      transform: translateX(-1px) rotate(-0.5deg);
+    }
+
+    75% {
+      transform: translateX(+1px) rotate(+0.5deg);
+    }
+
+    100% {
+      transform: translateX(+0px);
+    }
+  }
+}
+
+/* -- HomeEventList -- */
+.HomeEventList {
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing2;
+    margin-bottom: $spacing2;
+  }
+
+  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
+  &:has(input:checked) .HomeEvent {
+    margin-left: 0px !important;
+    opacity: 0.9 !important;
+  }
+
+  &-title {
+    font-size: $font-size2;
+    text-shadow: $color-shadow1 3px 0 4px;
+
+    @include desktop {
+      font-size: $font-size3;
+    }
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing0;
+  }
+}
+
+/* -- HomeEvent -- */
+.HomeEvent {
+  $c: &;
+
+  display: flex;
+  align-items: center;
+  width: $desktop-max;
+  margin-left: calc(var(--index) * 75px);
+  opacity: calc(1 - var(--index) * 0.1);
+
+  &:hover {
+    z-index: 420 !important;
+  }
+
+  &-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  $poster-width: 200px;
+
+  &-posterFrame {
+    $poster-rotate: (
+      translateX(calc(-10px + var(--rand) * 20px))
+        rotate(calc(-1deg + var(--rand) * 2deg))
+    );
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: $poster-width;
+    height: $poster-width;
+    transform: $poster-rotate;
+    transition: transform 0.3s;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #{$c}:hover & {
+      transform: $poster-rotate skew(-2deg, -2deg);
+    }
+  }
+
+  &-posterBoshi {
+    $rot-dist: calc($poster-width / 2 * sqrt(2));
+    $rot-min: 90deg;
+    $rot-span: 180deg;
+
+    position: absolute;
+    height: 50px;
+    z-index: -1;
+    transition: transform 0.3s;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0px 0px 10px $color-shadow0);
+    }
+
+    #{$c}:hover & {
+      transform: (
+        translateX(calc($rot-dist * cos($rot-min + var(--rand) * $rot-span)))
+          translateY(calc($rot-dist * sin($rot-min + var(--rand) * $rot-span)))
+      );
+    }
+  }
+
+  &-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 140px;
+    gap: $spacing1;
+    padding: $spacing2;
+    transform: rotate(calc(var(--rand) * 10deg));
+    box-shadow: 10px 10px 20px $color-shadow0;
+    mix-blend-mode: hard-light;
+    transition: transform 0.3s;
+
+    #{$c}:hover & {
+      transform: skew(-1deg, -1deg);
+    }
+  }
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $blue1;
+    background-image: url("/img/textures/riso3.png");
+    background-blend-mode: luminosity;
+    z-index: -1;
+  }
+
+  &-title {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing1;
+  }
+
+  &-name {
+    font-size: $font-size1;
+    text-shadow: $color-shadow1 3px 0 4px;
+    text-decoration: underline $coral 2px;
+
+    #{$c}:hover & {
+      background-color: $coral-alpha0;
+      background-image: url("/img/textures/riso3.png");
+      background-blend-mode: luminosity;
+    }
+
+    @include desktop {
+      font-size: $font-size2;
+    }
+  }
+
+  &-date {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding-left: $spacing4;
+    padding-right: $spacing4;
+    font-size: $font-size0;
+    text-align: right;
+    text-wrap: nowrap;
+    transform: scale(80%);
+    text-transform: lowercase;
+    color: $white;
+    mix-blend-mode: overlay;
+
+    @include desktop {
+      font-size: 8rem;
+    }
+  }
+}
+
+.HomeEventBorder {
+  --border-width: 3px;
+  --border-offset: -1.5px;
+  --border-dash: 6px;
+
+  overflow: visible;
+  position: absolute;
+  top: var(--border-offset);
+  left: var(--border-offset);
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+
+  &-shape {
+    width: 100%;
+    height: 100%;
+    fill: $clear;
+    stroke: $color-border0;
+    stroke-width: var(--border-width);
+    stroke-dasharray: var(--border-dash) var(--border-dash);
+    stroke-dashoffset: 0;
+  }
+
+  &--white &-shape {
+    stroke: $color-border1;
+  }
+
+  &--rainbow {
+    --border-width: 16px;
+    --border-offset: -8px;
+  }
+
+  &--rainbow &-shape {
+    animation:
+      BorderMarch 3s linear forwards infinite,
+      BorderRainbow 1s linear infinite;
+  }
+
+  @keyframes BorderMarch {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -60px;
+    }
+  }
+
+  @keyframes BorderRainbow {
+    0% {
+      stroke: #ff0000;
+    }
+    12.5% {
+      stroke: #ffff00;
+    }
+    37.5% {
+      stroke: #00ff00;
+    }
+    62.5% {
+      stroke: #00ffff;
+    }
+    87.5% {
+      stroke: #ff00ff;
+    }
+    100% {
+      stroke: #ff0000;
+    }
+  }
+}

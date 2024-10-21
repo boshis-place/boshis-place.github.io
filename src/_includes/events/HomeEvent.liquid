@@ -1,0 +1,68 @@
+<a href="/{{event.data.tags}}/{{event.fileSlug}}" class="HomeEvent-anchor">
+  <article
+    class="HomeEvent"
+    style="
+      --index: {{ forloop.index }};
+      z-index: {{ forloop.length | minus: forloop.index }};
+    "
+  >
+    <div class="HomeEvent-poster">
+      {% assign max = 3 | randint | plus: 1 %}
+      {% for i in (1..max) %}
+        <figure class="HomeEvent-posterBoshi" style="{% randvar %}">
+          {% render "core/Boshi" %}
+        </figure>
+      {% endfor %}
+
+      <figure class="HomeEvent-posterFrame" style="{% randvar %}">
+        <svg
+          class="
+            HomeEventBorder
+            {% if rainbow %}
+              HomeEventBorder--rainbow
+            {% else %}
+              HomeEventBorder--white
+            {% endif %}
+          "
+        >
+          <rect class="HomeEventBorder-shape" />
+        </svg>
+
+        {% img event.data.poster "(max-width: 200px)" %}
+      </figure>
+    </div>
+
+    <div class="HomeEvent-body" style="{% randvar %}">
+      <div class="HomeEvent-bg">
+        {% render "core/Noise" %}
+      </div>
+
+      <svg
+        class="
+          HomeEventBorder
+          {% if rainbow %}
+            HomeEventBorder--rainbow
+          {% endif %}
+        "
+      >
+        <rect class="HomeEventBorder-shape" />
+      </svg>
+
+      <div class="HomeEvent-text">
+        <h2 class="HomeEvent-date">
+          {{ event.data.date | toShortDate }}
+        </h2>
+
+        <header class="HomeEvent-title">
+          <h1 class="HomeEvent-name">
+            {{ event.data.name }}
+          </h1>
+        </header>
+
+        <div class="HomeEvent-desc">
+          {{ event.data.description }}
+        </div>
+      </div>
+    </div>
+  </article>
+</a>

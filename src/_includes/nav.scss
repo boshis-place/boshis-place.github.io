@@ -18,12 +18,21 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
   --scale: 1;
 
   @include fill();
-  @include scale-transition(background-color);
 
   position: fixed;
   pointer-events: none;
-  background-color: transparent;
   z-index: 1;
+
+  &::before {
+    content: "";
+
+    @include fill();
+    @include background();
+    @include scale-transition(opacity);
+
+    position: absolute;
+    opacity: 0;
+  }
 
   &-items {
     $items: & !global;
@@ -151,8 +160,8 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
     display: block;
     opacity: 0;
-    color: $white;
-    text-shadow: $coral 0px 0 6px;
+    color: $black;
+    text-shadow: $color-shadow1 2px 0 2px;
     font-size: calc($font-size1 * var(--scale));
     text-align: center;
     transition: opacity $hover-speed;

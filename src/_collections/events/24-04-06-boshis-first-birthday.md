@@ -8,4 +8,4 @@ social:
   instagram: https://www.instagram.com/p/C40yS-cOp4e/
 ---
 
-a celebration for our first birthday with a bunch of games and also the launch of our comradery, also the grand reveal of boshi in real life who <a href="https://mut.media">mut</a> unfortunately didn't get to meet.
+a celebration for our first birthday with a bunch of games and also the launch of our comradery, also the grand reveal of boshi in real life who mut unfortunately didn't get to meet.

@@ -1,0 +1,58 @@
+---
+layout: Page.liquid
+section: events
+title: boshi's place | events
+description: welcome to boshi's place
+---
+<h1 class="HomeTitle">
+  <dl>
+    {% render "events/HomeWord", text: "welcome", defn: "a friendly greeting" %}
+
+    {% render "events/HomeWord",
+      text: "to",
+      defn: "a preposition linking the greeting to what follows"
+    %}
+
+    {% render "events/HomeWord",
+      text: "boshi's",
+      defn: "a creature, blue, articulated by sunglasses and spiked accessories"
+    %}
+
+    {% render "events/HomeWord",
+      text: "place",
+      defn: "a space, residence, home"
+    %}
+  </dl>
+</h1>
+
+<!-- ~*~ Events ~*~ -->
+<section class="Home-events">
+  {% capture upcoming %}
+    {% for event in collections.upcomingEvents %}
+      {% assign rainbow = forloop.index == 1 %}
+      {%
+        render "events/HomeEvent"
+        event: event
+        forloop: forloop
+        rainbow: rainbow
+      %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% render "events/HomeEventList",
+    name: "upcoming events",
+    content: upcoming
+  %}
+
+  {% capture past %}
+    {% for event in collections.pastEvents %}
+      {%
+        render "events/HomeEvent"
+        event: event
+        forloop: forloop
+      %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% render "events/HomeEventList", name: "past events", content: past %}
+</section>

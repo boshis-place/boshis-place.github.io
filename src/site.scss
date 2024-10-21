@@ -1,10 +1,10 @@
 /* -- includes --*/
 @import "_includes/shared";
 @import "_includes/nav";
-@import "_includes/home";
-@import "_includes/about";
 @import "_includes/landing";
+@import "_includes/events";
 @import "_includes/event-detail";
+@import "_includes/about";
 
 /* -- resets (more) -- */
 * {
@@ -15,24 +15,44 @@ body {
   position: relative;
   height: 100vh;
   line-height: 1.2;
-  background: linear-gradient($blue2, $blue2 50%, $blue0 50%, $blue0);
   background-attachment: fixed;
   z-index: 0;
 }
 
+a:not([class]) {
+  color: $black;
+  text-decoration-color: $coral;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    color: $blue0;
+  }
+}
+
+a[class] {
+  text-decoration: unset;
+
+  &:hover {
+    color: unset;
+  }
+
+  &:visited {
+    color: unset;
+  }
+}
+
 /* -- Page -- */
 .Page {
+  @include background();
   overflow: hidden;
   position: relative;
   min-height: 100%;
   padding: $margin-mobile-vertical $margin-mobile-horizontal;
   font-size: $font-size-base;
   font-family: $font-family;
-  background: linear-gradient($blue2, $blue0);
-  background: $blue1;
   z-index: 0;
 
-  @mixin desktop {
+  @include desktop {
     padding: $margin-desktop-vertical $margin-desktop-horizontal;
   }
 }
