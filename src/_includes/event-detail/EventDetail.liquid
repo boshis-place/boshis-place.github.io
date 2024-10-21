@@ -1,11 +1,15 @@
-<h1 class="EventDetailTitle">
-  {{ name }}
-</h1>
+<article class="EventDetail-body">
+  <h1 class="EventDetail-title">
+    {{ name }}
+  </h1>
 
-<img
-  src="{{poster.src}}"
-  alt="{{poster.alt}}"
-  sizes="(max-width: 200px)"
->
+  <h2 class="EventDetail-date">{{ date | toLongDate }}</h2>
 
-{{ content }}
+  <figure class="EventDetail-posterFrame">
+    {% img poster "(max-width: 200px)" %}
+  </figure>
+
+  <section class="EventDetail-content">
+    {{ content }}
+  </section>
+</article>

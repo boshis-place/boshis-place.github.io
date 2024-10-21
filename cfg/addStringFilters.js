@@ -6,7 +6,7 @@ module.exports = function (config) {
     }
 
     const camelized = value
-      .split(/\s+/)
+      .split(/[\s-]+/)
       .map((s, i) => {
         let first = s.slice(0, 1)
         if (i === 0 && isLower) {
