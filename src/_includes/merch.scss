@@ -1,11 +1,9 @@
 .Merch {
-}
+  &-title {
+    font-size: $font-size4;
 
-.MerchTitle {
-  position: relative;
-  font-size: $font-size4;
-
-  @mixin desktop {
-    font-size: $font-size5;
+    @mixin desktop {
+      font-size: $font-size5;
+    }
   }
 }

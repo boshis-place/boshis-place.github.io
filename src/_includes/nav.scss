@@ -1,15 +1,43 @@
+@use "sass:map";
 @use "sass:math";
 
+// -- class references --
 $items: null;
 $item-label: null;
-$event-nav-item-selected: ".Events ~ .Nav .Nav-events";
-$about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
+// -- transition animation --
 @mixin nav-transition($properties...) {
   transition: 1s ease-in-out;
   transition-property: $properties;
 }
 
+// -- selection --
+$page-class-by-name: (
+  events: ".Events",
+  about: ".About",
+  merch: ".Merch",
+);
+
+@function nav-item-selected($child: "") {
+  $i: 0;
+  $n: length($page-class-by-name);
+
+  $selectors: "";
+  @each $name, $page-class in $page-class-by-name {
+    $selector: "#{$page-class} ~ .Nav .Nav-#{$name} #{$child}";
+
+    $selectors: $selectors + $selector;
+    @if $i != $n - 1 {
+      $selectors: $selectors + ",";
+    }
+
+    $i: $i + 1;
+  }
+
+  @return $selectors;
+}
+
+// -- styles --
 .Nav {
   $radius: 100px;
   $radius-label: 60px;
@@ -118,6 +146,16 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
       }
     }
   }
+
+  @keyframes Rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .NavItem {
@@ -131,26 +169,22 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
   height: calc(80px * var(--scale));
 
   @at-root &:hover,
-    #{$event-nav-item-selected},
-    #{$about-nav-item-selected} {
+    #{nav-item-selected()} {
     z-index: 1;
   }
 
-  @at-root #{$event-nav-item-selected},
-    #{$about-nav-item-selected} {
-    cursor:
-      url(/img/cursors/sparkles.png) 16 16,
-      not-allowed;
-  }
-
-  @at-root #{$event-nav-item-selected} a,
-    #{$about-nav-item-selected} a {
+  @at-root #{nav-item-selected($child: a)} {
     pointer-events: none;
   }
 
-  a[target="_blank"],
-  #{$about-nav-item-selected} a {
+  a[target="_blank"] {
     cursor: alias;
+  }
+
+  @at-root #{nav-item-selected()} {
+    cursor:
+      url(/img/cursors/sparkles.png) 16 16,
+      not-allowed;
   }
 
   &-link {
@@ -161,9 +195,8 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
     transition: transform $hover-speed;
   }
 
-  &:hover &-link,
-  #{$event-nav-item-selected} &-link,
-  #{$about-nav-item-selected} &-link {
+  @at-root &:hover &-link,
+    #{nav-item-selected(#{&}-link)} {
     transform: perspective(1000px) translateZ(200px);
   }
 
@@ -196,21 +229,10 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
       filter: blur(0.5px);
     }
 
-    #{$c}:hover &,
-    #{$event-nav-item-selected} &,
-    #{$about-nav-item-selected} & {
+    @at-root #{$c}:hover &,
+      #{nav-item-selected($child: &)} {
       opacity: 1;
       filter: none;
     }
-  }
-}
-
-@keyframes Rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
