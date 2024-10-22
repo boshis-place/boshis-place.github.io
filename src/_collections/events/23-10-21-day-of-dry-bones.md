@@ -11,6 +11,6 @@ links:
   bluesky:
   instagram:
   twitter:
-  other: events/dayOfDryBones_2023.html
+  other:
 description:
 ---

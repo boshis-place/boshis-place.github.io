@@ -30,6 +30,7 @@ a:not([class]) {
 }
 
 a[class] {
+  color: unset;
   text-decoration: unset;
 
   &:hover {

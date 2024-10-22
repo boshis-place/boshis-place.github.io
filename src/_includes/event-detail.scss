@@ -1,11 +1,12 @@
 .EventDetail {
   &-body {
-    max-width: $max-width-0;
+    max-width: $max-width0;
   }
 
   &-title {
-    text-shadow: $color-shadow1 3px 0 4px;
     font-size: $font-size4;
+    text-shadow: $color-shadow1 3px 0 4px;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     @mixin desktop {
       font-size: $font-size5;
@@ -13,9 +14,10 @@
   }
 
   &-date {
-    text-shadow: $color-shadow1 3px 0 4px;
     font-size: $font-size1;
+    text-shadow: $color-shadow1 3px 0 4px;
     text-transform: lowercase;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     @mixin desktop {
       font-size: $font-size2;
@@ -26,7 +28,8 @@
     $poster-width: 100%;
 
     width: $poster-width;
-    margin-top: 20px;
+    margin-top: $spacing3;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     & > img {
       width: 100%;
@@ -37,11 +40,11 @@
   }
 
   &-content {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
-
+    margin-top: $spacing3;
+    padding: $spacing3;
     color: $black;
-    padding: 20px;
+    background-color: rgba($white, 0.5);
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     h1 {
       font-size: $font-size2;
@@ -53,7 +56,8 @@
 
     li::before {
       content: "+";
-      margin-right: 10px;
+
+      margin-right: $spacing1;
     }
   }
 }
