@@ -5,8 +5,14 @@
   right: 0;
 }
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin background($riso: 1, $color: $blue1) {
+  background-color: $color;
   background-image: url("/img/textures/riso#{$riso}.png");
   background-blend-mode: luminosity;
-  background-color: $color;
 }

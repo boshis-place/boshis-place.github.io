@@ -1,7 +1,11 @@
-<a href="/{{event.data.tags}}/{{event.fileSlug}}" class="EventCard-anchor">
+<a
+  href="/{{event.data.tags}}/{{event.fileSlug}}"
+  class="EventCard-anchor"
+>
   <article
     class="EventCard"
     style="
+      {% randvar %}
       --index: {{ forloop.index | minus: 1 }};
       z-index: {{ forloop.length | minus: forloop.index }};
     "

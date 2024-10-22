@@ -17,7 +17,7 @@ module.exports = function (config) {
   // -- shortcodes --
   /// sample a random number as a css variable
   function randVar() {
-    return `--rand: ${rand()}`
+    return `--rand: ${rand()};`
   }
 
   config.addShortcode("randvar", randVar)

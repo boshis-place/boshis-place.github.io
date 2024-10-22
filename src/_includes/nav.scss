@@ -1,15 +1,43 @@
+@use "sass:map";
 @use "sass:math";
 
+// -- class references --
 $items: null;
 $item-label: null;
-$event-nav-item-selected: ".Events ~ .Nav .Nav-events";
-$about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
-@mixin scale-transition($properties...) {
+// -- transition animation --
+@mixin nav-transition($properties...) {
   transition: 1s ease-in-out;
   transition-property: $properties;
 }
 
+// -- selection --
+$page-class-by-name: (
+  events: ".Events",
+  about: ".About",
+  merch: ".Merch",
+);
+
+@function nav-item-selected($child: "") {
+  $i: 0;
+  $n: length($page-class-by-name);
+
+  $selectors: "";
+  @each $name, $page-class in $page-class-by-name {
+    $selector: "#{$page-class} ~ .Nav .Nav-#{$name} #{$child}";
+
+    $selectors: $selectors + $selector;
+    @if $i != $n - 1 {
+      $selectors: $selectors + ",";
+    }
+
+    $i: $i + 1;
+  }
+
+  @return $selectors;
+}
+
+// -- styles --
 .Nav {
   $radius: 100px;
   $radius-label: 60px;
@@ -28,7 +56,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
     @include fill();
     @include background();
-    @include scale-transition(opacity);
+    @include nav-transition(opacity);
 
     position: absolute;
     opacity: 0;
@@ -38,7 +66,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
     $items: & !global;
     $inset: 100px;
 
-    @include scale-transition(width, height, top, right);
+    @include nav-transition(width, height, top, right);
 
     position: absolute;
     width: calc($radius * var(--scale) * 2);
@@ -48,7 +76,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
   }
 
   &-menu {
-    @include scale-transition(margin-top, margin-left);
+    @include nav-transition(margin-top, margin-left);
 
     display: flex;
     justify-content: center;
@@ -70,7 +98,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
     }
 
     > .Boshi {
-      @include scale-transition(transform);
+      @include nav-transition(transform);
 
       transform: scale(calc(var(--scale) * 0.5));
     }
@@ -100,7 +128,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
     @for $i from 0 to $n + 1 {
       &:nth-child(#{$i + 1}) {
-        @include scale-transition(transform);
+        @include nav-transition(transform);
 
         transform: translate(
           calc($radius * var(--scale) * cos($i * #{$a}deg)),
@@ -108,7 +136,7 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
         );
 
         #{$item-label} {
-          @include scale-transition(transform);
+          @include nav-transition(transform);
 
           transform: translate(
             calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
@@ -118,53 +146,79 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
       }
     }
   }
+
+  @keyframes Rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .NavItem {
   $c: &;
   $hover-speed: 0.2s;
 
-  @include scale-transition(width, height);
+  @include nav-transition(width, height);
+  @include flex-center;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: calc(80px * var(--scale));
   height: calc(80px * var(--scale));
 
   @at-root &:hover,
-    #{$event-nav-item-selected},
-    #{$about-nav-item-selected} {
+    #{nav-item-selected()} {
     z-index: 1;
   }
 
-  @at-root #{$event-nav-item-selected},
-    #{$about-nav-item-selected} {
+  @at-root #{nav-item-selected($child: a)} {
     pointer-events: none;
   }
 
+  a[target="_blank"] {
+    cursor: alias;
+  }
+
+  @at-root #{nav-item-selected()} {
+    cursor:
+      url(/img/cursors/sparkles.png) 16 16,
+      not-allowed;
+  }
+
   &-link {
-    display: flex;
-    justify-content: center;
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
     transition: transform $hover-speed;
   }
 
-  &:hover &-link,
-  #{$event-nav-item-selected} &-link,
-  #{$about-nav-item-selected} &-link {
+  @at-root &:hover &-link,
+    #{nav-item-selected(#{&}-link)} {
     transform: perspective(1000px) translateZ(200px);
   }
 
+  &-image {
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
+  }
+
   &-name {
-    @include scale-transition(font-size);
+    @include nav-transition(font-size);
 
     display: block;
     opacity: 0;
     color: $black;
-    text-shadow: $color-shadow1 2px 0 2px;
     font-size: calc($font-size1 * var(--scale));
+    text-shadow: $color-shadow1 2px 0 2px;
     text-align: center;
-    transition: opacity $hover-speed;
+    transition:
+      opacity $hover-speed,
+      filter $hover-speed;
 
     @include desktop {
       font-size: calc($font-size2 * var(--scale));
@@ -172,22 +226,13 @@ $about-nav-item-selected: ".About ~ .Nav .Nav-about";
 
     #{$items}:hover & {
       opacity: 0.5;
+      filter: blur(0.5px);
     }
 
-    #{$c}:hover &,
-    #{$event-nav-item-selected} &,
-    #{$about-nav-item-selected} & {
+    @at-root #{$c}:hover &,
+      #{nav-item-selected($child: &)} {
       opacity: 1;
+      filter: none;
     }
-  }
-}
-
-@keyframes Rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
