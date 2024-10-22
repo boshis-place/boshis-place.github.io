@@ -67,6 +67,7 @@ class Os {
     const m = this
 
     // add history entry
+    const url = new URL(window.location.href)
     history.pushState({}, "", url)
 
     // visit page

@@ -89,8 +89,8 @@ $list: null;
   display: flex;
   align-items: center;
   width: $desktop-max;
-  margin-left: calc(var(--index) * 75px);
-  opacity: max(calc(1 - var(--index) * 0.1), 0.1);
+  margin-left: calc(min(var(--index) / 16, 1) * var(--rand) * 50vw);
+  opacity: max(calc(1 - var(--index) * 0.02), 0.1);
 
   &:hover {
     z-index: 420 !important;
