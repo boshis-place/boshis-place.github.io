@@ -1,15 +1,19 @@
 ---
-name: the great order of the universe
+version: 1
+name: "the great order of the universe"
 date: 2023-02-04T19:00:00-05:00
 poster:
   src: events/23-02-04-great-order-of-the-universe/poster.jpg
   alt: the poster for the "great order of the universe" event
 links:
   tickets:
+  itch:
   bluesky:
   instagram:
   twitter:
-description: a curation of games
+  other:
+description: >
+  a curation of games
 ---
 
 # time

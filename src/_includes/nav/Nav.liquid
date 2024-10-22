@@ -7,11 +7,39 @@
         boshi: "big-boshi"
       %}
       {% render "./NavItem", url: "/about", name: "about", boshi: "bird" %}
-      {% render "./NavItem", name: "archive", boshi: "dog" %}
-      {% render "./NavItem", name: "blog", boshi: "frog" %}
-      {% render "./NavItem", name: "merch", boshi: "big-cat" %}
-      {% render "./NavItem", name: "board", boshi: "pombo" %}
-      {% render "./NavItem", name: "comradery", boshi: "big-mouse" %}
+      {% render "./NavItem", url: "/merch", name: "merch", boshi: "big-cat" %}
+      {% render "./NavItem",
+        url: "https://discord.gg/t76bS6dKJh",
+        name: "discord",
+        boshi: "dog"
+      %}
+      {% render "./NavItem",
+        url: "https://boshisplace.itch.io/",
+        name: "itch",
+        boshi: "frog"
+      %}
+      {% render "./NavItem",
+        url: "https://www.instagram.com/boshisplace",
+        name: "socials",
+        boshi: "pombo"
+      %}
+      {% render "./NavItem",
+        url: "https://comradery.co/boshisplace",
+        name: "comradery",
+        boshi: "big-mouse"
+      %}
     </menu>
   </nav>
 </div>
+
+<script type="module">
+  const $socialsLink = document.getElementById("nav-socials")
+
+  $socialsLink.addEventListener("click", () => {
+    const url =
+      Math.random() > 0.5
+        ? "https://www.instagram.com/boshisplace/"
+        : "https://twitter.com/boshisplace"
+    $socialsLink.setAttribute("href", url)
+  })
+</script>

@@ -5,8 +5,6 @@
     "includes": [
       "./src/_includes",
       "./src/_includes/**/*.liquid",
-      "./src/_includes/home",
-      "./src/_includes/home/*.liquid"
     ]
   },
   "[liquid]": {

@@ -1,20 +1,22 @@
+$list: null;
+
 .Events {
-  &-eventList {
+  &-list {
     margin-top: $spacing5;
   }
-}
 
-.HomeTitle {
-  position: relative;
-  font-size: $font-size4;
-  text-shadow: $color-shadow1 3px 0 4px;
+  &-title {
+    position: relative;
+    font-size: $font-size4;
+    text-shadow: $color-shadow1 3px 0 4px;
 
-  @include desktop {
-    font-size: $font-size5;
+    @include desktop {
+      font-size: $font-size5;
+    }
   }
 }
 
-.HomeWord {
+.EventsWord {
   display: inline-block;
   position: relative;
 
@@ -54,19 +56,14 @@
   }
 }
 
-/* -- HomeEventList -- */
-.HomeEventList {
+.EventList {
+  $list: & !global;
+
   &-header {
     display: flex;
     align-items: center;
     gap: $spacing2;
     margin-bottom: $spacing2;
-  }
-
-  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
-  &:has(input:checked) .HomeEvent {
-    margin-left: 0px !important;
-    opacity: 0.9 !important;
   }
 
   &-title {
@@ -85,18 +82,24 @@
   }
 }
 
-/* -- HomeEvent -- */
-.HomeEvent {
+.EventCard {
   $c: &;
 
+  position: relative;
   display: flex;
   align-items: center;
   width: $desktop-max;
   margin-left: calc(var(--index) * 75px);
-  opacity: calc(1 - var(--index) * 0.1);
+  opacity: max(calc(1 - var(--index) * 0.1), 0.1);
 
   &:hover {
     z-index: 420 !important;
+  }
+
+  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
+  #{$list}:has(input:checked) & {
+    margin-left: 0px !important;
+    opacity: 0.9 !important;
   }
 
   &-poster {
@@ -165,7 +168,7 @@
     min-height: 140px;
     gap: $spacing1;
     padding: $spacing2;
-    transform: rotate(calc(var(--rand) * 10deg));
+    transform: rotate(calc(-8deg + var(--rand) * 16deg));
     box-shadow: 10px 10px 20px $color-shadow0;
     mix-blend-mode: hard-light;
     transition: transform 0.3s;
@@ -176,12 +179,14 @@
   }
 
   &-bg {
+    @include background($riso: 3);
+    @include fill();
+
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    @include background($riso: 3);
     z-index: -1;
   }
 
@@ -213,7 +218,7 @@
     padding-right: $spacing4;
     font-size: $font-size0;
     text-align: right;
-    text-wrap: nowrap;
+    white-space: nowrap;
     transform: scale(80%);
     text-transform: lowercase;
     color: $white;
@@ -225,7 +230,7 @@
   }
 }
 
-.HomeEventBorder {
+.EventCardBorder {
   --border-width: 3px;
   --border-offset: -1.5px;
   --border-dash: 6px;
@@ -252,8 +257,8 @@
   }
 
   &--rainbow {
-    --border-width: 16px;
-    --border-offset: -8px;
+    --border-width: 8px;
+    --border-offset: -4px;
   }
 
   &--rainbow &-shape {

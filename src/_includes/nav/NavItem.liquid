@@ -1,5 +1,10 @@
 <li class="NavItem Nav-item Nav-{{ name }}">
-  <a class="NavItem-link" href="{{ url }}">
+  <a
+    class="NavItem-link"
+    href="{{ url }}"
+    id="nav-{{ name }}"
+    {{ url | toExternalLinkAttrs }}
+  >
     <span class="Nav-itemImage">
       {% render "core/Boshi", name: boshi %}
     </span>
