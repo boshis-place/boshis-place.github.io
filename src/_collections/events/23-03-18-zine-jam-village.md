@@ -12,5 +12,6 @@ links:
   instagram:
   twitter:
   other:
-description: the zeroth ever boshi's place zine jam. come to our new space and make zines with us!
+description: >
+  the zeroth ever boshi's place zine jam. come to our new space and make zines with us!
 ---

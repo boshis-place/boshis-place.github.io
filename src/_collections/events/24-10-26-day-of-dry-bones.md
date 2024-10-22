@@ -12,5 +12,6 @@ links:
   instagram: https://www.instagram.com/p/DAqvEIfvjQB/
   twitter: https://twitter.com/boshisplace/status/1841869850324488362
   other:
-description: mark your calendars for our second annual Day of Dry Bones! we'll be showing some spooky games, and some spooky movies in the background. come get spooked!
+description: >
+  mark your calendars for our second annual Day of Dry Bones! we'll be showing some spooky games, and some spooky movies in the background. come get spooked!
 ---

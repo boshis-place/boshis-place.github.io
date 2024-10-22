@@ -12,10 +12,10 @@
   </figure>
 
   <section class="EventDetail-content" style="{% randvar %}">
-    <p>
+    {% if content == "" %}
       {{ description }}
-    </p>
-
-    {{ content }}
+    {% else %}
+      {{ content }}
+    {% endif %}
   </section>
 </article>

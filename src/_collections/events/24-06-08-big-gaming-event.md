@@ -1,13 +1,13 @@
 ---
 version: 1
-name: "farewell summer"
-date: 2024-09-22T19:00:00-04:00
+name: "big gaming event"
+date: 2024-06-08T00:00:00-04:00
 poster:
   src:
   alt:
 links:
   tickets:
-  itch: https://itch.io/c/4812830/farewell-summer-2024
+  itch:
   bluesky:
   instagram:
   twitter:

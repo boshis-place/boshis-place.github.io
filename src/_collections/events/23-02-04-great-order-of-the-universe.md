@@ -12,7 +12,8 @@ links:
   instagram:
   twitter:
   other:
-description: a curation of games
+description: >
+  a curation of games
 ---
 
 # time

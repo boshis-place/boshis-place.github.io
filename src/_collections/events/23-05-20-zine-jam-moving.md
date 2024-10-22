@@ -12,5 +12,6 @@ links:
   instagram:
   twitter:
   other:
-description: the second ever boshi's place zine jam.
+description: >
+  the second ever boshi's place zine jam.
 ---

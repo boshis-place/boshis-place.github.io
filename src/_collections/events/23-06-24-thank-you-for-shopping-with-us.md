@@ -12,6 +12,6 @@ links:
   instagram: https://www.instagram.com/p/Ctm_jbAOdqQ/
   twitter:
   other:
-description:
+description: >
   come witness the ascension of an angel as we send off big bag 👼 next saturday!
 ---

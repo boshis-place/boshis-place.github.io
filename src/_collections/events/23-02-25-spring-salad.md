@@ -12,5 +12,6 @@ links:
   instagram:
   twitter:
   other:
-description: a plunder ludic gathering
+description: >
+  a plunder ludic gathering
 ---

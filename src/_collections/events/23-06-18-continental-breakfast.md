@@ -12,6 +12,6 @@ links:
   instagram:
   twitter:
   other:
-description:
+description: >
   over the course of the last months we played through a big collection of flash games from the early 2000s, here's some highlights.
 ---

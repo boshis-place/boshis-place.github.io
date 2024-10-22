@@ -12,5 +12,6 @@ links:
   instagram:
   twitter:
   other:
-description: the first ever boshi's place zine jam. also it was our friend d's birthday.
+description: >
+  the first ever boshi's place zine jam. also it was our friend d's birthday.
 ---

@@ -1,7 +1,7 @@
 ---
 version: 1
-name: "plunderludics workshop"
-date: 2024-07-14T14:00:00-04:00
+name: "plunderludics workshop: part 2"
+date: 2024-07-21T14:00:00-04:00
 poster:
   src:
   alt:
