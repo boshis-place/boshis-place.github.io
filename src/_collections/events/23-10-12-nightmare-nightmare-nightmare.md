@@ -3,7 +3,7 @@ version: 1
 name: "NIGHTMARE NIGHTMARE NIGHTMARE"
 date: 2023-10-12T00:00:00-04:00
 poster:
-  src:
+  src: events/23-10-12-nightmare-nightmare-nightmare/poster.png
   alt:
 links:
   tickets:

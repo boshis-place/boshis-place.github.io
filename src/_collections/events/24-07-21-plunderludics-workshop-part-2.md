@@ -3,7 +3,7 @@ version: 1
 name: "plunderludics workshop: part 2"
 date: 2024-07-21T14:00:00-04:00
 poster:
-  src:
+  src: events/24-07-14-plunderludics-workshop/poster.png
   alt:
 links:
   tickets:
