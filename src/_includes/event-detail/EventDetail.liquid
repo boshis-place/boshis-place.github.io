@@ -1,7 +1,16 @@
 <article class="EventDetail-body">
-  <h1 class="EventDetail-title" style="{% randvar %}">
-    {{ name }}
-  </h1>
+  <header class="EventDetail-header">
+    <span class="EventDetail-titleRow" style="{% randvar %}">
+      <h1 class="EventDetail-title"">
+        {{ name }}
+      </h1>
+
+      {% assign url = links.tickets %}
+      {% if url != null %}
+        <a class="EventDetail-ticketsButton" href="{{ url }}" {{ url | toExternalLinkAttrs }}>rsvp!</a>
+      {% endif %}
+    </span>
+  </header>
 
   <h2 class="EventDetail-date" style="{% randvar %}">
     {{ date | toLongDate }}
