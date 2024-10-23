@@ -1,6 +1,6 @@
 ---
 version: 1
-name: "games against the empire: zine jam"
+name: "outdoor games against the empire"
 date: 2024-11-21T13:00:00-04:00
 poster:
   src: events/24-11-21-outdoor-games-against-the-empire/poster.png
