@@ -1,5 +1,7 @@
 // -- constants --
 const k = {
+  /** the root page url's path, aka `url.pathname` */
+  root: "/",
   /** a map of element ids */
   id: {
     Page: "page",
@@ -22,7 +24,14 @@ const Visit = {
 
 /** all history actions. passed through the anchor tag attributes as `data-history`. */
 const HistoryAction = {
+  /** push onto the history stack */
+  Push: "push",
+
+  /** replace the current entry on the history stack */
   Replace: "replace",
+
+  /** replace the current entry on the history stack if this is the root page */
+  ReplaceRoot: "replace-root",
 }
 
 /** the os root class */
@@ -76,8 +85,14 @@ class Os {
   }
 
   /** navigate to a url new url. records current state and pushes a new state. */
-  navigate(nextUrl, isReplace) {
+  navigate(nextUrl, historyAction) {
     const m = this
+
+    const currUrl = window.location.href
+
+    const isReplace =
+      historyAction == HistoryAction.Replace ||
+      (historyAction == HistoryAction.ReplaceRoot && m.isRoot(currUrl))
 
     // if this is a replace, replace the current entry
     if (isReplace) {
@@ -85,8 +100,7 @@ class Os {
     }
     // otherise push history entry for the new url
     else {
-      // record current scroll position
-      const currUrl = window.location.href
+      // record current state
       m.replaceHistoryEntry(currUrl, {
         scrollX: window.scrollX,
         scrollY: window.scrollY,
@@ -207,6 +221,11 @@ class Os {
     history.replaceState(state, "", url)
   }
 
+  /** toggle the loading ui */
+  toggleLoading(isLoading) {
+    this.$loading.classList.toggle(k.class.isLoading, isLoading)
+  }
+
   // -- queries --
   /** get the visit type for a change to this url */
   getVisit(url) {
@@ -226,6 +245,11 @@ class Os {
     }
 
     return type
+  }
+
+  /** if is the root page's url */
+  isRoot(url) {
+    return new URL(url).pathname == k.root
   }
 
   // -- events --
@@ -272,12 +296,9 @@ class Os {
     // if some, cancel the click
     evt.preventDefault()
 
-    // check if this is a replace
-    const isReplace = $a.dataset.history === HistoryAction.Replace
-
     // if not same path, run the visit
     if (visit != Visit.SamePath) {
-      m.navigate(nextUrl, isReplace)
+      m.navigate(nextUrl, $a.dataset.history)
     }
   }
 
@@ -300,12 +321,12 @@ class Os {
 
   /** when a visit starts */
   didStartVisit() {
-    this.$loading.classList.toggle(k.class.isLoading, true)
+    this.toggleLoading(true)
   }
 
   /** when a visit finishes */
   didFinishVisit() {
-    this.$loading.classList.toggle(k.class.isLoading, false)
+    this.toggleLoading(false)
   }
 }
 
