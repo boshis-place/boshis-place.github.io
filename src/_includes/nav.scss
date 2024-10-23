@@ -69,18 +69,16 @@ $page-class-by-name: (
     @include nav-transition(width, height, top, right);
 
     position: absolute;
-    width: calc($radius * var(--scale) * 2);
-    height: calc($radius * var(--scale) * 2);
     top: $inset;
     right: $inset;
+    width: calc($radius * var(--scale) * 2);
+    height: calc($radius * var(--scale) * 2);
   }
 
   &-menu {
     @include nav-transition(margin-top, margin-left);
+    @include flex-center;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
     animation: Rotate $rotate-speed linear infinite forwards;

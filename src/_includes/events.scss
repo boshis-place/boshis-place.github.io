@@ -78,7 +78,11 @@ $list: null;
   &-items {
     display: flex;
     flex-direction: column;
-    gap: $spacing0;
+    gap: $spacing4;
+
+    @include desktop {
+      gap: $spacing0;
+    }
   }
 }
 
@@ -88,9 +92,14 @@ $list: null;
   position: relative;
   display: flex;
   align-items: center;
-  width: $desktop-max;
-  margin-left: calc(min(var(--index) / 16, 1) * var(--rand) * 50vw);
+  flex-direction: column;
   opacity: max(calc(1 - var(--index) * 0.02), 0.1);
+
+  @include desktop {
+    width: $desktop-max;
+    flex-direction: row;
+    margin-left: calc(min(var(--index) / 16, 1) * var(--rand) * 50vw);
+  }
 
   &:hover {
     z-index: 420 !important;
@@ -107,9 +116,7 @@ $list: null;
   }
 
   &-poster {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     position: relative;
   }
 
@@ -129,14 +136,15 @@ $list: null;
     transform: $poster-rotate;
     transition: transform 0.3s;
 
+    #{$c}:hover & {
+      transform: $poster-rotate skew(-2deg, -2deg);
+    }
+
     & > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    #{$c}:hover & {
-      transform: $poster-rotate skew(-2deg, -2deg);
+      border-radius: $radius0;
     }
   }
 
@@ -177,21 +185,23 @@ $list: null;
     mix-blend-mode: hard-light;
     transition: transform 0.3s;
 
+    @include mobile {
+      gap: -$spacing2;
+    }
+
     #{$c}:hover & {
       transform: skew(-1deg, -1deg);
     }
   }
 
   &-bg {
-    @include background($riso: 3);
+    @include background($riso: 6);
     @include fill();
 
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    opacity: 0.6;
     z-index: -1;
+    filter: blur(10px);
   }
 
   &-title {
@@ -201,35 +211,49 @@ $list: null;
   }
 
   &-name {
-    font-size: $font-size1;
+    position: relative;
+    font-size: $font-size2;
     text-shadow: $color-shadow1 3px 0 4px;
     text-decoration: underline $coral 2px;
 
     #{$c}:hover & {
-      @include background($riso: 3, $color: rgba($coral, 0.4));
-    }
+      &::before {
+        content: "";
 
-    @include desktop {
-      font-size: $font-size2;
+        @include background($riso: 3, $color: rgba($coral, 0.4));
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: $spacing2;
+        bottom: $spacing2;
+        z-index: -1;
+      }
     }
   }
 
   &-date {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    padding-left: $spacing4;
-    padding-right: $spacing4;
-    font-size: $font-size0;
-    text-align: right;
-    white-space: nowrap;
-    transform: scale(80%);
+    font-size: $font-size4;
     text-transform: lowercase;
     color: $white;
     mix-blend-mode: overlay;
 
+    @include mobile {
+      top: -35px;
+      left: -20px;
+      transform: rotate(-2deg);
+    }
+
     @include desktop {
+      top: 0;
+      bottom: 0;
+      padding-left: $spacing4;
+      padding-right: $spacing4;
       font-size: 8rem;
+      text-align: right;
+      white-space: nowrap;
+      transform: scale(80%);
     }
   }
 }
@@ -261,8 +285,8 @@ $list: null;
   }
 
   &--rainbow {
-    --border-width: 8px;
-    --border-offset: -4px;
+    --border-width: 6px;
+    --border-offset: -3px;
   }
 
   &--rainbow &-shape {
