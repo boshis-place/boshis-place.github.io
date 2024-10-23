@@ -1,0 +1,17 @@
+<section class="Events-list EventList">
+  <header class="EventList-header">
+    <h1 class="EventList-title">
+      {{ name }}
+    </h1>
+
+    <form class="EventList-archiveToggle">
+      {% assign toggleId = name | id | concat: "-archive" %}
+      <input id="{{ toggleId }}" type="checkbox">
+      <label for="{{ toggleId }}">archive mode</label>
+    </form>
+  </header>
+
+  <div class="EventList-items">
+    {{ content }}
+  </div>
+</section>
