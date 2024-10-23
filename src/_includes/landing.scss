@@ -1,0 +1,32 @@
+.Landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & ~ .Nav {
+    --scale: 2;
+
+    &::before {
+      opacity: 1;
+    }
+
+    .Nav-items {
+      top: 50%;
+      right: 50%;
+    }
+
+    .Nav-menu {
+      margin-top: -50%;
+      margin-left: 50%;
+    }
+  }
+}
+
+.LandingTitle {
+  position: relative;
+  font-size: $font-size4;
+
+  @mixin desktop {
+    font-size: $font-size5;
+  }
+}

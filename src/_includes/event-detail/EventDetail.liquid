@@ -1,0 +1,21 @@
+<article class="EventDetail-body">
+  <h1 class="EventDetail-title" style="{% randvar %}">
+    {{ name }}
+  </h1>
+
+  <h2 class="EventDetail-date" style="{% randvar %}">
+    {{ date | toLongDate }}
+  </h2>
+
+  <figure class="EventDetail-posterFrame" style="{% randvar %}">
+    {% img poster "(max-width: 200px)" %}
+  </figure>
+
+  <section class="EventDetail-content" style="{% randvar %}">
+    {% if content == "" %}
+      {{ description }}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </section>
+</article>

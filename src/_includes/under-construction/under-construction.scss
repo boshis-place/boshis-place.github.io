@@ -1,0 +1,42 @@
+.UnderConstruction {
+  @include fill();
+  @include flex-center();
+
+  position: fixed;
+
+  &::before {
+    content: "";
+
+    @include background(5, $coral);
+    @include fill();
+
+    position: absolute;
+    opacity: 0.4;
+  }
+
+  &-title {
+    top: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    font-size: $font-size6;
+    color: $black;
+    transform: rotate(calc(var(--rand) * -20deg + 7deg));
+    text-shadow: rgba($black, 0.5) 5px 5px 5px;
+  }
+
+  &-banner {
+    position: absolute;
+    height: 50px;
+    width: 150%;
+    background: repeating-linear-gradient(
+      -45deg,
+      $yellow 0px,
+      $yellow 30px,
+      $black 30px,
+      $black 60px
+    );
+    transform: rotate(calc(-10deg * var(--index) + var(--rand) * 20deg));
+    box-shadow: rgba($black, 0.5) 0px 2px 15px;
+  }
+}

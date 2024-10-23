@@ -1,0 +1,238 @@
+@use "sass:map";
+@use "sass:math";
+
+// -- class references --
+$items: null;
+$item-label: null;
+
+// -- transition animation --
+@mixin nav-transition($properties...) {
+  transition: 1s ease-in-out;
+  transition-property: $properties;
+}
+
+// -- selection --
+$page-class-by-name: (
+  events: ".Events",
+  about: ".About",
+  merch: ".Merch",
+);
+
+@function nav-item-selected($child: "") {
+  $i: 0;
+  $n: length($page-class-by-name);
+
+  $selectors: "";
+  @each $name, $page-class in $page-class-by-name {
+    $selector: "#{$page-class} ~ .Nav .Nav-#{$name} #{$child}";
+
+    $selectors: $selectors + $selector;
+    @if $i != $n - 1 {
+      $selectors: $selectors + ",";
+    }
+
+    $i: $i + 1;
+  }
+
+  @return $selectors;
+}
+
+// -- styles --
+.Nav {
+  $radius: 100px;
+  $radius-label: 60px;
+  $rotate-speed: 100s;
+
+  --scale: 1;
+
+  @include fill();
+
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+
+  &::before {
+    content: "";
+
+    @include fill();
+    @include background();
+    @include nav-transition(opacity);
+
+    position: absolute;
+    opacity: 0;
+  }
+
+  &-items {
+    $items: & !global;
+    $inset: 100px;
+
+    @include nav-transition(width, height, top, right);
+
+    position: absolute;
+    width: calc($radius * var(--scale) * 2);
+    height: calc($radius * var(--scale) * 2);
+    top: $inset;
+    right: $inset;
+  }
+
+  &-menu {
+    @include nav-transition(margin-top, margin-left);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    animation: Rotate $rotate-speed linear infinite forwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+  }
+
+  &-itemImage {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+
+    > .Boshi {
+      @include nav-transition(transform);
+
+      transform: scale(calc(var(--scale) * 0.5));
+    }
+  }
+
+  &-itemLabel {
+    $item-label: & !global;
+
+    position: absolute;
+  }
+
+  &-itemName {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+  }
+
+  &-item {
+    position: absolute;
+    pointer-events: all;
+    list-style-type: none;
+
+    $n: 7;
+    $a: math.div(360, $n);
+
+    @for $i from 0 to $n + 1 {
+      &:nth-child(#{$i + 1}) {
+        @include nav-transition(transform);
+
+        transform: translate(
+          calc($radius * var(--scale) * cos($i * #{$a}deg)),
+          calc($radius * var(--scale) * sin($i * #{$a}deg))
+        );
+
+        #{$item-label} {
+          @include nav-transition(transform);
+
+          transform: translate(
+            calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
+            calc($radius-label * var(--scale) * sin($i * #{$a}deg))
+          );
+        }
+      }
+    }
+  }
+
+  @keyframes Rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.NavItem {
+  $c: &;
+  $hover-speed: 0.2s;
+
+  @include nav-transition(width, height);
+  @include flex-center;
+
+  width: calc(80px * var(--scale));
+  height: calc(80px * var(--scale));
+
+  @at-root &:hover,
+    #{nav-item-selected()} {
+    z-index: 1;
+  }
+
+  @at-root #{nav-item-selected($child: a)} {
+    pointer-events: none;
+  }
+
+  a[target="_blank"] {
+    cursor: alias;
+  }
+
+  @at-root #{nav-item-selected()} {
+    cursor:
+      url(/img/cursors/sparkles.png) 16 16,
+      not-allowed;
+  }
+
+  &-link {
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
+    transition: transform $hover-speed;
+  }
+
+  @at-root &:hover &-link,
+    #{nav-item-selected(#{&}-link)} {
+    transform: perspective(1000px) translateZ(200px);
+  }
+
+  &-image {
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &-name {
+    @include nav-transition(font-size);
+
+    display: block;
+    opacity: 0;
+    color: $black;
+    font-size: calc($font-size1 * var(--scale));
+    text-shadow: $color-shadow1 2px 0 2px;
+    text-align: center;
+    transition:
+      opacity $hover-speed,
+      filter $hover-speed;
+
+    @include desktop {
+      font-size: calc($font-size2 * var(--scale));
+    }
+
+    #{$items}:hover & {
+      opacity: 0.5;
+      filter: blur(0.5px);
+    }
+
+    @at-root #{$c}:hover &,
+      #{nav-item-selected($child: &)} {
+      opacity: 1;
+      filter: none;
+    }
+  }
+}

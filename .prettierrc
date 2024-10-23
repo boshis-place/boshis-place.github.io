@@ -1,0 +1,10 @@
+{
+  "printWidth": 80,
+  "semi": false,
+  "singleQuote": false,
+  "liquidSingleQuote": false,
+  "embeddedSingleQuote": false,
+  "plugins": [
+    "@shopify/prettier-plugin-liquid"
+  ]
+}
