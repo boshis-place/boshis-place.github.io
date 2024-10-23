@@ -290,6 +290,7 @@ $list: null;
   }
 
   &--rainbow &-shape {
+    stroke: unset;
     animation:
       BorderMarch 3s linear forwards infinite,
       BorderRainbow 1s linear infinite;
