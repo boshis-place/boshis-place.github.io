@@ -15,14 +15,18 @@
   }
 
   &-title {
+    position: absolute;
     top: 25%;
     padding-left: 10px;
     padding-right: 10px;
-    position: absolute;
-    font-size: $font-size6;
     color: $black;
-    transform: rotate(calc(var(--rand) * -20deg + 7deg));
+    font-size: $font-size3;
     text-shadow: rgba($black, 0.5) 5px 5px 5px;
+    transform: rotate(calc(var(--rand) * -20deg + 7deg));
+
+    @include desktop {
+      font-size: $font-size6;
+    }
   }
 
   &-banner {

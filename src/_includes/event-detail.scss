@@ -1,6 +1,6 @@
 .EventDetail {
   &-body {
-    max-width: $max-width0;
+    max-width: $desktop-max;
   }
 
   &-title {
@@ -25,9 +25,7 @@
   }
 
   &-posterFrame {
-    $poster-width: 100%;
-
-    width: $poster-width;
+    max-width: $desktop-mid;
     margin-top: $spacing3;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 

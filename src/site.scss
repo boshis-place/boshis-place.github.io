@@ -46,6 +46,7 @@ a[class] {
 /* -- Page -- */
 .Page {
   @include background();
+
   overflow: hidden;
   position: relative;
   min-height: 100%;

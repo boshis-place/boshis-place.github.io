@@ -1,53 +1,69 @@
 // -- constants --
-/// a map of element ids
-const kId = {
-  Page: "page",
-  Nav: "nav",
-  Loading: "loading",
+const k = {
+  /** the root page url's path, aka `url.pathname` */
+  root: "/",
+  /** a map of element ids */
+  id: {
+    Page: "page",
+    Nav: "nav",
+    Loading: "loading",
+  },
+  /** a map of class names */
+  class: {
+    isLoading: "is-loading",
+  },
 }
 
-/// a map of class names
-const kClass = {
-  isLoading: "is-loading",
-}
-
-/// an enum of visit types
-const kVisit = {
+// -- types --
+/** all visit types */
+const Visit = {
   None: 0,
   SameOrigin: 1,
   SamePath: 2,
 }
 
-/// the os
+/** all history actions. passed through the anchor tag attributes as `data-history`. */
+const HistoryAction = {
+  /** push onto the history stack */
+  Push: "push",
+
+  /** replace the current entry on the history stack */
+  Replace: "replace",
+
+  /** replace the current entry on the history stack if this is the root page */
+  ReplaceRoot: "replace-root",
+}
+
+/** the os root class */
 class Os {
   // -- props --
-  /// the current location
+  /** the current location */
   url = null
 
   // -- p/el
-  /// the page container
+  /** the page container */
   $page = null
 
-  /// the nav
+  /** the nav */
   $nav = null
 
-  /// the loading indicator
+  /** the loading indicator */
   $loading = null
 
   // -- lifetime --
-  /// create a new os
+  /** create a new os */
   constructor() {
     const m = this
 
     // set props
     m.url = document.location
-    m.$page = document.getElementById(kId.Page)
-    m.$nav = document.getElementById(kId.Nav)
-    m.$loading = document.getElementById(kId.Loading)
+    m.$page = document.getElementById(k.id.Page)
+    m.$nav = document.getElementById(k.id.Nav)
+    m.$loading = document.getElementById(k.id.Loading)
   }
 
   // -- commands --
-  /// start the os
+  /** boostrap the os. call this as soon as possible after site load. */
   start() {
     const m = this
 
@@ -58,23 +74,47 @@ class Os {
     const w = window
     w.addEventListener("popstate", m.didPopState)
 
+    // add initial history entry
+    const currUrl = window.location.href
+    m.replaceHistoryEntry(currUrl, {
+      initial: true,
+    })
+
     // run post visit events first time
     m.didFinishVisit()
   }
 
-  /// navigate to the url
-  navigate(url) {
+  /** navigate to a url new url. records current state and pushes a new state. */
+  navigate(nextUrl, historyAction) {
     const m = this
 
-    // add history entry
-    history.pushState({}, "", url)
+    const currUrl = window.location.href
+
+    const isReplace =
+      historyAction == HistoryAction.Replace ||
+      (historyAction == HistoryAction.ReplaceRoot && m.isRoot(currUrl))
+
+    // if this is a replace, replace the current entry
+    if (isReplace) {
+      m.replaceHistoryEntry(nextUrl)
+    }
+    // otherise push history entry for the new url
+    else {
+      // record current state
+      m.replaceHistoryEntry(currUrl, {
+        scrollX: window.scrollX,
+        scrollY: window.scrollY,
+      })
+
+      m.pushHistoryEntry(nextUrl)
+    }
 
     // visit page
-    m.visit(url)
+    m.visit(nextUrl)
   }
 
-  /// visit the url and update the game
-  async visit(url, isBack = false) {
+  /** visit the url and update the game */
+  async visit(url, prevState = null) {
     const m = this
 
     // run pre visit events
@@ -97,7 +137,7 @@ class Os {
     $currTitle.innerText = $nextTitle.innerText
 
     // extract the page
-    const $next = $el.querySelector(`#${kId.Page}`)
+    const $next = $el.querySelector(`#${k.id.Page}`)
 
     // replace the page element's attributes
     for (const name of m.$page.getAttributeNames()) {
@@ -117,7 +157,7 @@ class Os {
 
     let isNavFound = false
     for (const child of Array.from($next.children)) {
-      if (child.id === kId.Nav) {
+      if (child.id === k.id.Nav) {
         isNavFound = true
         continue
       }
@@ -153,63 +193,88 @@ class Os {
       $anchor = document.getElementById(anchorId)
     }
 
-    // set scroll position
-    if (!isBack) {
-      if ($anchor != null) {
-        $anchor.scrollIntoView()
-      } else {
-        window.scrollTo(0, 0)
-      }
+    // set scroll position. if we have a previous state, this is a "back" visit, so try to
+    // restore previous scroll position.
+    if (prevState != null) {
+      window.scrollTo(prevState.scrollX ?? 0, prevState.scrollY ?? 0)
+    }
+    // on forward nav, if there is an anchor scroll to it
+    else if ($anchor != null) {
+      $anchor.scrollIntoView()
+    }
+    // otherwise, scroll to the origin
+    else {
+      window.scrollTo(0, 0)
     }
 
     // run post visit events
     m.didFinishVisit()
   }
 
+  /** add a url & state pair to history */
+  pushHistoryEntry(url, state = {}) {
+    history.pushState(state, "", url)
+  }
+
+  /** set a url & state pair in history */
+  replaceHistoryEntry(url, state = {}) {
+    history.replaceState(state, "", url)
+  }
+
+  /** toggle the loading ui */
+  toggleLoading(isLoading) {
+    this.$loading.classList.toggle(k.class.isLoading, isLoading)
+  }
+
   // -- queries --
-  /// get the visit type for a change to this url
+  /** get the visit type for a change to this url */
   getVisit(url) {
     const m = this
 
     // default to no visit, browser nav
-    let type = kVisit.None
+    let type = Visit.None
 
     // if the origin matches
     if (m.url.origin === url.origin) {
-      type = kVisit.SameOrigin
+      type = Visit.SameOrigin
 
       // if the path matches
       if (m.url.pathname === url.pathname) {
-        type = kVisit.SamePath
+        type = Visit.SamePath
       }
     }
 
     return type
   }
 
+  /** if is the root page's url */
+  isRoot(url) {
+    return new URL(url).pathname == k.root
+  }
+
   // -- events --
-  /// when anything is clicked on
+  /** when anything is clicked on */
   didClick = (evt) => {
     const m = this
 
     // see if there is an enclosing link
-    let $t = evt.target
-    while ($t != null && $t.tagName.toLowerCase() !== "a") {
-      $t = $t.parentElement
+    let $a = evt.target
+    while ($a != null && $a.tagName.toLowerCase() !== "a") {
+      $a = $a.parentElement
     }
 
     // if, we didn't find a link, ignore
-    if ($t == null) {
+    if ($a == null) {
       return
     }
 
     // if it has a target (like "_blank"), ignore
-    if ($t.getAttribute("target")) {
+    if ($a.getAttribute("target")) {
       return
     }
 
     // grab its url (an svg link's href is an object)
-    let href = $t.href
+    let href = $a.href
     if (typeof href === "object") {
       href = href.baseVal.toString()
     }
@@ -220,11 +285,11 @@ class Os {
     }
 
     // get the visit type
-    const url = new URL(href, m.url)
-    const visit = m.getVisit(url)
+    const nextUrl = new URL(href, m.url)
+    const visit = m.getVisit(nextUrl)
 
     // if none, ignore
-    if (visit === kVisit.None) {
+    if (visit === Visit.None) {
       return
     }
 
@@ -232,36 +297,36 @@ class Os {
     evt.preventDefault()
 
     // if not same path, run the visit
-    if (visit != kVisit.SamePath) {
-      m.navigate(url)
+    if (visit != Visit.SamePath) {
+      m.navigate(nextUrl, $a.dataset.history)
     }
   }
 
-  /// when back is clicked
-  didPopState = () => {
+  /** when back is clicked */
+  didPopState = (evt) => {
     const m = this
 
     // get the visit for this url
-    const url = new URL(document.location.href)
-    const visit = m.getVisit(url)
+    const prevUrl = new URL(document.location.href)
+    const visit = m.getVisit(prevUrl)
 
     // if none, do what the browser wants
-    if (visit === kVisit.None) {
+    if (visit === Visit.None) {
       return
     }
 
     // otherwise, visit the url
-    m.visit(url, true)
+    m.visit(prevUrl, evt.state)
   }
 
-  /// when a visit starts
+  /** when a visit starts */
   didStartVisit() {
-    this.$loading.classList.toggle(kClass.isLoading, true)
+    this.toggleLoading(true)
   }
 
-  /// when a visit finishes
+  /** when a visit finishes */
   didFinishVisit() {
-    this.$loading.classList.toggle(kClass.isLoading, false)
+    this.toggleLoading(false)
   }
 }
 
