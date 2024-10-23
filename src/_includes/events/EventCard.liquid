@@ -1,14 +1,14 @@
-<a
-  href="/{{event.data.tags}}/{{event.fileSlug}}"
-  class="EventCard-anchor"
+<article
+  class="EventCard"
+  style="
+    {% randvar %}
+    --index: {{ forloop.index | minus: 1 }};
+    z-index: {{ forloop.length | minus: forloop.index }};
+  "
 >
-  <article
-    class="EventCard"
-    style="
-      {% randvar %}
-      --index: {{ forloop.index | minus: 1 }};
-      z-index: {{ forloop.length | minus: forloop.index }};
-    "
+  <a
+    href="/{{event.data.tags}}/{{event.fileSlug}}"
+    class="EventCard-anchor"
   >
     <div class="EventCard-poster">
       {% assign max = 3 | randint | plus: 1 %}
@@ -66,5 +66,5 @@
         </div>
       </div>
     </div>
-  </article>
-</a>
+  </a>
+</article>

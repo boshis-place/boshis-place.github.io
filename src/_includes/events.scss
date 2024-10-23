@@ -102,6 +102,10 @@ $list: null;
     opacity: 0.9 !important;
   }
 
+  &-anchor {
+    display: contents;
+  }
+
   &-poster {
     display: flex;
     align-items: center;
@@ -202,7 +206,7 @@ $list: null;
     text-decoration: underline $coral 2px;
 
     #{$c}:hover & {
-      @include background($riso: 3, $color: $coral-alpha0);
+      @include background($riso: 3, $color: rgba($coral, 0.4));
     }
 
     @include desktop {
