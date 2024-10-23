@@ -3,7 +3,7 @@ version: 1
 name: "live concert feat. dreamcrusher, pain chain, professor a, and compactor"
 date: 2024-05-14T19:30:00-04:00
 poster:
-  src:
+  src: events/24-05-14-dreamcrusher/poster.jpg
   alt:
 links:
   tickets:

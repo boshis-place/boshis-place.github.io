@@ -1,9 +1,9 @@
 ---
 version: 1
 name: "boshi's cinema presents: trenque lauquen"
-date: 2024-06-08T00:00:00-04:00
+date: 2024-06-09T00:00:00-04:00
 poster:
-  src:
+  src: events/24-06-09-boshis-cinema-trenque-lauquen/poster.png
   alt:
 links:
   tickets:
