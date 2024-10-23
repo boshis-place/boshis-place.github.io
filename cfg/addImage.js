@@ -23,7 +23,7 @@ module.exports = function (config, srcDir, dstDir) {
       }
 
       const meta = await Image(src, {
-        widths: [200, "auto"],
+        widths: [200, 400, 600, 1200, "auto"],
         formats: isRemoteUrl ? ["jpeg"] : ["auto"],
         urlPath: "/img",
         outputDir: `./${dstDir}/img/`,

@@ -3,13 +3,59 @@
     max-width: $desktop-max;
   }
 
+  &-header {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &-titleRow {
+    margin-top: $spacing0;
+    transform: rotate(calc(-3deg + var(--rand) * 6deg));
+  }
+
   &-title {
+    display: inline;
     font-size: $font-size4;
     text-shadow: $color-shadow1 3px 0 4px;
-    transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     @mixin desktop {
       font-size: $font-size5;
+    }
+  }
+
+  &-ticketsButton {
+    @include background($riso: 5, $color: $coral);
+
+    cursor: pointer;
+    display: inline-block;
+    margin-left: $spacing1;
+    padding: $spacing1 $spacing3;
+    vertical-align: text-bottom;
+    color: $white;
+    border-radius: $radius0;
+    box-shadow: rgba($black, 0.5) 0 0 8px 0px;
+
+    &:hover {
+      background-color: $blue0;
+      animation: Shake 0.3s linear infinite;
+    }
+
+    @keyframes Shake {
+      0% {
+        transform: translateX(+0px);
+      }
+
+      25% {
+        transform: translateX(-1px) rotate(-0.5deg);
+      }
+
+      75% {
+        transform: translateX(+1px) rotate(+0.5deg);
+      }
+
+      100% {
+        transform: translateX(+0px);
+      }
     }
   }
 
