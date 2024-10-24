@@ -3,5 +3,7 @@ module.exports = function (config) {
     if (url.startsWith("http")) {
       return `target="_blank" rel="noopener noreferrer"`
     }
+
+    return undefined
   })
 }

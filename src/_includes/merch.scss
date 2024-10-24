@@ -1,3 +1,5 @@
+@use "shared" as *;
+
 .Merch {
   &-title {
     font-size: $font-size4;
