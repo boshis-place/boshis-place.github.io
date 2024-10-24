@@ -1,12 +1,13 @@
-const PostCSSPlugin = require("eleventy-plugin-postcss")
-const addCollections = require("./cfg/addCollections")
-const addDateFilters = require("./cfg/addDateFilters")
-const addExternalLinkAttrs = require("./cfg/addExternalLinkAttrs")
-const addImage = require("./cfg/addImage")
-const addRand = require("./cfg/addRand")
-const addSass = require("./cfg/addSass")
-const addStringFilters = require("./cfg/addStringFilters")
-const addRemoveTrailingSlash = require("./cfg/addRemoveTrailingSlash")
+const {
+  CollectionsPlugin,
+  DateFiltersPlugin,
+  UrlFiltersPlugin,
+  ImagePlugin,
+  RandPlugin,
+  SassPlugin,
+  StringFiltersPlugin,
+  RemoveTrailingSlashPlugin,
+} = require("./cfg")
 
 // -- config --
 module.exports = function (config) {
@@ -15,20 +16,19 @@ module.exports = function (config) {
   const dstDir = "dist"
 
   // -- assets --
-  config.addPlugin(PostCSSPlugin)
   config.addPassthroughCopy(`${srcDir}/img`)
   config.addPassthroughCopy(`${srcDir}/font`)
   config.addPassthroughCopy(`${srcDir}/**/*.js`)
 
   // -- modules --
-  addCollections(config)
-  addDateFilters(config)
-  addExternalLinkAttrs(config)
-  addImage(config, srcDir, dstDir)
-  addRand(config)
-  addSass(config)
-  addStringFilters(config)
-  addRemoveTrailingSlash(config)
+  config.addPlugin(CollectionsPlugin)
+  config.addPlugin(DateFiltersPlugin)
+  config.addPlugin(UrlFiltersPlugin)
+  config.addPlugin(ImagePlugin, { srcDir, dstDir })
+  config.addPlugin(RandPlugin)
+  config.addPlugin(SassPlugin)
+  config.addPlugin(StringFiltersPlugin)
+  config.addPlugin(RemoveTrailingSlashPlugin)
 
   // -- output --
   return {

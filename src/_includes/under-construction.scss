@@ -1,14 +1,16 @@
+@use "shared" as *;
+
 .UnderConstruction {
-  @include fill();
-  @include flex-center();
+  @include fill;
+  @include flex-center;
 
   position: fixed;
 
   &::before {
     content: "";
 
-    @include background(5, $coral);
-    @include fill();
+    @include background($riso: 5, $color: $coral);
+    @include fill;
 
     position: absolute;
     opacity: 0.4;
@@ -35,10 +37,8 @@
     width: 150%;
     background: repeating-linear-gradient(
       -45deg,
-      $yellow 0px,
-      $yellow 30px,
-      $black 30px,
-      $black 60px
+      $yellow 0px 30px,
+      $black 30p 60px
     );
     transform: rotate(calc(-10deg * var(--index) + var(--rand) * 20deg));
     box-shadow: rgba($black, 0.5) 0px 2px 15px;

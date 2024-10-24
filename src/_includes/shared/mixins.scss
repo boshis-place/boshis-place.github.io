@@ -1,3 +1,5 @@
+@use "colors";
+
 @mixin fill {
   top: 0;
   bottom: 0;
@@ -11,7 +13,7 @@
   align-items: center;
 }
 
-@mixin background($riso: 1, $color: $blue1) {
+@mixin background($riso: 1, $color: colors.$blue1) {
   background-color: $color;
   background-image: url("/img/textures/riso#{$riso}.png");
   background-blend-mode: luminosity;

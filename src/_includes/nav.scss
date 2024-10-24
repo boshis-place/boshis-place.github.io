@@ -1,5 +1,7 @@
+@use "sass:list";
 @use "sass:map";
 @use "sass:math";
+@use "shared" as *;
 
 // -- class references --
 $items: null;
@@ -20,7 +22,7 @@ $page-class-by-name: (
 
 @function nav-item-selected($child: "") {
   $i: 0;
-  $n: length($page-class-by-name);
+  $n: list.length($page-class-by-name);
 
   $selectors: "";
   @each $name, $page-class in $page-class-by-name {

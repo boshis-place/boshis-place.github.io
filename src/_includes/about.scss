@@ -1,3 +1,5 @@
+@use "shared" as *;
+
 .About {
   &-title {
     font-size: $font-size4;
