@@ -32,6 +32,9 @@ const HistoryAction = {
 
   /** replace the current entry on the history stack if this is the root page */
   ReplaceRoot: "replace-root",
+
+  /** attempt to pop, if this was the previous page */
+  Back: "back",
 }
 
 /** the os root class */
@@ -56,7 +59,7 @@ class Os {
     const m = this
 
     // set props
-    m.url = document.location
+    m.url = m.toUrl(document.location)
     m.$page = document.getElementById(k.id.Page)
     m.$nav = document.getElementById(k.id.Nav)
     m.$loading = document.getElementById(k.id.Loading)
@@ -84,11 +87,18 @@ class Os {
     m.didFinishVisit()
   }
 
-  /** navigate to a url new url. records current state and pushes a new state. */
+  /** navigate to a new url. records current state and pushes a new state. */
   navigate(nextUrl, historyAction) {
     const m = this
 
-    const currUrl = window.location.href
+    const prevUrl = m.toUrl(history.state.prevUrl)
+    const currUrl = m.toUrl(window.location.href)
+
+    // if this is a navigtion back to the previous page, then go back
+    if (historyAction == HistoryAction.Back && prevUrl?.href === nextUrl.href) {
+      history.back()
+      return
+    }
 
     const isReplace =
       historyAction == HistoryAction.Replace ||
@@ -98,15 +108,20 @@ class Os {
     if (isReplace) {
       m.replaceHistoryEntry(nextUrl)
     }
-    // otherise push history entry for the new url
+    // otherwise push history entry for the new url
     else {
-      // record current state
+      // update the current page's state
+      const { initial: _, ...state } = history.state
       m.replaceHistoryEntry(currUrl, {
+        ...state,
         scrollX: window.scrollX,
         scrollY: window.scrollY,
       })
 
-      m.pushHistoryEntry(nextUrl)
+      // push the next page onto the stack
+      m.pushHistoryEntry(nextUrl, {
+        prevUrl: currUrl.href,
+      })
     }
 
     // visit page
@@ -249,7 +264,21 @@ class Os {
 
   /** if is the root page's url */
   isRoot(url) {
-    return new URL(url).pathname == k.root
+    return url.pathname == k.root
+  }
+
+  /** convert url or string or location to a url with no trailing slash */
+  toUrl(urlSource, base = undefined) {
+    if (urlSource == null) {
+      return null
+    }
+
+    const url = new URL(urlSource, base)
+    if (url.pathname.endsWith("/")) {
+      url.pathname = url.pathname.slice(0, -1)
+    }
+
+    return url
   }
 
   // -- events --
@@ -285,7 +314,7 @@ class Os {
     }
 
     // get the visit type
-    const nextUrl = new URL(href, m.url)
+    const nextUrl = m.toUrl(href, m.url)
     const visit = m.getVisit(nextUrl)
 
     // if none, ignore
@@ -296,7 +325,7 @@ class Os {
     // if some, cancel the click
     evt.preventDefault()
 
-    // if not same path, run the visit
+    // if not same path, run the navigation
     if (visit != Visit.SamePath) {
       m.navigate(nextUrl, $a.dataset.history)
     }
