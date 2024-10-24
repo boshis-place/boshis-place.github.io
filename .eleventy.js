@@ -1,4 +1,3 @@
-const PostCSSPlugin = require("eleventy-plugin-postcss")
 const addCollections = require("./cfg/addCollections")
 const addDateFilters = require("./cfg/addDateFilters")
 const addExternalLinkAttrs = require("./cfg/addExternalLinkAttrs")
@@ -15,7 +14,6 @@ module.exports = function (config) {
   const dstDir = "dist"
 
   // -- assets --
-  config.addPlugin(PostCSSPlugin)
   config.addPassthroughCopy(`${srcDir}/img`)
   config.addPassthroughCopy(`${srcDir}/font`)
   config.addPassthroughCopy(`${srcDir}/**/*.js`)

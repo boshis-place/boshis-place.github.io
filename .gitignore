@@ -3,3 +3,4 @@ dist
 raw
 .cache
 .DS_store
+*.swp
