@@ -51,6 +51,11 @@ $page-class-by-name: (
   pointer-events: none;
   z-index: 1;
 
+  @include mobile {
+    display: flex;
+    align-items: center;
+  }
+
   &::before {
     content: "";
 
@@ -69,10 +74,17 @@ $page-class-by-name: (
     @include nav-transition(width, height, top, right);
 
     position: absolute;
-    top: $inset;
-    right: $inset;
     width: calc($radius * var(--scale) * 2);
     height: calc($radius * var(--scale) * 2);
+
+    @include mobile {
+      right: -80px;
+    }
+
+    @include desktop {
+      top: $inset;
+      right: $inset;
+    }
   }
 
   &-menu {
@@ -209,7 +221,6 @@ $page-class-by-name: (
     @include nav-transition(font-size);
 
     display: block;
-    opacity: 0;
     color: $black;
     font-size: calc($font-size1 * var(--scale));
     text-shadow: $color-shadow1 2px 0 2px;
@@ -218,7 +229,12 @@ $page-class-by-name: (
       opacity $hover-speed,
       filter $hover-speed;
 
+    @include mobile {
+      opacity: 0.5;
+    }
+
     @include desktop {
+      opacity: 0;
       font-size: calc($font-size2 * var(--scale));
     }
 
