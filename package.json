@@ -6,7 +6,7 @@
   "scripts": {
     "start": "eleventy --serve",
     "start:debug": "DEBUG=Eleventy* eleventy --serve",
-    "build": "eleventy",
+    "build": "PROD=1 eleventy",
     "build:debug": "DEBUG=Eleventy* eleventy",
     "clean": "rm -rf dist",
     "format": "prettier -w **/*"

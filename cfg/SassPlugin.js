@@ -17,6 +17,7 @@ module.exports = function (config) {
       // compile sass file relative to its dir
       const sassResult = sass.compileString(input, {
         loadPaths: [inputDir ?? "."],
+        style: process.env.PROD ? "compressed" : undefined,
       })
 
       // link this scss file to any included files for recompilation
