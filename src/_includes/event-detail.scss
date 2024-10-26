@@ -1,3 +1,5 @@
+@use "shared" as *;
+
 .EventDetail {
   &-body {
     max-width: $desktop-max;
