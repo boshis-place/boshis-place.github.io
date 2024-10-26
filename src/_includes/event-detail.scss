@@ -8,10 +8,6 @@
   &-header {
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  &-titleRow {
-    margin-top: $spacing0;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
   }
 
