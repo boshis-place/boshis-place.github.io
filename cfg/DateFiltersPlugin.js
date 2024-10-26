@@ -1,30 +1,33 @@
 module.exports = function (config) {
+  const timeZone = "America/New_York"
+
   /// format a date obj as a short date string
   function toShortDate(date) {
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
-      timeZone: "America/New_York",
+      timeZone,
     })
   }
 
   config.addFilter("toShortDate", toShortDate)
 
+  /// format a date obj as a full date string
   function toLongDate(date) {
     const dateString = date.toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",
-      timeZone: "America/New_York",
+      timeZone,
     })
 
     const timeString = date.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "2-digit",
-      timeZone: "America/New_York",
       timeZoneName: "short",
+      timeZone,
     })
 
     return `${dateString} @ ${timeString}`

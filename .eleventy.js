@@ -12,8 +12,8 @@ const {
 // -- config --
 module.exports = function (config) {
   // -- constants --
-  const srcDir = "src"
-  const dstDir = "dist"
+  const srcDir = "./src"
+  const dstDir = "./dist"
 
   // -- assets --
   config.addPassthroughCopy(`${srcDir}/img`)

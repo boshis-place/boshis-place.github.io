@@ -4,8 +4,9 @@ module.exports = function (config) {
 
   // set global permalinks to resource.html style
   config.addGlobalData("permalink", () => {
-    return (data) =>
-      `${data.page.filePathStem}.${data.page.outputFileExtension}`
+    return (data) => {
+      return `${data.page.filePathStem}.${data.page.outputFileExtension}`
+    }
   })
 
   // remove .html from `page.url` entries
