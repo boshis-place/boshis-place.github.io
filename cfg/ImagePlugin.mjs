@@ -1,10 +1,12 @@
-const Image = require("@11ty/eleventy-img")
+import Image from "@11ty/eleventy-img"
 
-module.exports = function (config, { srcDir, dstDir }) {
+export function ImagePlugin(config, { srcDir, dstDir }) {
   // -- shortcodes --
   /// img shortcode for rendering optimized images
   async function image(srcOrImg, altOrMedia = null, media = "") {
     let src = srcOrImg
+    let alt = null
+
     if (typeof srcOrImg !== "string") {
       src = srcOrImg.src
       alt = srcOrImg.alt

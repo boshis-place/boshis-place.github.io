@@ -1,4 +1,4 @@
-module.exports = function (config) {
+export function DateFiltersPlugin(config) {
   const timeZone = "America/New_York"
 
   /// format a date obj as a short date string

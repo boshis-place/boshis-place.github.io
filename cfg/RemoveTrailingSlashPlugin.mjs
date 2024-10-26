@@ -1,4 +1,4 @@
-module.exports = function (config) {
+export function RemoveTrailingSlashPlugin(config) {
   // not exactly web standard, but works fine
   // see: https://www.11ty.dev/docs/permalinks/#trailing-slashes
 

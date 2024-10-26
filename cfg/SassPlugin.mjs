@@ -1,9 +1,9 @@
-const path = require("node:path")
-const autoprefixer = require("autoprefixer")
-const postcss = require("postcss")
-const sass = require("sass")
+import path from "node:path"
+import autoprefixer from "autoprefixer"
+import postcss from "postcss"
+import * as sass from "sass"
 
-module.exports = function (config) {
+export function SassPlugin(config) {
   const autoprefix = postcss([autoprefixer])
 
   // register the template format
