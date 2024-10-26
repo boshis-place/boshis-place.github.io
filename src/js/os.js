@@ -274,7 +274,7 @@ class Os {
     }
 
     const url = new URL(urlSource, base)
-    if (url.pathname.endsWith("/")) {
+    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
       url.pathname = url.pathname.slice(0, -1)
     }
 
