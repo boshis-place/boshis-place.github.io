@@ -8,7 +8,7 @@ module.exports = function (config) {
       `${data.page.filePathStem}.${data.page.outputFileExtension}`
   })
 
-  // memove .html from `page.url` entries
+  // remove .html from `page.url` entries
   config.addUrlTransform((page) => {
     if (page.url.endsWith(".html")) {
       return page.url.slice(0, -1 * ".html".length)
