@@ -1,6 +1,6 @@
 # [boshi's website](https://boshis.place)
 
-this is the boshi's place website! this site is built using [11ty](https://www.11ty.dev/), and you may find their documentation useful.
+this is the boshi's place website! this site is built using [11ty](https://www.11ty.dev/), you may find their documentation useful.
 
 ## index
 
