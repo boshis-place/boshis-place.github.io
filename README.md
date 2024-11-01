@@ -80,3 +80,7 @@ contains another flavor of liquid template, but these ones wrap every page to pr
 ### dist
 
 contains the final site built by 11ty. the one that will be deployed on the web. when the [development](#development) server is running, you can always see the final output of the site in the [`dist`](#dist) directory. it isn't checked into github.
+
+## deploys
+
+number of times deployed by editing the readme: **2**
