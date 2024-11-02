@@ -1,12 +1,12 @@
 import {
   CollectionsPlugin,
   DateFiltersPlugin,
-  UrlFiltersPlugin,
+  ExternalLinksPlugin,
   ImagePlugin,
   RandPlugin,
+  RemoveTrailingSlashPlugin,
   SassPlugin,
   StringFiltersPlugin,
-  RemoveTrailingSlashPlugin,
 } from "./cfg/index.mjs"
 
 // -- config --
@@ -23,12 +23,12 @@ export default function (config) {
   // -- modules --
   config.addPlugin(CollectionsPlugin)
   config.addPlugin(DateFiltersPlugin)
-  config.addPlugin(UrlFiltersPlugin)
+  config.addPlugin(ExternalLinksPlugin)
   config.addPlugin(ImagePlugin, { srcDir, dstDir })
   config.addPlugin(RandPlugin)
+  config.addPlugin(RemoveTrailingSlashPlugin)
   config.addPlugin(SassPlugin)
   config.addPlugin(StringFiltersPlugin)
-  config.addPlugin(RemoveTrailingSlashPlugin)
 
   // -- output --
   return {
