@@ -1,4 +1,4 @@
-export function UrlFiltersPlugin(config) {
+export function ExternalLinksPlugin(config) {
   // add url filter for external link attrs
   config.addFilter("toExternalLinkAttrs", (url) => {
     if (url.startsWith("http")) {
