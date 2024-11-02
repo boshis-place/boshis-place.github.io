@@ -15,4 +15,10 @@ links:
 description: >
   boshi's x Night City Games. a panel on anti-imperialist games featuring designers and activists
 ---
-To accompany our showcase of anti-imperialist games on 11/21, boshi's and Night City Games is hosting a panel of game designers and activists to talk about the role of the arts in social change, particularly games and what their strengths or weaknesses are in teaching us about systems.
+to accompany our curation of anti-imperialist games, boshi's will be hosting a panel of game developers, artists, and academics to talk about the role of art in fighting imperialism and creating social change.
+
+our panel will feature games and how their history has been entangled within capitalism, colonialism, and oppression. in the same way that games can reinforce hegemonic ideas, can their unique relationship to systems also be used to teach us what's broken about systems of oppression? what's possible in different systems, and how do we create art that plays a role in society?
+
+panelists tba, moderated by Emily Koonce of [Night City Games](https://nightcity.games/).
+
+we will also stream this event! [twitch.tv/boshisplace](https://twitch.tv/boshisplace).

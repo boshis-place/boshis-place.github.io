@@ -15,4 +15,4 @@ links:
 description: >
   boshi's x txtbooks. jam on collaborative zines against the empire
 ---
-an experimental zine jam in partnership with txtbooks, exploring themes of anti-imperialism through collaborative zine-making. zines historically have been an accessible medium for correspondence, collaboration, and community-building. in this 3-hour session, boshi's place will provide all the necessary materials to create zine(s) together.
+an experimental zine jam in partnership with [txtbooks](https://www.txtbooks.us/), exploring themes of anti-imperialism through collaborative zine-making. zines historically have been an accessible medium for correspondence, collaboration, and community-building. in this 3-hour session, boshi's place will provide all the necessary materials to create zine(s) together.

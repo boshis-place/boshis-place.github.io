@@ -15,6 +15,31 @@ links:
 description: >
   play some outdoor games against the empire
 ---
-Come play games in the park with boshi's! We will start off with some chill folk games, then play the worker rights LARP "Boss Battle" by NYU alum Joel Jordon at 3pm. After that, we'll switch to some field games that will get everyone off their feet.
+## do you want to:
+- use public space for play?
+- willfully discard valuable productivity time?
+- play games in the grass?
+- with others who feel the same?
 
-Feel free to join and leave at any time. We will provide warm tea and all game equipment. We have one of those big parachutes.
+## great! between our zine jam and curated exhibition, we (boshi's place) are hosting an outdoor games event:
+- in cooper park
+- on thursday, november 26th
+- at 1pm
+- to 5pm (or maybe later)
+
+## after the zine jam, grab some lunch and come by the park for:
+- lunch on blankets (bring one if you want)
+- a **mug swap!** bring a mug, swap with someone, get free hot tea!
+- chill intro & warmup activities
+- the worker rights larp <cite>**boss battle**</cite> by joel jordon
+- games with a parachute
+- field games in the **"new games"** tradition
+- and more! (perhaps an evening dérive)
+
+## some things to keep in mind:
+- <u>dress warmly!</u>
+- bring a **clean mug** if you want to participate in the mug swap
+- we'll have some cups available, just in case
+- there may be other reasons to bring your own mug ;)
+
+hope to see you there!
