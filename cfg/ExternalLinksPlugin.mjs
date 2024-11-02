@@ -9,6 +9,7 @@ export function UrlFiltersPlugin(config) {
   })
 
   // amend markdown parser to add external link attrs
+  // see: https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
   config.amendLibrary("md", (mdLib) => {
     const rules = mdLib.renderer.rules
 
