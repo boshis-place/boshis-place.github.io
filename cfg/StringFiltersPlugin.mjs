@@ -1,4 +1,4 @@
-module.exports = function (config) {
+export function StringFiltersPlugin(config) {
   /// camelize a string
   function camelize(value, isLower) {
     if (value == null) {

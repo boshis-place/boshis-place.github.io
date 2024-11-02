@@ -1,4 +1,4 @@
-const {
+import {
   CollectionsPlugin,
   DateFiltersPlugin,
   UrlFiltersPlugin,
@@ -7,13 +7,13 @@ const {
   SassPlugin,
   StringFiltersPlugin,
   RemoveTrailingSlashPlugin,
-} = require("./cfg")
+} from "./cfg/index.mjs"
 
 // -- config --
-module.exports = function (config) {
+export default function (config) {
   // -- constants --
-  const srcDir = "src"
-  const dstDir = "dist"
+  const srcDir = "./src"
+  const dstDir = "./dist"
 
   // -- assets --
   config.addPassthroughCopy(`${srcDir}/img`)

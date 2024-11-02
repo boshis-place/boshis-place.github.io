@@ -1,4 +1,4 @@
-module.exports = function (config) {
+export function RandPlugin(config) {
   // -- filters --
   /// sample a random number up to a maximum (exclusive)
   function rand(max = 1) {

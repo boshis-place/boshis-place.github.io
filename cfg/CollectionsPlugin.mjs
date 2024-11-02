@@ -1,4 +1,4 @@
-module.exports = function (config) {
+export function CollectionsPlugin(config) {
   config.addCollection("upcomingEvents", (collections) => {
     return partitionedEvents(collections)[0]
   })
