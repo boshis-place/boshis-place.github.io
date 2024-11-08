@@ -19,6 +19,6 @@ to accompany our curation of anti-imperialist games, boshi's will be hosting a p
 
 our panel will feature games and how their history has been entangled within capitalism, colonialism, and oppression. in the same way that games can reinforce hegemonic ideas, can their unique relationship to systems also be used to teach us what's broken about systems of oppression? what's possible in different systems, and how do we create art that plays a role in society?
 
-panelists tba, moderated by Emily Koonce of [Night City Games](https://nightcity.games/).
+panelists tba, moderated by [Emily Koonce](https://www.instagram.com/kooooonce/) of [Night City Games](https://nightcity.games/).
 
 we will also stream this event! [twitch.tv/boshisplace](https://twitch.tv/boshisplace).
