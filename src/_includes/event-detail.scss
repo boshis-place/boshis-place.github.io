@@ -124,6 +124,21 @@
       text-decoration: underline;
     }
 
+    blockquote {
+      position: relative;
+      padding-left: $spacing1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        background-color: $black;
+      }
+    }
+
     li::before {
       content: "+";
       margin-right: $spacing1;
@@ -132,7 +147,8 @@
     * + h1,
     * + h2,
     * + h3,
-    * + p {
+    * + p,
+    * + blockquote {
       margin-top: $spacing1;
     }
 

@@ -8,12 +8,12 @@ poster:
 links:
   tickets: "https://www.eventbrite.com/e/outdoor-games-against-the-empire-tickets-1057728216569"
   itch:
-  bluesky:
-  instagram:
-  twitter:
+  bluesky: "https://bsky.app/profile/boshisplace.bsky.social/post/3laacuk4hrd26"
+  instagram: "https://www.instagram.com/p/DCAbKJmO2uM/"
+  twitter: "https://twitter.com/boshisplace/status/1853930757213073432"
   other:
 description: >
-  play some outdoor games against the empire
+  join us outside to use public space for play, featuring a mug swap, new games, and a boss battle
 ---
 ## do you want to:
 - use public space for play?
