@@ -17,7 +17,7 @@ description: >
 ---
 ZINE JAMS AGAINST THE EMPIRE!! join us at boshi's place on thurs 11/21 @ 10am et (doors open at 9:30am et) for an experimental zine workshop in partnership with [txtbooks](https://www.txtbooks.us/), exploring themes of anti-imperialism through collaborative zine-making. in this 3-hour session, boshi's place will provide all the necessary materials to create a zine together.
 
-what to expect:
+## what to expect:
 - opt into generative writing, drawing, and collaging prompts
 - use the surplus of pre-gathered materials, images, and excerpts from radical texts provided at the space
 optionally print or scan your own photos or found items on our on-site printer

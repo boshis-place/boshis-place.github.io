@@ -8,17 +8,30 @@ poster:
 links:
   tickets: "https://www.eventbrite.com/e/games-against-the-empire-showcase-boshis-x-night-city-games-tickets-1057736140269"
   itch:
-  bluesky:
-  instagram:
-  twitter:
+  bluesky: https://bsky.app/profile/boshisplace.bsky.social/post/3lauc5ojftk2j
+  instagram: https://www.instagram.com/p/DCU5QvjPmIp/
+  twitter: https://twitter.com/boshisplace/status/1856813064479293871
   other:
 description: >
   boshi's x Night City Games. a gallery show exhibiting games against the empire
 ---
-come to boshi's place for a gallery show curated in partnership with [Night City Games](https://nightcity.games/), exhibiting games that mechanically or thematically examine imperialism, colonialism, oppression, and/or resistance.
+in collaboration with [Night City Games](https://nightcity.games)
 
-over the past year, we've seen new york city's academic institutions shut down protests and conversations in their student bodies. boshi's wants to take a stand in opposition to this by using our platform to highlight stories and voices of colonized people around the world.
+Over the past year, many of New York City's academic institutions have methodically shut down protests and censored conversations. In response, Boshi's Place is hosting a night featuring the stories and voices of colonized people around the world.
 
-we'll be showing a large collection of independent projects, dealing with oppression and resistance across human history, from the distant past to the present moment and gaza.
+GAMES AGAINST THE EMPIRE is a gallery show curated in partnership with Night City Games, exhibiting a collection of independent games that mechanically or thematically examine imperialism, colonialism, oppression, and resistance.
 
-play, hang out, and discuss with our community and old and new friends.
+Come play, hang out, meet the designers, and engage in thoughtful dialogue with our community!
+
+## Works Featured
+
+- Pomegranates by [Gabbah Baya](https://gabbahbaya.cargo.site/) (Yasmine Batniji)
+- The New York Times Simulator by [molleindustria](https://www.molleindustria.org/)
+- Dance Poem Revolution by [Melanie Hoff](https://www.melaniehoff.com/)
+- Rubble by [Walid Raouda](https://www.wraouda.com/)
+- Decolonators by [silverspook](https://silverspookgames.blogspot.com/)
+- The Indifferent Wonder of an Edible Place by [Studio Oleomingus](https://oleomingus.com/)
+- beat by [Brendan Keogh](https://brkeogh.com/)
+- Nikhil Murthy’s Syphilisation by [Why Not Games](https://www.whynotgames.com/)
+- Onto Maizilind Unto Infinity by [the static man](https://thestaticman.itch.io/)
+- [Smash MAGA!](https://www.smashmaga.com/) by Twin Trouble
