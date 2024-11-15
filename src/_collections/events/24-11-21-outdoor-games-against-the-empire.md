@@ -23,7 +23,7 @@ description: >
 
 ## great! between our zine jam and curated exhibition, we (boshi's place) are hosting an outdoor games event:
 - in cooper park
-- on thursday, november 26th
+- on thursday, november 21st
 - at 1pm
 - to 5pm (or maybe later)
 
