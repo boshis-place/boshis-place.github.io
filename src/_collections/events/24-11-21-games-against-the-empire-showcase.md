@@ -13,13 +13,13 @@ links:
   twitter: https://twitter.com/boshisplace/status/1856813064479293871
   other:
 description: >
-  boshi's x Night City Games. a gallery show exhibiting games against the empire
+  boshi's x Night City. a gallery show exhibiting games against the empire
 ---
-in collaboration with [Night City Games](https://nightcity.games)
+in collaboration with [Night City](https://nightcity.games)
 
 Over the past year, many of New York City's academic institutions have methodically shut down protests and censored conversations. In response, Boshi's Place is hosting a night featuring the stories and voices of colonized people around the world.
 
-GAMES AGAINST THE EMPIRE is a gallery show curated in partnership with Night City Games, exhibiting a collection of independent games that mechanically or thematically examine imperialism, colonialism, oppression, and resistance.
+GAMES AGAINST THE EMPIRE is a gallery show curated in partnership with Night City, exhibiting a collection of independent games that mechanically or thematically examine imperialism, colonialism, oppression, and resistance.
 
 Come play, hang out, meet the designers, and engage in thoughtful dialogue with our community!
 

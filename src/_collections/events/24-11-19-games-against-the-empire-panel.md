@@ -13,9 +13,9 @@ links:
   twitter: https://twitter.com/boshisplace/status/1856455538487566784
   other:
 description: >
-  boshi's x Night City Games. a panel on anti-imperialist games featuring designers and activists
+  boshi's x Night City. a panel on anti-imperialist games featuring designers and activists
 ---
-in collaboration with [Night City Games](https://nightcity.games)
+in collaboration with [Night City](https://nightcity.games)
 
 Modern games history is entangled with the capitalist, colonialist, and oppressive structures that rule us. While games can reinforce dominant ideologies, how can they also reveal what's broken within these structures of power? What alternative systems are possible, and how can we create art that actively engages with and transforms society?
 
@@ -31,4 +31,4 @@ We will also stream this event! [twitch.tv/boshisplace](https://twitch.tv/boshis
 - Gabbah Baya (Yasmine Batniji) [@GabbahBaya](https://gabbahbaya.cargo.site/)
 - Luke w/ Art For The People [@artforthepeople.soflo](https://www.instagram.com/artforthepeople.soflo/)
 
-Moderated by [Emily Koonce](https://www.instagram.com/kooooonce/) of [Night City Games](https://nightcity.games/).
+Moderated by [Emily Koonce](https://www.instagram.com/kooooonce/) of [Night City](https://nightcity.games/).
