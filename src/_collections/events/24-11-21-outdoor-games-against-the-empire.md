@@ -1,7 +1,7 @@
 ---
 version: 1
 name: "outdoor games against the empire"
-date: 2024-11-21T13:00:00-05:00
+date: 2024-11-23T13:00:00-05:00
 poster:
   src: events/24-11-21-outdoor-games-against-the-empire/poster.png
   alt: the poster for the "outdoor games against the empire" event
@@ -23,7 +23,7 @@ description: >
 
 ## great! between our zine jam and curated exhibition, we (boshi's place) are hosting an outdoor games event:
 - in cooper park
-- on thursday, november 21st
+- on saturday, november 23rd
 - at 1pm
 - to 5pm (or maybe later)
 
