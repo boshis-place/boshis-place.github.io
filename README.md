@@ -83,4 +83,4 @@ contains the final site built by 11ty. the one that will be deployed on the web.
 
 ## deploys
 
-number of times deployed by editing the readme: **3**
+number of times deployed by editing the readme: **4**
