@@ -184,22 +184,6 @@ class Os {
       }
     }
 
-    // TODO: do we need this?
-    // activate any inert script tags on the new page
-    const scripts = m.$page.querySelectorAll("script")
-    for (const inert of Array.from(scripts)) {
-      // clone the inert script tag
-      const script = document.createElement("script")
-      script.textContent = inert.textContent
-      for (const { name, value } of inert.attributes) {
-        script.setAttribute(name, value)
-      }
-
-      // and replace it with the active one
-      const parent = inert.parentElement
-      parent.replaceChild(script, inert)
-    }
-
     // get scroll anchor
     let $anchor = null
 
@@ -220,6 +204,22 @@ class Os {
     // otherwise, scroll to the origin
     else {
       window.scrollTo(0, 0)
+    }
+
+    // TODO: do we need this?
+    // activate any inert script tags on the new page
+    const scripts = m.$page.querySelectorAll("script")
+    for (const inert of Array.from(scripts)) {
+      // clone the inert script tag
+      const script = document.createElement("script")
+      script.textContent = inert.textContent
+      for (const { name, value } of inert.attributes) {
+        script.setAttribute(name, value)
+      }
+
+      // and replace it with the active one
+      const parent = inert.parentElement
+      parent.replaceChild(script, inert)
     }
 
     // run post visit events

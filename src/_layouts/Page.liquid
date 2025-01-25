@@ -46,11 +46,13 @@
   </head>
 
   <body>
-    <div id="page" class="Page {{ section | camelize }}">
-      {{ content }}
-    </div>
-
     {% render "nav/Nav" %}
+
+    <div id="page" class="Page {{ section | camelize }}">
+      <div class="Page-content">
+        {{ content }}
+      </div>
+    </div>
 
     <div id="loading" class="Loading"></div>
   </body>

@@ -6,65 +6,94 @@
     z-index: {{ forloop.length | minus: forloop.index }};
   "
 >
-  <a
-    href="/{{event.data.tags}}/{{event.fileSlug}}"
-    class="EventCard-anchor"
-  >
-    <div class="EventCard-poster">
-      {% assign max = 3 | randint | plus: 1 %}
-      {% for i in (1..max) %}
-        <figure class="EventCard-posterBoshi" style="{% randvar %}">
-          {% render "core/Boshi" %}
-        </figure>
-      {% endfor %}
-
-      <figure class="EventCard-posterFrame" style="{% randvar %}">
-        <svg
-          class="
-            EventCardBorder
-            {% if rainbow %}
-              EventCardBorder--rainbow
-            {% else %}
-              EventCardBorder--white
-            {% endif %}
-          "
-        >
-          <rect class="EventCardBorder-shape" />
-        </svg>
-
-        {% img event.data.poster "200px" %}
+  <div class="EventCard-poster">
+    {% assign max = 3 | randint | plus: 1 %}
+    {% for i in (1..max) %}
+      <figure class="EventCard-posterBoshi" style="{% randvar %}">
+        {% render "core/Boshi" %}
       </figure>
-    </div>
+    {% endfor %}
 
-    <div class="EventCard-body" style="{% randvar %}">
-      <div class="EventCard-bg"></div>
+    <figure class="EventCard-posterFrame" style="{% randvar %}">
+      {% if rainbow %}
+        {% render "core/Border", color: "rainbow" %}
+      {% else %}
+        {% render "core/Border", color: "white" %}
+      {% endif %}
 
-      <svg
-        class="
-          EventCardBorder
-          {% if rainbow %}
-            EventCardBorder--rainbow
-          {% endif %}
-        "
-      >
-        <rect class="EventCardBorder-shape" />
-      </svg>
+      {% img event.data.poster "200px" %}
+    </figure>
+  </div>
 
+  <div class="EventCard-body" style="{% randvar %}">
+    {% comment %} <header class="EventCard-title"> {% endcomment %}
+      <h1 class="EventCard-name">
+        <a
+          href="/{{event.data.tags}}/{{event.fileSlug}}"
+          class="EventCard-anchor"
+        >
+          {{ event.data.name }}
+        </a>
+      </h1>
+
+      <h2 class="EventCard-date">
+        {{ event.data.date | toShortDate }}
+      </h2>
+    {% comment %} </header> {% endcomment %}
+
+    {% comment %}
       <div class="EventCard-text">
-        <h2 class="EventCard-date">
-          {{ event.data.date | toShortDate }}
-        </h2>
+        <div class="EventCard-bg"></div>
+
+        {% if rainbow %}
+          {% render "core/Border", color: "rainbow" %}
+        {% else %}
+          {% render "core/Border" %}
+        {% endif %}
 
         <header class="EventCard-title">
           <h1 class="EventCard-name">
             {{ event.data.name }}
           </h1>
+
+          <h2 class="EventCard-date">
+            {{ event.data.date | toShortDate }}
+          </h2>
         </header>
 
         <div class="EventCard-desc">
           {{ event.data.description }}
         </div>
       </div>
-    </div>
-  </a>
+    {% endcomment %}
+
+    {% comment %}
+      <div class="EventCard-text">
+      <div class="EventCard-bg"></div>
+
+      {% if rainbow %}
+        {% render "core/Border", color: "rainbow" %}
+      {% else %}
+        {% render "core/Border" %}
+      {% endif %}
+    {% endcomment %}
+
+    {% comment %} </div> {% endcomment %}
+
+    {% if event.data.description %}
+      <div class="EventCard-text">
+        <div class="EventCard-bg"></div>
+
+        {% if rainbow %}
+          {% render "core/Border", color: "rainbow" %}
+        {% else %}
+          {% render "core/Border" %}
+        {% endif %}
+
+        <div class="EventCard-desc">
+          {{ event.data.description }}
+        </div>
+      </div>
+    {% endif %}
+  {% comment %} </div> {% endcomment %}
 </article>

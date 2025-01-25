@@ -3,6 +3,8 @@ $blue0: #0000ff;
 $blue1: #0077c8;
 $blue2: #f0f8ff;
 $coral: #ff808b;
+$magenta: #ff00ff44;
+$pink: pink;
 $yellow: #ffee6c;
 
 /* -- grays -- */
@@ -12,7 +14,10 @@ $gray0: #eeeeee;
 $clear: #ffffff00;
 
 /* -- semantic -- */
-$color-border0: #00000033;
-$color-border1: #ffffffaa;
-$color-shadow0: #ff00ff44;
-$color-shadow1: pink;
+$color-border: #00000033;
+$color-border-white: #ffffffaa;
+$color-border-primary: $blue0;
+
+$color-shadow-text: $pink;
+$color-shadow-page: $magenta;
+$color-shadow-card: $magenta;

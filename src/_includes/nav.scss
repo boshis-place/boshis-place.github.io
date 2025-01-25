@@ -47,16 +47,30 @@ $page-class-by-name: (
 
   --scale: 1;
 
-  @include fill();
+  @include fill(fixed);
 
-  position: fixed;
   pointer-events: none;
-  z-index: 1;
+  // z-index: 1;
 
   @include mobile {
     display: flex;
     align-items: center;
   }
+
+  &:hover {
+    z-index: 1;
+  }
+
+  // &::before {
+  //   @include fill();
+  //   @include background();
+
+  //   content: "";
+  // }
+
+  // &:hover &::before {
+  //   filter: blur(5px);
+  // }
 
   &::before {
     content: "";
@@ -65,7 +79,6 @@ $page-class-by-name: (
     @include background();
     @include nav-transition(opacity);
 
-    position: absolute;
     opacity: 0;
   }
 
@@ -80,12 +93,12 @@ $page-class-by-name: (
     height: calc($radius * var(--scale) * 2);
 
     @include mobile {
-      right: -80px;
+      left: -80px;
     }
 
     @include desktop {
-      top: $inset;
-      right: $inset;
+      top: 400px;
+      left: $inset;
     }
   }
 
@@ -225,7 +238,7 @@ $page-class-by-name: (
     display: block;
     color: $black;
     font-size: calc($font-size1 * var(--scale));
-    text-shadow: $color-shadow1 2px 0 2px;
+    text-shadow: $color-shadow-text 2px 0 2px;
     text-align: center;
     transition:
       opacity $hover-speed,

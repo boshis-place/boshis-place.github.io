@@ -1,31 +1,103 @@
 @use "shared" as *;
 
-$list: null;
-
 .Events {
-  &-list {
-    margin-top: $spacing5;
-  }
-
   &-title {
     position: relative;
-    font-size: $font-size4;
-    text-shadow: $color-shadow1 3px 0 4px;
+    margin-left: -100px;
+    font-size: $font-size5;
+    text-shadow: $color-shadow-text 3px 0 4px;
+    transform: rotate(-2deg);
+    z-index: 1;
 
     @include desktop {
-      font-size: $font-size5;
+      font-size: $font-size6;
     }
+
+    > dl {
+      display: flex;
+
+      > *:nth-child(1) {
+        margin-top: 10px;
+        transform: rotate(1deg);
+      }
+
+      > *:nth-child(2) {
+        margin-left: 15px;
+        transform: rotate(3deg);
+      }
+
+      > *:nth-child(3) {
+        margin-left: -10px;
+        margin-top: 40px;
+        transform: rotate(2deg);
+
+        dd {
+          margin-top: -20px;
+        }
+      }
+
+      > *:nth-child(4) {
+        margin-left: 30px;
+        margin-top: 60px;
+        transform: rotate(-1deg);
+      }
+    }
+  }
+
+  $content: null;
+
+  &-content {
+    $content: &;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing5;
+    margin-top: $spacing3;
+    padding: $spacing3 $spacing4;
+  }
+
+  &-background {
+    @include fill();
+    @include background();
+
+    box-shadow: 10px 10px 60px $color-shadow-page;
+    transition: transform 0.3s;
+
+    #{$content}:hover & {
+      transform: skew(+0.05deg, -0.5deg);
+    }
+  }
+
+  &-border {
+    @include fill();
+
+    transition: transform 0.3s;
+
+    #{$content}:hover & {
+      transform: skew(-0.05deg, +0.5deg);
+    }
+  }
+
+  &-list {
+    position: relative;
   }
 }
 
 .EventsWord {
-  display: inline-block;
   position: relative;
 
   &:hover {
     color: $blue0;
-    animation: Shake 0.3s linear;
     z-index: 1;
+  }
+
+  &:hover &-text {
+    animation: Jump 0.3s ease-in-out;
+  }
+
+  &--small dt {
+    font-size: $font-size2;
   }
 
   dd {
@@ -35,25 +107,21 @@ $list: null;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
   }
 
-  dt:hover + dd {
+  &:hover dd {
     visibility: visible;
   }
 
-  @keyframes Shake {
+  @keyframes Jump {
     0% {
-      transform: translateX(+0px);
+      transform: translateY(+0px);
     }
 
-    25% {
-      transform: translateX(-1px) rotate(-0.5deg);
-    }
-
-    75% {
-      transform: translateX(+1px) rotate(+0.5deg);
+    50% {
+      transform: translateY(-10px);
     }
 
     100% {
-      transform: translateX(+0px);
+      transform: translateY(0px);
     }
   }
 }
@@ -70,7 +138,7 @@ $list: null;
 
   &-title {
     font-size: $font-size2;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
 
     @include desktop {
       font-size: $font-size3;
@@ -91,19 +159,29 @@ $list: null;
 .EventCard {
   $c: &;
 
+  $poster-width: 200px;
+
   position: relative;
   display: flex;
-  align-items: center;
+  // align-items: center;
   flex-direction: column;
+  min-height: $poster-width;
+  gap: $spacing2;
   opacity: max(calc(1 - var(--index) * 0.02), 0.1);
+  transition: opacity 0.3s;
 
   @include desktop {
-    width: $desktop-max;
-    flex-direction: row;
-    margin-left: calc(min(var(--index) / 16, 1) * var(--rand) * 50vw);
+    // flex-direction: row;
+    // width: $desktop-max;
+    margin-left: calc(
+      min(var(--index) / 32, 1) * (var(--rand) - 0.5) * 2 * 30vw
+    );
+
+    padding-left: $poster-width + $spacing2;
   }
 
   &:hover {
+    opacity: 1;
     z-index: 420 !important;
   }
 
@@ -113,17 +191,17 @@ $list: null;
     opacity: 0.9 !important;
   }
 
-  &-anchor {
-    display: contents;
-    color: $black;
-  }
+  // &-anchor {
+  //   display: contents;
+  //   color: $black;
+  // }
 
   &-poster {
     @include flex-center;
-    position: relative;
-  }
 
-  $poster-width: 200px;
+    position: absolute;
+    left: 0;
+  }
 
   &-posterFrame {
     $poster-rotate: (
@@ -164,7 +242,7 @@ $list: null;
     > img {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0px 0px 10px $color-shadow0);
+      filter: drop-shadow(0px 0px 10px $color-shadow-card);
     }
 
     #{$c}:hover & {
@@ -179,44 +257,62 @@ $list: null;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    // align-items: end;
     flex: 1;
-    min-height: 140px;
-    gap: $spacing1;
-    padding: $spacing2;
+    // min-height: 140px;
+    // gap: $spacing1;
+    // gap: $spacing2;
+    // padding: $spacing2;
+    transform-origin: left center;
     transform: rotate(calc(-8deg + var(--rand) * 16deg));
-    box-shadow: 10px 10px 20px $color-shadow0;
-    mix-blend-mode: hard-light;
+    // box-shadow: 10px 10px 20px $color-shadow-card;
+    // mix-blend-mode: hard-light;
     transition: transform 0.3s;
-
-    @include mobile {
-      gap: -$spacing2;
-    }
 
     #{$c}:hover & {
       transform: skew(-1deg, -1deg);
     }
   }
 
+  &-text {
+    order: 3;
+    position: relative;
+    padding: $spacing1;
+    box-shadow: 10px 10px 20px $color-shadow-card;
+    max-width: 500px;
+    margin-top: $spacing2;
+  }
+
   &-bg {
     @include background($riso: 6);
     @include fill();
 
-    position: absolute;
     opacity: 0.6;
     z-index: -1;
     filter: blur(10px);
   }
 
   &-title {
+    // position: absolute;
+    position: relative;
     display: flex;
     align-items: baseline;
-    gap: $spacing1;
+    // gap: $spacing1;
+    z-index: 1;
+
+    @include desktop {
+      flex-direction: column-reverse;
+      margin-left: -100px;
+    }
   }
 
   &-name {
+    order: 2;
     position: relative;
+    left: -30px;
     font-size: $font-size2;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 1px;
     text-decoration: underline $coral 2px;
 
     #{$c}:hover & {
@@ -236,11 +332,20 @@ $list: null;
   }
 
   &-date {
-    position: absolute;
-    font-size: $font-size4;
+    order: 1;
+    position: relative;
+    // position: absolute;
+    // font-size: $font-size4;
     text-transform: lowercase;
     color: $white;
-    mix-blend-mode: overlay;
+    mix-blend-mode: difference;
+    text-shadow: $color-shadow-text 3px 0 4px;
+
+    #{$c}:hover & {
+      // color: $black;
+      // font-size: 3rem;
+      // animation: Show 1s infinite both;
+    }
 
     @include mobile {
       top: -35px;
@@ -249,83 +354,27 @@ $list: null;
     }
 
     @include desktop {
-      top: 0;
-      bottom: 0;
-      padding-left: $spacing4;
-      padding-right: $spacing4;
-      font-size: 8rem;
-      text-align: right;
-      white-space: nowrap;
-      transform: scale(80%);
+      // top: -20px;
+      left: -60px;
+      font-size: 1.8rem;
+      // top: 0;
+      // bottom: 0;
+      // padding-left: $spacing4;
+      // padding-right: $spacing4;
+      // font-size: 8rem;
+      // text-align: right;
+      // white-space: nowrap;
+      // transform: scale(80%);
     }
-  }
-}
 
-.EventCardBorder {
-  --border-width: 3px;
-  --border-offset: -1.5px;
-  --border-dash: 6px;
+    @keyframes Show {
+      0% {
+        transform: identity;
+      }
 
-  overflow: visible;
-  position: absolute;
-  top: var(--border-offset);
-  left: var(--border-offset);
-  width: calc(100% + var(--border-width));
-  height: calc(100% + var(--border-width));
-
-  &-shape {
-    width: 100%;
-    height: 100%;
-    fill: $clear;
-    stroke: $color-border0;
-    stroke-width: var(--border-width);
-    stroke-dasharray: var(--border-dash) var(--border-dash);
-    stroke-dashoffset: 0;
-  }
-
-  &--white &-shape {
-    stroke: $color-border1;
-  }
-
-  &--rainbow {
-    --border-width: 6px;
-    --border-offset: -3px;
-  }
-
-  &--rainbow &-shape {
-    stroke: unset;
-    animation:
-      BorderMarch 3s linear forwards infinite,
-      BorderRainbow 1s linear infinite;
-  }
-
-  @keyframes BorderMarch {
-    0% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: -60px;
-    }
-  }
-
-  @keyframes BorderRainbow {
-    0% {
-      stroke: #ff0000;
-    }
-    12.5% {
-      stroke: #ffff00;
-    }
-    37.5% {
-      stroke: #00ff00;
-    }
-    62.5% {
-      stroke: #00ffff;
-    }
-    87.5% {
-      stroke: #ff00ff;
-    }
-    100% {
-      stroke: #ff0000;
+      100% {
+        transform: translateX(100%);
+      }
     }
   }
 }

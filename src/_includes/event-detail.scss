@@ -14,7 +14,7 @@
   &-title {
     display: inline;
     font-size: $font-size4;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
 
     @mixin desktop {
       font-size: $font-size5;
@@ -59,7 +59,7 @@
 
   &-date {
     font-size: $font-size1;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
     text-transform: lowercase;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 

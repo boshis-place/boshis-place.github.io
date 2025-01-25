@@ -1,6 +1,7 @@
 @use "colors";
 
-@mixin fill {
+@mixin fill($position: absolute) {
+  position: $position;
   top: 0;
   bottom: 0;
   left: 0;

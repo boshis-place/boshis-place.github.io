@@ -7,13 +7,15 @@ description: welcome to boshi's place
 <h1 class="Events-title">
   <dl>
     {% render "events/EventsWord",
+      small: true,
       text: "welcome",
-      defn: "a friendly greeting"
+      defn: "hello, happy to find you here, on our website"
     %}
 
     {% render "events/EventsWord",
+      small: true,
       text: "to",
-      defn: "a preposition linking the greeting to what follows"
+      defn: "see what events we have upcoming, or have run previously, look here v"
     %}
 
     {% render "events/EventsWord",
@@ -29,8 +31,17 @@ description: welcome to boshi's place
 </h1>
 
 <!-- ~*~ Events ~*~ -->
-<section class="Events-lists">
+<section class="Events-content">
+  <div class="Events-background"></div>
+  <div class="Events-border">
+    {% render "core/Border", color: "primary" %}
+  </div>
+
   {% capture upcoming %}
+    {% if collections.upcomingEvents.size == 0 %}
+      <div>nothing at the moment, check back later!</div>
+    {% endif %}
+
     {% for event in collections.upcomingEvents %}
       {% assign rainbow = forloop.index == 1 %}
       {%
