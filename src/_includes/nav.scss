@@ -72,6 +72,7 @@ $page-class-by-name: (
   &-items {
     $items: & !global;
     $inset: 100px;
+    pointer-events: all;
 
     @include nav-transition(width, height, top, right);
 
@@ -142,18 +143,30 @@ $page-class-by-name: (
       &:nth-child(#{$i + 1}) {
         @include nav-transition(transform);
 
-        transform: translate(
-          calc($radius * var(--scale) * cos($i * #{$a}deg)),
-          calc($radius * var(--scale) * sin($i * #{$a}deg))
-        );
+        transform: scale(0);
+        @at-root #{nav-item-selected()} {
+          transform: scale(1);
+        }
 
         #{$item-label} {
+          transform: scale(0);
           @include nav-transition(transform);
+        }
+      }
 
-          transform: translate(
-            calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
-            calc($radius-label * var(--scale) * sin($i * #{$a}deg))
+      #{$items}:hover &:nth-child(#{$i + 1}) {
+        transform: scale(1)
+          translate(
+            calc($radius * var(--scale) * cos($i * #{$a}deg)),
+            calc($radius * var(--scale) * sin($i * #{$a}deg))
           );
+
+        #{$item-label} {
+          transform: scale(1)
+            translate(
+              calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
+              calc($radius-label * var(--scale) * sin($i * #{$a}deg))
+            );
         }
       }
     }
