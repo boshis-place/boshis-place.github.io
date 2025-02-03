@@ -55,34 +55,11 @@
   &-content {
     $content: &;
 
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: $spacing5;
     margin-top: $spacing3;
     padding: $spacing3 $spacing4;
-  }
-
-  &-background {
-    @include fill();
-    @include background();
-
-    box-shadow: 10px 10px 60px $color-shadow-page;
-    transition: transform 0.3s;
-
-    #{$content}:hover & {
-      transform: skew(+0.05deg, -0.5deg);
-    }
-  }
-
-  &-border {
-    @include fill();
-
-    transition: transform 0.3s;
-
-    #{$content}:hover & {
-      transform: skew(-0.05deg, +0.5deg);
-    }
   }
 
   &-list {

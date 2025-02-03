@@ -60,6 +60,40 @@ a[class] {
       padding: $margin-desktop-vertical $margin-desktop-horizontal;
     }
   }
+
+  $main: null;
+
+  &-main {
+    $main: &;
+
+    position: relative;
+
+    &::before {
+      content: "";
+
+      @include fill();
+      @include background();
+
+      box-shadow: 10px 10px 60px $color-shadow-page;
+      transform: none;
+      transition: transform 0.3s;
+    }
+
+    &:hover::before {
+      transform: skew(+0.05deg, -0.5deg);
+    }
+  }
+
+  &-border {
+    @include fill();
+
+    transform: none;
+    transition: transform 0.3s;
+
+    #{$main}:hover & {
+      transform: skew(-0.05deg, +0.5deg);
+    }
+  }
 }
 
 /* -- Core -- */
@@ -68,6 +102,8 @@ a[class] {
   --border-offset: -1.5px;
   --border-dash: 6px;
 
+  @include fill();
+
   overflow: visible;
   position: absolute;
   top: var(--border-offset);
@@ -75,7 +111,7 @@ a[class] {
   width: calc(100% + var(--border-width));
   height: calc(100% + var(--border-width));
 
-  &-shape {
+  &-rect {
     width: 100%;
     height: 100%;
     fill: $clear;
@@ -85,11 +121,11 @@ a[class] {
     stroke-dashoffset: 0;
   }
 
-  &--white &-shape {
+  &--white &-rect {
     stroke: $color-border-white;
   }
 
-  &--primary &-shape {
+  &--primary &-rect {
     stroke: $color-border-primary;
   }
 
@@ -98,7 +134,7 @@ a[class] {
     --border-offset: -3px;
   }
 
-  &--rainbow &-shape {
+  &--rainbow &-rect {
     stroke: unset;
     animation:
       BorderMarch 3s linear forwards infinite,
