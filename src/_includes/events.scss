@@ -1,6 +1,12 @@
 @use "shared" as *;
 
 .Events {
+  // -- shared --
+  *::selection {
+    background-color: rgba($pink, 0.6);
+  }
+
+  // -- elements --
   &-title {
     position: relative;
     margin-left: -100px;
@@ -156,6 +162,44 @@
   }
 }
 
+.EventFallback {
+  margin-left: $spacing4;
+  font-size: $font-size2;
+  text-shadow: $color-shadow-text 3px 0 4px;
+  color: $blue0;
+  transform: skew(-2deg, -2deg);
+
+  @include desktop {
+    max-width: 600px;
+  }
+
+  &-text {
+    display: inline-block;
+
+    &:hover {
+      animation: 0.1s FallbackShake infinite linear;
+    }
+
+    @keyframes FallbackShake {
+      0% {
+        transform: translateX(+0px);
+      }
+
+      25% {
+        transform: translateX(-2px);
+      }
+
+      75% {
+        transform: translateX(+2px);
+      }
+
+      100% {
+        transform: translateX(+0px);
+      }
+    }
+  }
+}
+
 .EventCard {
   $c: &;
 
@@ -163,20 +207,17 @@
 
   position: relative;
   display: flex;
-  // align-items: center;
   flex-direction: column;
+  justify-content: center;
   min-height: $poster-width;
-  gap: $spacing2;
   opacity: max(calc(1 - var(--index) * 0.02), 0.1);
   transition: opacity 0.3s;
 
   @include desktop {
-    // flex-direction: row;
-    // width: $desktop-max;
+    width: $desktop-max;
     margin-left: calc(
-      min(var(--index) / 32, 1) * (var(--rand) - 0.5) * 2 * 30vw
+      min(var(--index) / 32, 1) * (var(--rand) - 0.5) * 2 * 20vw
     );
-
     padding-left: $poster-width + $spacing2;
   }
 
@@ -185,22 +226,18 @@
     z-index: 420 !important;
   }
 
-  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
+  // TODO: this won't work on older browsers; maybe need a js fallback solution
   #{$list}:has(input:checked) & {
     margin-left: 0px !important;
     opacity: 0.9 !important;
   }
-
-  // &-anchor {
-  //   display: contents;
-  //   color: $black;
-  // }
 
   &-poster {
     @include flex-center;
 
     position: absolute;
     left: 0;
+    cursor: zoom-in;
   }
 
   &-posterFrame {
@@ -254,66 +291,37 @@
   }
 
   &-body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // align-items: end;
-    flex: 1;
-    // min-height: 140px;
-    // gap: $spacing1;
-    // gap: $spacing2;
-    // padding: $spacing2;
+    display: contents;
+  }
+
+  .-body-row {
     transform-origin: left center;
-    transform: rotate(calc(-8deg + var(--rand) * 16deg));
-    // box-shadow: 10px 10px 20px $color-shadow-card;
-    // mix-blend-mode: hard-light;
+    transform: rotate(calc(-6deg + var(--rand) * 12deg));
     transition: transform 0.3s;
+  }
+
+  @mixin body-row {
+    @extend .-body-row;
 
     #{$c}:hover & {
-      transform: skew(-1deg, -1deg);
-    }
-  }
-
-  &-text {
-    order: 3;
-    position: relative;
-    padding: $spacing1;
-    box-shadow: 10px 10px 20px $color-shadow-card;
-    max-width: 500px;
-    margin-top: $spacing2;
-  }
-
-  &-bg {
-    @include background($riso: 6);
-    @include fill();
-
-    opacity: 0.6;
-    z-index: -1;
-    filter: blur(10px);
-  }
-
-  &-title {
-    // position: absolute;
-    position: relative;
-    display: flex;
-    align-items: baseline;
-    // gap: $spacing1;
-    z-index: 1;
-
-    @include desktop {
-      flex-direction: column-reverse;
-      margin-left: -100px;
+      transform: skew(-4deg, -4deg);
     }
   }
 
   &-name {
+    @include body-row();
+
     order: 2;
     position: relative;
     left: -30px;
     font-size: $font-size2;
     text-shadow: $color-shadow-text 3px 0 1px;
     text-decoration: underline $coral 2px;
+  }
+
+  &-anchor {
+    position: relative;
+    color: $black;
 
     #{$c}:hover & {
       &::before {
@@ -332,6 +340,8 @@
   }
 
   &-date {
+    @include body-row();
+
     order: 1;
     position: relative;
     // position: absolute;
@@ -341,12 +351,6 @@
     mix-blend-mode: difference;
     text-shadow: $color-shadow-text 3px 0 4px;
 
-    #{$c}:hover & {
-      // color: $black;
-      // font-size: 3rem;
-      // animation: Show 1s infinite both;
-    }
-
     @include mobile {
       top: -35px;
       left: -20px;
@@ -354,27 +358,36 @@
     }
 
     @include desktop {
-      // top: -20px;
       left: -60px;
       font-size: 1.8rem;
-      // top: 0;
-      // bottom: 0;
-      // padding-left: $spacing4;
-      // padding-right: $spacing4;
-      // font-size: 8rem;
-      // text-align: right;
-      // white-space: nowrap;
-      // transform: scale(80%);
     }
+  }
 
-    @keyframes Show {
-      0% {
-        transform: identity;
-      }
+  &-text {
+    @include body-row();
 
-      100% {
-        transform: translateX(100%);
-      }
+    order: 3;
+    position: relative;
+    padding: $spacing1;
+    box-shadow: 10px 10px 20px $color-shadow-card;
+    max-width: 500px;
+    margin-top: $spacing2;
+
+    &:before {
+      content: "";
+
+      @include background($riso: 6);
+      @include fill();
+
+      opacity: 0.6;
+      z-index: -1;
+      filter: blur(10px);
     }
+  }
+
+  &-desc {
+    // this is nececessary for the text to be selectable over the
+    // absolutely positioned border that is a sibling of this el
+    position: relative;
   }
 }

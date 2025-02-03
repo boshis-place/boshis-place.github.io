@@ -39,7 +39,11 @@ description: welcome to boshi's place
 
   {% capture upcoming %}
     {% if collections.upcomingEvents.size == 0 %}
-      <div>nothing at the moment, check back later!</div>
+      <div class="EventFallback">
+        <span class="EventFallback-text">
+          we don't have anything planned right now, check back later!
+        </span>
+      </div>
     {% endif %}
 
     {% for event in collections.upcomingEvents %}

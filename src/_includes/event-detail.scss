@@ -35,10 +35,10 @@
 
     &:hover {
       background-color: $blue0;
-      animation: Shake 0.3s linear infinite;
+      animation: TicketsShake 0.3s linear infinite;
     }
 
-    @keyframes Shake {
+    @keyframes TicketsShake {
       0% {
         transform: translateX(+0px);
       }

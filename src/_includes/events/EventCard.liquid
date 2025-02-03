@@ -25,65 +25,22 @@
     </figure>
   </div>
 
-  <div class="EventCard-body" style="{% randvar %}">
-    {% comment %} <header class="EventCard-title"> {% endcomment %}
-      <h1 class="EventCard-name">
-        <a
-          href="/{{event.data.tags}}/{{event.fileSlug}}"
-          class="EventCard-anchor"
-        >
-          {{ event.data.name }}
-        </a>
-      </h1>
+  <section class="EventCard-body" style="{% randvar %}">
+    <h1 class="EventCard-name">
+      <a
+        href="/{{event.data.tags}}/{{event.fileSlug}}"
+        class="EventCard-anchor"
+      >
+        {{ event.data.name }}
+      </a>
+    </h1>
 
-      <h2 class="EventCard-date">
-        {{ event.data.date | toShortDate }}
-      </h2>
-    {% comment %} </header> {% endcomment %}
-
-    {% comment %}
-      <div class="EventCard-text">
-        <div class="EventCard-bg"></div>
-
-        {% if rainbow %}
-          {% render "core/Border", color: "rainbow" %}
-        {% else %}
-          {% render "core/Border" %}
-        {% endif %}
-
-        <header class="EventCard-title">
-          <h1 class="EventCard-name">
-            {{ event.data.name }}
-          </h1>
-
-          <h2 class="EventCard-date">
-            {{ event.data.date | toShortDate }}
-          </h2>
-        </header>
-
-        <div class="EventCard-desc">
-          {{ event.data.description }}
-        </div>
-      </div>
-    {% endcomment %}
-
-    {% comment %}
-      <div class="EventCard-text">
-      <div class="EventCard-bg"></div>
-
-      {% if rainbow %}
-        {% render "core/Border", color: "rainbow" %}
-      {% else %}
-        {% render "core/Border" %}
-      {% endif %}
-    {% endcomment %}
-
-    {% comment %} </div> {% endcomment %}
+    <h2 class="EventCard-date">
+      {{ event.data.date | toShortDate }}
+    </h2>
 
     {% if event.data.description %}
       <div class="EventCard-text">
-        <div class="EventCard-bg"></div>
-
         {% if rainbow %}
           {% render "core/Border", color: "rainbow" %}
         {% else %}
@@ -95,5 +52,5 @@
         </div>
       </div>
     {% endif %}
-  {% comment %} </div> {% endcomment %}
+  </section>
 </article>
