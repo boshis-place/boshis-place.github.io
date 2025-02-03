@@ -39,6 +39,7 @@ a[class] {
 
 /* -- Page -- */
 .Page {
+  display: flex;
   overflow: hidden;
   position: relative;
   min-height: 100%;
@@ -48,9 +49,18 @@ a[class] {
   transition: opacity 0.1s;
   pointer-events: none;
 
+  &::before {
+    content: "";
+    flex: 1;
+  }
+
+  &::after {
+    content: "";
+    flex: 1.5;
+  }
+
   &-content {
     max-width: 1000px;
-    margin: auto;
     padding: $margin-mobile-vertical $margin-mobile-horizontal;
     pointer-events: all;
     transform-origin: top left;

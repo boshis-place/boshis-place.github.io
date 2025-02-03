@@ -47,30 +47,16 @@ $page-class-by-name: (
 
   --scale: 1;
 
-  @include fill(fixed);
+  @include fill();
 
+  position: fixed;
   pointer-events: none;
-  // z-index: 1;
+  z-index: 1;
 
   @include mobile {
     display: flex;
     align-items: center;
   }
-
-  &:hover {
-    z-index: 1;
-  }
-
-  // &::before {
-  //   @include fill();
-  //   @include background();
-
-  //   content: "";
-  // }
-
-  // &:hover &::before {
-  //   filter: blur(5px);
-  // }
 
   &::before {
     content: "";
@@ -79,6 +65,7 @@ $page-class-by-name: (
     @include background();
     @include nav-transition(opacity);
 
+    position: absolute;
     opacity: 0;
   }
 
@@ -93,12 +80,12 @@ $page-class-by-name: (
     height: calc($radius * var(--scale) * 2);
 
     @include mobile {
-      left: -80px;
+      right: -80px;
     }
 
     @include desktop {
-      top: 400px;
-      left: $inset;
+      top: $inset;
+      right: $inset;
     }
   }
 

@@ -1,5 +1,7 @@
 @use "shared" as *;
 
+$list: null;
+
 .Events {
   // -- shared --
   *::selection {
