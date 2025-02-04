@@ -13,11 +13,11 @@
 
   &-title {
     display: inline;
-    font-size: $font-size4;
+    font-size: $font-size6;
     text-shadow: $color-shadow-text 3px 0 4px;
 
     @mixin desktop {
-      font-size: $font-size5;
+      font-size: $font-size7;
     }
   }
 
@@ -64,7 +64,7 @@
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     @mixin desktop {
-      font-size: $font-size2;
+      font-size: $font-size3;
     }
   }
 
@@ -89,10 +89,10 @@
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     h1 {
-      font-size: $font-size2;
+      font-size: $font-size3;
 
       @mixin desktop {
-        font-size: $font-size3;
+        font-size: $font-size4;
       }
     }
 
@@ -100,7 +100,7 @@
       font-size: $font-size1;
 
       @mixin desktop {
-        font-size: $font-size2;
+        font-size: $font-size3;
       }
     }
 

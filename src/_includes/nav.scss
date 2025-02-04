@@ -237,7 +237,7 @@ $page-class-by-name: (
 
     @include desktop {
       opacity: 0;
-      font-size: calc($font-size2 * var(--scale));
+      font-size: calc($font-size3 * var(--scale));
     }
 
     #{$items}:hover & {

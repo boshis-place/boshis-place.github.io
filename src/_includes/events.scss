@@ -1,6 +1,6 @@
 @use "shared" as *;
 
-$list: null;
+$event-list: null;
 
 .Events {
   // -- shared --
@@ -11,33 +11,54 @@ $list: null;
   // -- elements --
   &-title {
     position: relative;
-    margin-left: -100px;
-    font-size: $font-size5;
     text-shadow: $color-shadow-text 3px 0 4px;
     transform: rotate(-2deg);
     z-index: 1;
 
+    @include mobile {
+      margin-top: $spacing2;
+    }
+
     @include desktop {
-      font-size: $font-size6;
+      margin-left: -100px;
     }
 
     > dl {
       display: flex;
+      flex-wrap: wrap;
 
       > *:nth-child(1) {
-        margin-top: 10px;
         transform: rotate(1deg);
+
+        @include mobile {
+          margin-left: -10px;
+        }
+
+        @include desktop {
+          margin-top: 10px;
+        }
       }
 
       > *:nth-child(2) {
-        margin-left: 15px;
         transform: rotate(3deg);
+        margin-left: 15px;
+
+        @include mobile {
+          flex-basis: 50%;
+        }
       }
 
       > *:nth-child(3) {
-        margin-left: -10px;
-        margin-top: 40px;
         transform: rotate(2deg);
+
+        @include mobile {
+          margin-left: 15px;
+        }
+
+        @include desktop {
+          margin-left: -10px;
+          margin-top: 40px;
+        }
 
         dd {
           margin-top: -20px;
@@ -45,9 +66,17 @@ $list: null;
       }
 
       > *:nth-child(4) {
-        margin-left: 30px;
-        margin-top: 60px;
         transform: rotate(-1deg);
+
+        @include mobile {
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+
+        @include desktop {
+          margin-left: 30px;
+          margin-top: 60px;
+        }
       }
     }
   }
@@ -81,8 +110,24 @@ $list: null;
     animation: Jump 0.3s ease-in-out;
   }
 
+  dt {
+    @include mobile {
+      font-size: $font-size5;
+    }
+
+    @include desktop {
+      font-size: $font-size8;
+    }
+  }
+
   &--small dt {
-    font-size: $font-size2;
+    @include mobile {
+      font-size: $font-size2;
+    }
+
+    @include desktop {
+      font-size: $font-size3;
+    }
   }
 
   dd {
@@ -112,7 +157,7 @@ $list: null;
 }
 
 .EventList {
-  $list: & !global;
+  $event-list: & !global;
 
   &-header {
     display: flex;
@@ -122,11 +167,11 @@ $list: null;
   }
 
   &-title {
-    font-size: $font-size2;
+    font-size: $font-size3;
     text-shadow: $color-shadow-text 3px 0 4px;
 
     @include desktop {
-      font-size: $font-size3;
+      font-size: $font-size4;
     }
   }
 
@@ -136,20 +181,33 @@ $list: null;
     gap: $spacing4;
 
     @include desktop {
-      gap: $spacing0;
+      gap: $spacing3;
+    }
+  }
+
+  &-archiveToggle {
+    display: flex;
+    gap: $spacing0;
+
+    @include mobile {
+      flex: 1;
     }
   }
 }
 
 .EventFallback {
   margin-left: $spacing4;
-  font-size: $font-size2;
   text-shadow: $color-shadow-text 3px 0 4px;
   color: $blue0;
   transform: skew(-2deg, -2deg);
 
+  @include mobile {
+    font-size: $font-size2;
+  }
+
   @include desktop {
     max-width: 600px;
+    font-size: $font-size3;
   }
 
   &-text {
@@ -206,7 +264,7 @@ $list: null;
   }
 
   // TODO: this won't work on older browsers; maybe need a js fallback solution
-  #{$list}:has(input:checked) & {
+  #{$event-list}:has(input:checked) & {
     margin-left: 0px !important;
     opacity: 0.9 !important;
   }
@@ -214,9 +272,13 @@ $list: null;
   &-poster {
     @include flex-center;
 
-    position: absolute;
     left: 0;
+    order: 3;
     cursor: zoom-in;
+
+    @include desktop {
+      position: absolute;
+    }
   }
 
   &-posterFrame {
@@ -292,10 +354,13 @@ $list: null;
 
     order: 2;
     position: relative;
-    left: -30px;
-    font-size: $font-size2;
+    font-size: $font-size3;
     text-shadow: $color-shadow-text 3px 0 1px;
     text-decoration: underline $coral 2px;
+
+    @include desktop {
+      left: -30px;
+    }
   }
 
   &-anchor {
@@ -323,16 +388,12 @@ $list: null;
 
     order: 1;
     position: relative;
-    // position: absolute;
-    // font-size: $font-size4;
     text-transform: lowercase;
     color: $white;
     mix-blend-mode: difference;
     text-shadow: $color-shadow-text 3px 0 4px;
 
     @include mobile {
-      top: -35px;
-      left: -20px;
       transform: rotate(-2deg);
     }
 
@@ -345,7 +406,7 @@ $list: null;
   &-text {
     @include body-row();
 
-    order: 3;
+    order: 4;
     position: relative;
     padding: $spacing1;
     box-shadow: 10px 10px 20px $color-shadow-card;

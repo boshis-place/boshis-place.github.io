@@ -36,9 +36,9 @@
 
 .LandingTitle {
   position: relative;
-  font-size: $font-size4;
+  font-size: $font-size6;
 
   @mixin desktop {
-    font-size: $font-size5;
+    font-size: $font-size7;
   }
 }

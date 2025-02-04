@@ -60,11 +60,14 @@ a[class] {
   }
 
   &-content {
-    max-width: 1000px;
-    padding: $margin-mobile-vertical $margin-mobile-horizontal;
+    max-width: min(100%, 1000px);
     pointer-events: all;
     transform-origin: top left;
     transition: transform 0.8s ease-in-out;
+
+    @include mobile {
+      padding: $margin-mobile-vertical $margin-mobile-horizontal;
+    }
 
     @include desktop {
       padding: $margin-desktop-vertical $margin-desktop-horizontal;
@@ -77,6 +80,11 @@ a[class] {
     $main: &;
 
     position: relative;
+
+    @include mobile {
+      margin-left: -$margin-mobile-horizontal;
+      margin-right: -$margin-mobile-horizontal;
+    }
 
     &::before {
       content: "";
