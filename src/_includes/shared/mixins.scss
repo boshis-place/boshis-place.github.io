@@ -8,6 +8,11 @@
   right: 0;
 }
 
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;

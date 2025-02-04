@@ -167,8 +167,13 @@ $event-list: null;
   }
 
   &-title {
-    font-size: $font-size3;
     text-shadow: $color-shadow-text 3px 0 4px;
+
+    @include mobile {
+      font-size: $font-size3;
+      flex-grow: 1;
+      flex-basis: 100%;
+    }
 
     @include desktop {
       font-size: $font-size4;
@@ -188,10 +193,6 @@ $event-list: null;
   &-archiveToggle {
     display: flex;
     gap: $spacing0;
-
-    @include mobile {
-      flex: 1;
-    }
   }
 }
 
@@ -240,22 +241,24 @@ $event-list: null;
 .EventCard {
   $c: &;
 
-  $poster-width: 200px;
+  $poster-top-mobile: 45px;
+  $poster-size-mobile: 100px;
+  $poster-size-desktop: 200px;
 
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: $poster-width;
   opacity: max(calc(1 - var(--index) * 0.02), 0.1);
   transition: opacity 0.3s;
 
   @include desktop {
     width: $desktop-max;
+    min-height: $poster-size-desktop;
     margin-left: calc(
       min(var(--index) / 32, 1) * (var(--rand) - 0.5) * 2 * 20vw
     );
-    padding-left: $poster-width + $spacing2;
+    padding-left: $poster-size-desktop + $spacing2;
   }
 
   &:hover {
@@ -272,12 +275,16 @@ $event-list: null;
   &-poster {
     @include flex-center;
 
-    left: 0;
+    position: absolute;
     order: 3;
     cursor: zoom-in;
 
+    @include mobile {
+      top: $poster-top-mobile;
+    }
+
     @include desktop {
-      position: absolute;
+      left: 0px;
     }
   }
 
@@ -290,25 +297,31 @@ $event-list: null;
     position: relative;
     display: flex;
     align-items: center;
-    width: $poster-width;
-    height: $poster-width;
     transform: $poster-rotate;
     transition: transform 0.3s;
+
+    @include mobile {
+      @include square($poster-size-mobile);
+    }
+
+    @include desktop {
+      @include square($poster-size-desktop);
+    }
 
     #{$c}:hover & {
       transform: $poster-rotate skew(-2deg, -2deg);
     }
 
     & > img {
-      width: 100%;
-      height: 100%;
+      @include square(100%);
+
       object-fit: cover;
       border-radius: $radius0;
     }
   }
 
   &-posterBoshi {
-    $rot-dist: calc($poster-width / 2 * sqrt(2));
+    $rot-dist: calc($poster-size-desktop / 2 * sqrt(2));
     $rot-min: 90deg;
     $rot-span: 180deg;
 
@@ -318,8 +331,8 @@ $event-list: null;
     transition: transform 0.3s;
 
     > img {
-      width: 100%;
-      height: 100%;
+      @include square(100%);
+
       filter: drop-shadow(0px 0px 10px $color-shadow-card);
     }
 
@@ -358,6 +371,11 @@ $event-list: null;
     text-shadow: $color-shadow-text 3px 0 1px;
     text-decoration: underline $coral 2px;
 
+    @include mobile {
+      margin-left: 50px;
+      min-height: $poster-size-mobile + $poster-top-mobile;
+    }
+
     @include desktop {
       left: -30px;
     }
@@ -389,16 +407,17 @@ $event-list: null;
     order: 1;
     position: relative;
     text-transform: lowercase;
-    color: $white;
     mix-blend-mode: difference;
     text-shadow: $color-shadow-text 3px 0 4px;
 
     @include mobile {
+      color: $blue0;
       transform: rotate(-2deg);
     }
 
     @include desktop {
       left: -60px;
+      color: $white;
       font-size: 1.8rem;
     }
   }
