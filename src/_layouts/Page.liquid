@@ -47,7 +47,9 @@
 
   <body>
     <div id="page" class="Page {{ section | camelize }}">
-      {{ content }}
+      <main class="Page-content">
+        {{ content }}
+      </main>
     </div>
 
     {% render "nav/Nav" %}

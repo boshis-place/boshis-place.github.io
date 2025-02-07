@@ -1,18 +1,15 @@
 @use "shared" as *;
 
 .UnderConstruction {
-  @include fill;
+  @include fill(fixed);
   @include flex-center;
-
-  position: fixed;
 
   &::before {
     content: "";
 
+    @include fill();
     @include background($riso: 5, $color: $coral);
-    @include fill;
 
-    position: absolute;
     opacity: 0.4;
   }
 
@@ -22,12 +19,12 @@
     padding-left: 10px;
     padding-right: 10px;
     color: $black;
-    font-size: $font-size3;
+    font-size: $font-size4;
     text-shadow: rgba($black, 0.5) 5px 5px 5px;
     transform: rotate(calc(var(--rand) * -20deg + 7deg));
 
     @include desktop {
-      font-size: $font-size6;
+      font-size: $font-size8;
     }
   }
 

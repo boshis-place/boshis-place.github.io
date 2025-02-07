@@ -1,31 +1,133 @@
 @use "shared" as *;
 
-$list: null;
+$event-list: null;
 
 .Events {
-  &-list {
-    margin-top: $spacing5;
+  // -- shared --
+  *::selection {
+    background-color: rgba($pink, 0.6);
   }
 
+  // -- elements --
   &-title {
     position: relative;
-    font-size: $font-size4;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
+    transform: rotate(-2deg);
+    z-index: 1;
+
+    @include mobile {
+      margin-top: $spacing2;
+    }
 
     @include desktop {
-      font-size: $font-size5;
+      margin-left: -100px;
     }
+
+    > dl {
+      display: flex;
+      flex-wrap: wrap;
+
+      > *:nth-child(1) {
+        transform: rotate(1deg);
+
+        @include mobile {
+          margin-left: -10px;
+        }
+
+        @include desktop {
+          margin-top: 10px;
+        }
+      }
+
+      > *:nth-child(2) {
+        transform: rotate(3deg);
+        margin-left: 15px;
+
+        @include mobile {
+          flex-basis: 50%;
+        }
+      }
+
+      > *:nth-child(3) {
+        transform: rotate(2deg);
+
+        @include mobile {
+          margin-left: 15px;
+        }
+
+        @include desktop {
+          margin-left: -10px;
+          margin-top: 40px;
+        }
+
+        dd {
+          margin-top: -20px;
+        }
+      }
+
+      > *:nth-child(4) {
+        transform: rotate(-1deg);
+
+        @include mobile {
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+
+        @include desktop {
+          margin-left: 30px;
+          margin-top: 60px;
+        }
+      }
+    }
+  }
+
+  $content: null;
+
+  &-content {
+    $content: &;
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing5;
+    margin-top: $spacing3;
+    padding: $spacing3 $spacing4;
+  }
+
+  &-list {
+    position: relative;
   }
 }
 
 .EventsWord {
-  display: inline-block;
   position: relative;
 
   &:hover {
     color: $blue0;
-    animation: Shake 0.3s linear;
     z-index: 1;
+  }
+
+  &:hover &-text {
+    animation: Jump 0.3s ease-in-out;
+  }
+
+  dt {
+    @include mobile {
+      font-size: $font-size5;
+    }
+
+    @include desktop {
+      font-size: $font-size8;
+    }
+  }
+
+  &--small dt {
+    @include mobile {
+      font-size: $font-size2;
+    }
+
+    @include desktop {
+      font-size: $font-size3;
+    }
   }
 
   dd {
@@ -35,31 +137,27 @@ $list: null;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
   }
 
-  dt:hover + dd {
+  &:hover dd {
     visibility: visible;
   }
 
-  @keyframes Shake {
+  @keyframes Jump {
     0% {
-      transform: translateX(+0px);
+      transform: translateY(+0px);
     }
 
-    25% {
-      transform: translateX(-1px) rotate(-0.5deg);
-    }
-
-    75% {
-      transform: translateX(+1px) rotate(+0.5deg);
+    50% {
+      transform: translateY(-10px);
     }
 
     100% {
-      transform: translateX(+0px);
+      transform: translateY(0px);
     }
   }
 }
 
 .EventList {
-  $list: & !global;
+  $event-list: & !global;
 
   &-header {
     display: flex;
@@ -69,11 +167,16 @@ $list: null;
   }
 
   &-title {
-    font-size: $font-size2;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
+
+    @include mobile {
+      font-size: $font-size3;
+      flex-grow: 1;
+      flex-basis: 100%;
+    }
 
     @include desktop {
-      font-size: $font-size3;
+      font-size: $font-size4;
     }
   }
 
@@ -83,7 +186,54 @@ $list: null;
     gap: $spacing4;
 
     @include desktop {
-      gap: $spacing0;
+      gap: $spacing3;
+    }
+  }
+
+  &-archiveToggle {
+    display: flex;
+    gap: $spacing0;
+  }
+}
+
+.EventFallback {
+  margin-left: $spacing4;
+  text-shadow: $color-shadow-text 3px 0 4px;
+  color: $blue0;
+  transform: skew(-2deg, -2deg);
+
+  @include mobile {
+    font-size: $font-size2;
+  }
+
+  @include desktop {
+    max-width: 600px;
+    font-size: $font-size3;
+  }
+
+  &-text {
+    display: inline-block;
+
+    &:hover {
+      animation: 0.1s FallbackShake infinite linear;
+    }
+
+    @keyframes FallbackShake {
+      0% {
+        transform: translateX(+0px);
+      }
+
+      25% {
+        transform: translateX(-2px);
+      }
+
+      75% {
+        transform: translateX(+2px);
+      }
+
+      100% {
+        transform: translateX(+0px);
+      }
     }
   }
 }
@@ -91,39 +241,52 @@ $list: null;
 .EventCard {
   $c: &;
 
+  $poster-top-mobile: 45px;
+  $poster-size-mobile: 100px;
+  $poster-size-desktop: 200px;
+
   position: relative;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
   opacity: max(calc(1 - var(--index) * 0.02), 0.1);
+  transition: opacity 0.3s;
 
   @include desktop {
     width: $desktop-max;
-    flex-direction: row;
-    margin-left: calc(min(var(--index) / 16, 1) * var(--rand) * 50vw);
+    min-height: $poster-size-desktop;
+    margin-left: calc(
+      min(var(--index) / 32, 1) * (var(--rand) - 0.5) * 2 * 20vw
+    );
+    padding-left: $poster-size-desktop + $spacing2;
   }
 
   &:hover {
+    opacity: 1;
     z-index: 420 !important;
   }
 
-  /* TODO: this won't work on older browsers; maybe need a js fallback solution */
-  #{$list}:has(input:checked) & {
+  // TODO: this won't work on older browsers; maybe need a js fallback solution
+  #{$event-list}:has(input:checked) & {
     margin-left: 0px !important;
     opacity: 0.9 !important;
   }
 
-  &-anchor {
-    display: contents;
-    color: $black;
-  }
-
   &-poster {
     @include flex-center;
-    position: relative;
-  }
 
-  $poster-width: 200px;
+    position: absolute;
+    order: 3;
+    cursor: zoom-in;
+
+    @include mobile {
+      top: $poster-top-mobile;
+    }
+
+    @include desktop {
+      left: 0px;
+    }
+  }
 
   &-posterFrame {
     $poster-rotate: (
@@ -134,25 +297,31 @@ $list: null;
     position: relative;
     display: flex;
     align-items: center;
-    width: $poster-width;
-    height: $poster-width;
     transform: $poster-rotate;
     transition: transform 0.3s;
+
+    @include mobile {
+      @include square($poster-size-mobile);
+    }
+
+    @include desktop {
+      @include square($poster-size-desktop);
+    }
 
     #{$c}:hover & {
       transform: $poster-rotate skew(-2deg, -2deg);
     }
 
     & > img {
-      width: 100%;
-      height: 100%;
+      @include square(100%);
+
       object-fit: cover;
       border-radius: $radius0;
     }
   }
 
   &-posterBoshi {
-    $rot-dist: calc($poster-width / 2 * sqrt(2));
+    $rot-dist: calc($poster-size-desktop / 2 * sqrt(2));
     $rot-min: 90deg;
     $rot-span: 180deg;
 
@@ -162,9 +331,9 @@ $list: null;
     transition: transform 0.3s;
 
     > img {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0px 0px 10px $color-shadow0);
+      @include square(100%);
+
+      filter: drop-shadow(0px 0px 10px $color-shadow-card);
     }
 
     #{$c}:hover & {
@@ -176,48 +345,45 @@ $list: null;
   }
 
   &-body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 140px;
-    gap: $spacing1;
-    padding: $spacing2;
-    transform: rotate(calc(-8deg + var(--rand) * 16deg));
-    box-shadow: 10px 10px 20px $color-shadow0;
-    mix-blend-mode: hard-light;
-    transition: transform 0.3s;
+    display: contents;
+  }
 
-    @include mobile {
-      gap: -$spacing2;
-    }
+  .-body-row {
+    transform-origin: left center;
+    transform: rotate(calc(-6deg + var(--rand) * 12deg));
+    transition: transform 0.3s;
+  }
+
+  @mixin body-row {
+    @extend .-body-row;
 
     #{$c}:hover & {
-      transform: skew(-1deg, -1deg);
+      transform: skew(-4deg, -4deg);
     }
-  }
-
-  &-bg {
-    @include background($riso: 6);
-    @include fill();
-
-    position: absolute;
-    opacity: 0.6;
-    z-index: -1;
-    filter: blur(10px);
-  }
-
-  &-title {
-    display: flex;
-    align-items: baseline;
-    gap: $spacing1;
   }
 
   &-name {
+    @include body-row();
+
+    order: 2;
     position: relative;
-    font-size: $font-size2;
-    text-shadow: $color-shadow1 3px 0 4px;
+    font-size: $font-size3;
+    text-shadow: $color-shadow-text 3px 0 1px;
     text-decoration: underline $coral 2px;
+
+    @include mobile {
+      margin-left: 50px;
+      min-height: $poster-size-mobile + $poster-top-mobile;
+    }
+
+    @include desktop {
+      left: -30px;
+    }
+  }
+
+  &-anchor {
+    position: relative;
+    color: $black;
 
     #{$c}:hover & {
       &::before {
@@ -236,96 +402,51 @@ $list: null;
   }
 
   &-date {
-    position: absolute;
-    font-size: $font-size4;
+    @include body-row();
+
+    order: 1;
+    position: relative;
     text-transform: lowercase;
-    color: $white;
-    mix-blend-mode: overlay;
+    mix-blend-mode: difference;
+    text-shadow: $color-shadow-text 3px 0 4px;
 
     @include mobile {
-      top: -35px;
-      left: -20px;
+      color: $blue0;
       transform: rotate(-2deg);
     }
 
     @include desktop {
-      top: 0;
-      bottom: 0;
-      padding-left: $spacing4;
-      padding-right: $spacing4;
-      font-size: 8rem;
-      text-align: right;
-      white-space: nowrap;
-      transform: scale(80%);
-    }
-  }
-}
-
-.EventCardBorder {
-  --border-width: 3px;
-  --border-offset: -1.5px;
-  --border-dash: 6px;
-
-  overflow: visible;
-  position: absolute;
-  top: var(--border-offset);
-  left: var(--border-offset);
-  width: calc(100% + var(--border-width));
-  height: calc(100% + var(--border-width));
-
-  &-shape {
-    width: 100%;
-    height: 100%;
-    fill: $clear;
-    stroke: $color-border0;
-    stroke-width: var(--border-width);
-    stroke-dasharray: var(--border-dash) var(--border-dash);
-    stroke-dashoffset: 0;
-  }
-
-  &--white &-shape {
-    stroke: $color-border1;
-  }
-
-  &--rainbow {
-    --border-width: 6px;
-    --border-offset: -3px;
-  }
-
-  &--rainbow &-shape {
-    stroke: unset;
-    animation:
-      BorderMarch 3s linear forwards infinite,
-      BorderRainbow 1s linear infinite;
-  }
-
-  @keyframes BorderMarch {
-    0% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: -60px;
+      left: -60px;
+      color: $white;
+      font-size: 1.8rem;
     }
   }
 
-  @keyframes BorderRainbow {
-    0% {
-      stroke: #ff0000;
+  &-text {
+    @include body-row();
+
+    order: 4;
+    position: relative;
+    padding: $spacing1;
+    box-shadow: 10px 10px 20px $color-shadow-card;
+    max-width: 500px;
+    margin-top: $spacing2;
+
+    &:before {
+      content: "";
+
+      @include background($riso: 6);
+      @include fill();
+
+      opacity: 0.6;
+      z-index: -1;
+      filter: blur(10px);
     }
-    12.5% {
-      stroke: #ffff00;
-    }
-    37.5% {
-      stroke: #00ff00;
-    }
-    62.5% {
-      stroke: #00ffff;
-    }
-    87.5% {
-      stroke: #ff00ff;
-    }
-    100% {
-      stroke: #ff0000;
-    }
+  }
+
+  &-desc {
+    // this is nececessary for the text to be selectable over the
+    // absolutely positioned border that is a sibling of this el
+    position: relative;
   }
 }

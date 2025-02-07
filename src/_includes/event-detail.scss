@@ -13,11 +13,11 @@
 
   &-title {
     display: inline;
-    font-size: $font-size4;
-    text-shadow: $color-shadow1 3px 0 4px;
+    font-size: $font-size6;
+    text-shadow: $color-shadow-text 3px 0 4px;
 
     @mixin desktop {
-      font-size: $font-size5;
+      font-size: $font-size7;
     }
   }
 
@@ -35,10 +35,10 @@
 
     &:hover {
       background-color: $blue0;
-      animation: Shake 0.3s linear infinite;
+      animation: TicketsShake 0.3s linear infinite;
     }
 
-    @keyframes Shake {
+    @keyframes TicketsShake {
       0% {
         transform: translateX(+0px);
       }
@@ -59,12 +59,12 @@
 
   &-date {
     font-size: $font-size1;
-    text-shadow: $color-shadow1 3px 0 4px;
+    text-shadow: $color-shadow-text 3px 0 4px;
     text-transform: lowercase;
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     @mixin desktop {
-      font-size: $font-size2;
+      font-size: $font-size3;
     }
   }
 
@@ -89,10 +89,10 @@
     transform: rotate(calc(-3deg + var(--rand) * 6deg));
 
     h1 {
-      font-size: $font-size2;
+      font-size: $font-size3;
 
       @mixin desktop {
-        font-size: $font-size3;
+        font-size: $font-size4;
       }
     }
 
@@ -100,7 +100,7 @@
       font-size: $font-size1;
 
       @mixin desktop {
-        font-size: $font-size2;
+        font-size: $font-size3;
       }
     }
 

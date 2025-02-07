@@ -1,7 +1,14 @@
-<span
-  class="EventsWord"
+<div
+  class="
+    EventsWord
+    {% if small %}
+      EventsWord--small
+    {% endif %}
+  "
   style="{% randvar %}"
 >
-  <dt>{{ text }}</dt>
-  <dd>{{ defn }}</dd>
-</span>
+  <div class="EventsWord-text">
+    <dt>{{ text }}</dt>
+    <dd>{{ defn }}</dd>
+  </div>
+</div>

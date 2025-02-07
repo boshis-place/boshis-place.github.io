@@ -225,7 +225,7 @@ $page-class-by-name: (
     display: block;
     color: $black;
     font-size: calc($font-size1 * var(--scale));
-    text-shadow: $color-shadow1 2px 0 2px;
+    text-shadow: $color-shadow-text 2px 0 2px;
     text-align: center;
     transition:
       opacity $hover-speed,
@@ -237,7 +237,7 @@ $page-class-by-name: (
 
     @include desktop {
       opacity: 0;
-      font-size: calc($font-size2 * var(--scale));
+      font-size: calc($font-size3 * var(--scale));
     }
 
     #{$items}:hover & {
