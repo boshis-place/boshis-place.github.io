@@ -6,7 +6,7 @@
   align-items: center;
 
   & ~ .Nav {
-    --scale: 2;
+    --max-scale: 2;
 
     &::before {
       opacity: 1;
@@ -30,6 +30,11 @@
         margin-top: -50%;
         margin-left: 50%;
       }
+    }
+
+    .Nav-items {
+      --scale-radius: 1;
+      --scale-image: 1;
     }
   }
 }

@@ -7,10 +7,26 @@
 $items: null;
 $item-label: null;
 
-// -- transition animation --
+// -- constants --
+$num-nav-items: 7;
+
+// -- mixins --
 @mixin nav-transition($properties...) {
   transition: 1s ease-in-out;
   transition-property: $properties;
+}
+
+@mixin nav-item-transform($i, $radius, $scale-image) {
+  $a: math.div(360, $num-nav-items);
+  transform: scale($scale-image)
+    translate(
+      calc(
+        $radius * var(--scale-radius) * var(--max-scale) * cos($i * #{$a}deg)
+      ),
+      calc(
+        $radius * var(--scale-radius) * var(--max-scale) * sin($i * #{$a}deg)
+      )
+    );
 }
 
 // -- selection --
@@ -45,7 +61,7 @@ $page-class-by-name: (
   $radius-label: 60px;
   $rotate-speed: 100s;
 
-  --scale: 1;
+  --max-scale: 1;
 
   @include fill();
 
@@ -73,19 +89,32 @@ $page-class-by-name: (
     $items: & !global;
     $inset: 100px;
 
+    --scale-radius: 0;
+    --scale-image: 0;
+
+    pointer-events: all;
+
     @include nav-transition(width, height, top, right);
 
     position: absolute;
-    width: calc($radius * var(--scale) * 2);
-    height: calc($radius * var(--scale) * 2);
+    width: calc($radius * var(--max-scale) * 2);
+    height: calc($radius * var(--max-scale) * 2);
 
     @include mobile {
+      --scale-radius: 1;
+      --scale-image: 1;
+
       right: -80px;
     }
 
     @include desktop {
       top: $inset;
       right: $inset;
+    }
+
+    &:hover {
+      --scale-radius: 1;
+      --scale-image: 1;
     }
   }
 
@@ -112,7 +141,7 @@ $page-class-by-name: (
     > .Boshi {
       @include nav-transition(transform);
 
-      transform: scale(calc(var(--scale) * 0.5));
+      transform: scale(calc(var(--max-scale) * 0.5));
     }
   }
 
@@ -135,25 +164,18 @@ $page-class-by-name: (
     pointer-events: all;
     list-style-type: none;
 
-    $n: 7;
-    $a: math.div(360, $n);
+    @at-root #{nav-item-selected()} {
+      --scale-image: 1;
+    }
 
-    @for $i from 0 to $n + 1 {
+    @for $i from 0 to $num-nav-items + 1 {
       &:nth-child(#{$i + 1}) {
         @include nav-transition(transform);
-
-        transform: translate(
-          calc($radius * var(--scale) * cos($i * #{$a}deg)),
-          calc($radius * var(--scale) * sin($i * #{$a}deg))
-        );
+        @include nav-item-transform($i, $radius, var(--scale-image));
 
         #{$item-label} {
           @include nav-transition(transform);
-
-          transform: translate(
-            calc($radius-label * var(--scale) * cos($i * #{$a}deg)),
-            calc($radius-label * var(--scale) * sin($i * #{$a}deg))
-          );
+          @include nav-item-transform($i, $radius-label, var(--scale-radius));
         }
       }
     }
@@ -177,8 +199,8 @@ $page-class-by-name: (
   @include nav-transition(width, height);
   @include flex-center;
 
-  width: calc(80px * var(--scale));
-  height: calc(80px * var(--scale));
+  width: calc(80px * var(--max-scale));
+  height: calc(80px * var(--max-scale));
 
   @at-root &:hover,
     #{nav-item-selected()} {
@@ -224,7 +246,7 @@ $page-class-by-name: (
 
     display: block;
     color: $black;
-    font-size: calc($font-size1 * var(--scale));
+    font-size: calc($font-size1 * var(--max-scale));
     text-shadow: $color-shadow-text 2px 0 2px;
     text-align: center;
     transition:
@@ -237,7 +259,7 @@ $page-class-by-name: (
 
     @include desktop {
       opacity: 0;
-      font-size: calc($font-size3 * var(--scale));
+      font-size: calc($font-size3 * var(--max-scale));
     }
 
     #{$items}:hover & {
