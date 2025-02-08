@@ -7,10 +7,26 @@
 $items: null;
 $item-label: null;
 
-// -- transition animation --
+// -- constants --
+$num-nav-items: 7;
+
+// -- mixins --
 @mixin nav-transition($properties...) {
   transition: 1s ease-in-out;
   transition-property: $properties;
+}
+
+@mixin nav-item-transform($i, $radius, $scale-image) {
+  $a: math.div(360, $num-nav-items);
+  transform: scale($scale-image)
+    translate(
+      calc(
+        $radius * var(--scale-radius) * var(--max-scale) * cos($i * #{$a}deg)
+      ),
+      calc(
+        $radius * var(--scale-radius) * var(--max-scale) * sin($i * #{$a}deg)
+      )
+    );
 }
 
 // -- selection --
@@ -73,7 +89,8 @@ $page-class-by-name: (
     $items: & !global;
     $inset: 100px;
 
-    --scale: 0;
+    --scale-radius: 0;
+    --scale-image: 0;
 
     pointer-events: all;
 
@@ -84,7 +101,8 @@ $page-class-by-name: (
     height: calc($radius * var(--max-scale) * 2);
 
     @include mobile {
-      --scale: 1;
+      --scale-radius: 1;
+      --scale-image: 1;
 
       right: -80px;
     }
@@ -95,7 +113,8 @@ $page-class-by-name: (
     }
 
     &:hover {
-      --scale: 1;
+      --scale-radius: 1;
+      --scale-image: 1;
     }
   }
 
@@ -145,51 +164,18 @@ $page-class-by-name: (
     pointer-events: all;
     list-style-type: none;
 
-    $n: 7;
-    $a: math.div(360, $n);
+    @at-root #{nav-item-selected()} {
+      --scale-image: 1;
+    }
 
-    @for $i from 0 to $n + 1 {
+    @for $i from 0 to $num-nav-items + 1 {
       &:nth-child(#{$i + 1}) {
         @include nav-transition(transform);
-
-        transform: scale(var(--scale))
-          translate(
-            calc(
-              $radius * var(--scale) * var(--max-scale) * cos($i * #{$a}deg)
-            ),
-            calc($radius * var(--scale) * var(--max-scale) * sin($i * #{$a}deg))
-          );
-
-        @at-root #{nav-item-selected()} {
-          transform: scale(1)
-            translate(
-              calc(
-                $radius * var(--scale) * var(--max-scale) * cos($i * #{$a}deg)
-              ),
-              calc(
-                $radius * var(--scale) * var(--max-scale) * sin($i * #{$a}deg)
-              )
-            );
-        }
+        @include nav-item-transform($i, $radius, var(--scale-image));
 
         #{$item-label} {
           @include nav-transition(transform);
-
-          transform: scale(var(--scale))
-            translate(
-              calc(
-                $radius-label *
-                  var(--scale) *
-                  var(--max-scale) *
-                  cos($i * #{$a}deg)
-              ),
-              calc(
-                $radius-label *
-                  var(--scale) *
-                  var(--max-scale) *
-                  sin($i * #{$a}deg)
-              )
-            );
+          @include nav-item-transform($i, $radius-label, var(--scale-radius));
         }
       }
     }
