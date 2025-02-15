@@ -78,9 +78,10 @@ a[class] {
 
   &-main {
     $main: &;
-
     position: relative;
 
+    margin-top: $spacing3;
+    padding: $spacing3 $spacing4;
     @include mobile {
       margin-left: -$margin-mobile-horizontal;
       margin-right: -$margin-mobile-horizontal;
@@ -94,11 +95,11 @@ a[class] {
 
       box-shadow: 10px 10px 60px $color-shadow-page;
       transform: none;
-      transition: transform 0.3s;
+      transition: transform 1s;
     }
 
     &:hover::before {
-      transform: skew(+0.05deg, -0.5deg);
+      //transform: skew(+0.05deg, -0.5deg);
     }
   }
 
@@ -106,10 +107,10 @@ a[class] {
     @include fill();
 
     transform: none;
-    transition: transform 0.3s;
+    transition: transform 1s;
 
     #{$main}:hover & {
-      transform: skew(-0.05deg, +0.5deg);
+      //transform: skew(-0.05deg, +0.5deg);
     }
   }
 }
@@ -130,8 +131,6 @@ a[class] {
   height: calc(100% + var(--border-width));
 
   &-rect {
-    width: 100%;
-    height: 100%;
     fill: $clear;
     stroke: $color-border;
     stroke-width: var(--border-width);
