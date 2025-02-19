@@ -1,6 +1,6 @@
 ---
 version: 1
-name: "sabby at boshis: nyc melbourne game exchange!"
+name: "sabby at boshis: nyc + melbourne game exchange!"
 date: 2025-02-21T19:00:00-05:00
 poster:
   src: events/25-02-21-sabby-at-boshis-nyc-melbourne-game-exchange/poster.png
