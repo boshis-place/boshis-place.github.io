@@ -1,6 +1,6 @@
 ---
 version: 1
-name: "open coworking thursday!"
+name: "year of luigi"
 date: 2025-01-17T18:00:00-04:00
 poster:
   src: events/25-01-17-year-of-luigi/poster.png
