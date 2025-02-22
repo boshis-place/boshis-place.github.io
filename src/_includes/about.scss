@@ -26,7 +26,25 @@
   }
 }
 
-.BoshiMap {
+.AboutMembers {
+  &-active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
+
+.AboutMember {
+  &-shape {
+    width: 60px;
+    height: 60px;
+  }
+
+  &-name {
+  }
+}
+
+.AboutMap {
   position: relative;
 
   &-image {

@@ -20,15 +20,37 @@ description: about
       workshops.
     </p>
 
-    <article class="About-map BoshiMap">
+    <article class="About-members AboutMembers">
+      <ul class="AboutMembers-active">
+        {% for member in collections.members %}
+          <li class="AboutMember">
+            <svg viewBox="0 0 100 100" class="AboutMember-shape">
+                {% case 100 | randint | modulo: 4 %}
+                {% when 0 %}
+                  <rect width="80" height="80" x="10" y="10"/>
+                {% when 1 %}
+                  <circle cx="50" cy="50" r="50" />
+                {% when 2 %}
+                  <polygon points="0,100 100,100 50,0" />
+                {% when 3 %}
+                  <polygon points="0,90 70,90 100,10 30,10" />
+              {% endcase %}
+            </svg>
+            <p class="AboutMember-name">{{ member.data.page.fileSlug }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </article>
+
+    <article class="About-map AboutMap">
       <img
         usemap="#boshi-map"
-        class="BoshiMap-image"
+        class="AboutMap-image"
         src="/img/about/boshi-map.jpg"
       >
 
-      <p class="BoshiMap-address">
-        <span class="BoshiMap-addressText"
+      <p class="AboutMap-address">
+        <span class="AboutMap-addressText"
           >1002 Metropolitan Ave, Brooklyn, NY</span
         >
       </p>
