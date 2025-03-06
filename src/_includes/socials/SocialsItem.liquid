@@ -1,0 +1,17 @@
+<li class="SocialsItem Socials-item">
+  <a
+    class="SocialsItem-link"
+    href="{{ url }}"
+    data-history="replace-root"
+    {{ url | toExternalLinkAttrs }}
+  >
+    <span class="SocialsItem-image Socials-itemImage">
+      {% render "core/Boshi", name: boshi %}
+    </span>
+    <span class="Socials-itemLabel">
+      <span class="SocialsItem-name Socials-itemName">
+        {{ name }}
+      </span>
+    </span>
+  </a>
+</li>

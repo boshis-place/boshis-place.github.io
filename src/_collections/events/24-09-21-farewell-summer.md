@@ -12,5 +12,5 @@ links:
   instagram:
   twitter:
   other:
-description:
+description: a collection of games celebrating summer vibes, to celebrate the end of summer
 ---
