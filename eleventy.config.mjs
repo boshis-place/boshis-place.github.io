@@ -19,6 +19,7 @@ export default function (config) {
   config.addPassthroughCopy(`${srcDir}/img`)
   config.addPassthroughCopy(`${srcDir}/font`)
   config.addPassthroughCopy(`${srcDir}/**/*.js`)
+  config.addPassthroughCopy(`${srcDir}/_redirects`)
 
   // -- modules --
   config.addPlugin(CollectionsPlugin)
