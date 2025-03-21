@@ -14,6 +14,6 @@ links:
   other:
 description:
 ---
-Join us for the [Bundle of Joy](https://store.steampowered.com/app/3138370/Bundle_of_Joy/) release party! Come celebrate with developer Essay Games and play the game! Come hang out, take care of baby, try not to reach a breaking point (in-game), and take a break at the coloring station.
+Join us for the [Bundle of Joy](https://store.steampowered.com/app/3138370/Bundle_of_Joy/) release party! Come celebrate with developer Essay Games and play the game! Hang out, take care of baby, try not to reach a breaking point (in-game), and take a break at the coloring station.
 
 ---
