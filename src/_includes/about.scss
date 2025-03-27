@@ -46,10 +46,168 @@
 }
 
 .AboutMap {
+  $label: null;
+
   position: relative;
 
   &-image {
     width: 100%;
+  }
+
+  &-svg * {
+    fill: none;
+    transform-box: fill-box;
+  }
+
+  &-templates {
+    display: none;
+  }
+
+  &-label {
+    $label: &;
+
+    pointer-events: none;
+    fill: black;
+    font-size: 2px;
+    opacity: 0;
+    transition: opacity 0.1s;
+    transform-origin: center;
+  }
+
+  %labeled {
+    cursor: help;
+    pointer-events: all;
+
+    &:hover + #{$label} {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &-manhattan {
+    fill: #f9f1ed;
+  }
+
+  &-brooklyn {
+    fill: #fcf6ff;
+  }
+
+  &-queens {
+    fill: #f4fef3;
+  }
+
+  &-eastRiver {
+    stroke: #2075fd;
+    stroke-width: 15px;
+  }
+
+  &-newtownCreek {
+    stroke: #5736ff;
+    stroke-width: 1.8px;
+  }
+
+  &-newtownCreekFork {
+    stroke: #43e0ff;
+    stroke-width: 1px;
+  }
+
+  &-williamsburgBridge {
+    stroke: #d1d0c6;
+    stroke-width: 1.5px;
+  }
+
+  &-i278 {
+    stroke: #dbe6e6;
+    stroke-width: 1px;
+  }
+
+  &-metropolitanAve {
+    @extend %labeled;
+
+    stroke: #ff89fb;
+    stroke-width: 1px;
+
+    & + #{$label} {
+      transform: rotate(6deg);
+    }
+  }
+
+  &-grandSt {
+    @extend %labeled;
+
+    stroke: #dec8dd;
+    stroke-width: 0.6px;
+
+    & + #{$label} {
+      transform: rotate(-3deg);
+    }
+  }
+
+  &-morganAve {
+    @extend %labeled;
+
+    stroke: #ebddc6;
+    stroke-width: 0.6px;
+
+    & + #{$label} {
+      transform: rotate(80deg);
+    }
+  }
+
+  &-bushwickAve {
+    @extend %labeled;
+
+    stroke: #f3cae5;
+    stroke-width: 0.6px;
+
+    & + #{$label} {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &-train {
+    > circle {
+      fill: #dcdcdc;
+    }
+
+    > text {
+      font-size: 76px;
+      font-family: Helvetica, sans-serif;
+      fill: white;
+    }
+  }
+
+  &-grandTrain {
+    @extend %labeled;
+
+    & + #{$label} {
+      transform: rotate(-8deg);
+    }
+  }
+
+  &-grahamTrain {
+    @extend %labeled;
+
+    & + #{$label} {
+      transform: rotate(6deg);
+    }
+  }
+
+  &-boshi {
+    @extend %labeled;
+
+    & + #{$label} {
+      font-size: 4px;
+      transform: rotate(3deg);
+    }
+  }
+
+  &-boshiHead {
+    fill: #5858ff;
+  }
+
+  &-boshiGlasses {
+    fill: black;
   }
 
   &-address {
