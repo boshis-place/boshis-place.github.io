@@ -49,11 +49,293 @@ description: about
         src="/img/about/boshi-map.jpg"
       >
 
+      <svg
+        id="boshi-map-vector"
+        class="AboutMap-svg"
+        viewBox="0 0 100 100"
+      >
+        <g class="AboutMap-templates">
+          <svg
+            id="marker-train"
+            class="AboutMap-train"
+            viewBox="0 0 100 100"
+            width="2"
+            height="2"
+          >
+            <circle
+              r="50"
+              cx="50"
+              cy="50"
+            />
+
+            <text
+              x="50"
+              y="50"
+              dy="25"
+              width="100"
+              height="100"
+              text-anchor="middle"
+            >
+              L
+            </text>
+          </svg>
+
+          <svg
+            id="marker-boshi"
+            class="AboutMap-boshi"
+            viewBox="0 0 100 100"
+            width="4"
+            height="4"
+          >
+            <circle
+              class="AboutMap-boshiHead"
+              r="30"
+              cx="50"
+              cy="50"
+            />
+
+            <polygon
+              class="AboutMap-boshiGlasses"
+              points="
+                2,20
+                0,25
+                50,55
+                100,30
+                98,25
+                53,35
+              "
+            />
+          </svg>
+        </g>
+
+        <polygon
+          class="AboutMap-manhattan"
+          points="
+            1.5,1
+            30,1.5
+            28,8
+            31,28
+            21,67
+            0,71
+          "
+        />
+
+        <polygon
+          class="AboutMap-brooklyn"
+          points="
+            0.5,86
+            41,83
+            38.5,58
+            49,32
+            46,15
+            58,10
+            66,18
+            70.5,28
+            85,29
+            96,80
+            99.5,81
+            100,100
+            0,98
+          "
+        />
+
+        <polygon
+          class="AboutMap-queens"
+          points="
+            45,0
+            100,2
+            100,80
+            97,79
+            88,30
+            74,26
+            69,16
+            62,16
+            55,10
+            46,11
+          "
+        />
+
+        <polyline
+          class="AboutMap-eastRiver"
+          points="
+            0,80
+            31,74
+            30,56
+            40,30
+            37,10
+            39,0
+          "
+        />
+
+        <polyline
+          class="AboutMap-newtownCreek"
+          points="
+            44,14
+            54,10
+            68,18
+            72,26
+            86,29
+            93,66
+          "
+        />
+
+        <polyline
+          class="AboutMap-newtownCreekFork"
+          points="
+            92,60
+            84,62
+            85,66
+            80,67
+            81,70
+            78,71
+            80,76
+          "
+        />
+
+        <polyline
+          class="AboutMap-williamsburgBridge"
+          points="
+            10,58
+            50,72
+          "
+        />
+
+        <polyline
+          class="AboutMap-i278"
+          points="
+            0,93
+            40,95
+            50,60
+            72,35
+            82,33
+            85,25
+            100,15
+          "
+        />
+
+        <polyline
+          class="AboutMap-grandSt"
+          points="
+            62,72
+            85,68
+          "
+        />
+
+        <text
+          class="AboutMap-label"
+          x="70"
+          y="74"
+          text-anchor="middle"
+        >
+          grand st
+        </text>
+
+        <polyline
+          class="AboutMap-morganAve"
+          points="
+            72,65
+            75,73
+          "
+        />
+
+        <text
+          class="AboutMap-label"
+          x="73.5"
+          y="62.5"
+          text-anchor="middle"
+        >
+          morgan ave
+        </text>
+
+        <polyline
+          class="AboutMap-bushwickAve"
+          points="
+            64,64
+            65,74
+          "
+        />
+
+        <text
+          class="AboutMap-label"
+          x="62"
+          y="74"
+          text-anchor="middle"
+        >
+          bushwick ave
+        </text>
+
+        <polyline
+          class="AboutMap-metropolitanAve"
+          points="
+            61,66
+            87,70
+          "
+        />
+
+        <text
+          class="AboutMap-label"
+          x="83"
+          y="73"
+          text-anchor="middle"
+        >
+          metropolitan ave
+        </text>
+
+        <use
+          class="AboutMap-grandTrain"
+          href="#marker-train"
+          x="63.7"
+          y="70.5"
+        />
+
+        <text
+          class="AboutMap-label"
+          x="61"
+          y="70"
+          text-anchor="middle"
+        >
+          grand (L train)
+        </text>
+
+        <use
+          class="AboutMap-grahamTrain"
+          href="#marker-train"
+          x="58.5"
+          y="64.7"
+        />
+
+        <text
+          class="AboutMap-label"
+          x="59"
+          y="62"
+          text-anchor="middle"
+        >
+          graham (L train)
+        </text>
+
+        <use
+          class="AboutMap-boshi"
+          href="#marker-boshi"
+          x="68"
+          y="63"
+        />
+
+        <text
+          class="AboutMap-label"
+          x="70"
+          y="61"
+          text-anchor="middle"
+        >
+          boshi's place!!!
+        </text>
+      </svg>
+
       <p class="AboutMap-address">
         <span class="AboutMap-addressText"
           >1002 Metropolitan Ave, Brooklyn, NY</span
         >
       </p>
+
       <map name="boshi-map">
         <area
           shape="circle"
