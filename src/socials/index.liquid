@@ -1,0 +1,44 @@
+---
+layout: Page.liquid
+section: socials
+title: boshi's place | socials
+description: socials
+noNav: true
+---
+<h1 class="Socials-title">boshi's links</h1>
+
+<section class="Socials-content Page-main">
+  <div class="Page-border">
+    {% render "core/Border", color: "primary" %}
+  </div>
+
+  <div class="Socials">
+    <ul class="Socials-list">
+      {% render "socials/SocialsItem",
+        url: "https://comradery.co/boshisplace",
+        name: "comradery (support us!)",
+        boshi: "big-mouse"
+      %}
+      {% render "socials/SocialsItem",
+        url: "https://instagram.com/boshisplace",
+        name: "instagram",
+        boshi: "pombo",
+      %}
+      {% render "socials/SocialsItem",
+        url: "https://bsky.app/profile/boshis.place",
+        name: "bluesky",
+        boshi: "bird",
+      %}
+      {% render "socials/SocialsItem",
+        url: "https://discord.gg/t76bS6dKJh",
+        name: "discord",
+        boshi: "dog",
+      %}
+      {% render "socials/SocialsItem",
+        url: "https://boshisplace.itch.io/",
+        name: "itch.io",
+        boshi: "frog",
+      %}
+    </ul>
+  </div>
+</section>
