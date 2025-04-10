@@ -4,103 +4,80 @@
   &-title {
     font-size: $font-size6;
 
-    @mixin desktop {
+    @include desktop {
       font-size: $font-size7;
     }
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-description {
+    font-size: $font-size2;
+
+    @include desktop {
+      font-size: $font-size3;
+    }
+  }
+
+  &-map {
+    margin-top: $spacing3;
   }
 }
 
 .AboutMembers {
-  position: relative;
+  display: none;
+  &-active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
 
-  &-map {
+.AboutMember {
+  &-shape {
+    width: 60px;
+    height: 60px;
   }
 
-  &-list {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+  &-name {
+  }
+}
+
+.AboutMap {
+  position: relative;
+
+  &-image {
     width: 100%;
+  }
 
-    > li {
-      position: absolute;
-      transform: translate(-50%, -50%);
+  &-address {
+    position: absolute;
+    bottom: 45%;
+    left: 92%;
+    padding: $spacing1;
+    font-size: $font-size1;
+    box-shadow: 10px 10px 20px $color-shadow-card;
+    transform: translateX(-50%);
+
+    @include desktop {
+      font-size: $font-size2;
     }
 
-    > li:nth-child(1) {
-      top: 50%;
-      left: 80%;
-    }
+    &:before {
+      content: "";
 
-    > li:nth-child(2) {
-      top: 80%;
-      left: 30%;
-    }
+      @include background($riso: 2, $color: $pink);
+      @include fill();
 
-    > li:nth-child(3) {
-      top: 20%;
-      left: 70%;
+      opacity: 0.9;
+      z-index: -1;
+      filter: blur(2px);
     }
+  }
 
-    > li:nth-child(4) {
-      top: 30%;
-      left: 80%;
-    }
-
-    > li:nth-child(5) {
-      top: 50%;
-      left: 80%;
-    }
-
-    > li:nth-child(6) {
-      top: 50%;
-      left: 75%;
-    }
-
-    > li:nth-child(7) {
-      top: 50%;
-      left: 35%;
-    }
-
-    > li:nth-child(8) {
-      top: 50%;
-      left: 100%;
-    }
-
-    > li:nth-child(9) {
-      top: 50%;
-      left: -10%;
-    }
-
-    > li:nth-child(10) {
-      top: 50%;
-      left: 120%;
-    }
-
-    > li:nth-child(11) {
-      top: 50%;
-      left: 60%;
-    }
-
-    > li:nth-child(12) {
-      top: 50%;
-      left: 55%;
-    }
-
-    > li:nth-child(13) {
-      top: 50%;
-      left: 70%;
-    }
-
-    > li:nth-child(14) {
-      top: 50%;
-      left: 40%;
-    }
-
-    > li:nth-child(15) {
-      top: 50%;
-      left: 110%;
-    }
+  &-addressText {
+    white-space: pre;
   }
 }

@@ -4,37 +4,65 @@ section: about
 title: boshi's place | about
 description: about
 ---
-<h1 class="About-title">about</h1>
+<h1 class="About-title">boshi's place is...</h1>
 
-{% render "under-construction/UnderConstruction" %}
+<section class="Page-main">
+  <div class="Page-border">
+    {% render "core/Border", color: "primary" %}
+  </div>
 
-<!--
-  <p class="About-description">
-    a community-funded space that celebrates game-making as a craft and *something
-    related to play/experience*
-  </p>
+  <section class="About-content">
+    <p class="About-description">
+      a group of people building community and support for the independent game
+      development scene in new york city and the surrounding area. we aim to do
+      this by providing a physical space for working, exhibiting games, and
+      staging performances, as well as facilitating game jams and educational
+      workshops.
+    </p>
 
-  <p>1002 Metropolitan Ave, Brooklyn, NY</p>
+    <article class="About-members AboutMembers">
+      <ul class="AboutMembers-active">
+        {% for member in collections.members %}
+          <li class="AboutMember">
+            <svg viewBox="0 0 100 100" class="AboutMember-shape">
+                {% case 100 | randint | modulo: 4 %}
+                {% when 0 %}
+                  <rect width="80" height="80" x="10" y="10"/>
+                {% when 1 %}
+                  <circle cx="50" cy="50" r="50" />
+                {% when 2 %}
+                  <polygon points="0,100 100,100 50,0" />
+                {% when 3 %}
+                  <polygon points="0,90 70,90 100,10 30,10" />
+              {% endcase %}
+            </svg>
+            <p class="AboutMember-name">{{ member.data.page.fileSlug }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </article>
 
-  <section class="AboutMembers">
-    <img class="AboutMembers-map" src="/img/about/boshi-map.jpg">
+    <article class="About-map AboutMap">
+      <img
+        usemap="#boshi-map"
+        class="AboutMap-image"
+        src="/img/about/boshi-map.jpg"
+      >
 
-    <ul class="AboutMembers-list">
-      <li>joey</li>
-      <li>flan</li>
-      <li>phil</li>
-      <li>mut</li>
-      <li>ty</li>
-      <li>fran</li>
-      <li>fiona</li>
-      <li>annie</li>
-      <li>danny</li>
-      <li>jude</li>
-      <li>eva</li>
-      <li>beau</li>
-      <li>jonny</li>
-      <li>ali</li>
-      <li>and you...</li>
-    </ul>
+      <p class="AboutMap-address">
+        <span class="AboutMap-addressText"
+          >1002 Metropolitan Ave, Brooklyn, NY</span
+        >
+      </p>
+      <map name="boshi-map">
+        <area
+          shape="circle"
+          coords="800,400,95"
+          href="https://developer.mozilla.org/docs/Web/CSS"
+          target="_blank"
+          alt="1002 Metropolitan Ave, Brooklyn, NY 11211"
+        >
+      </map>
+    </article>
   </section>
--->
+</section>
