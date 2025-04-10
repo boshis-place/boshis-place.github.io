@@ -30,7 +30,7 @@ YOU’RE INVITED TO OUR 2ND BIRTHDAY!! ⚠️Warning⚠️ this is a be there �
 *games:*
 
 SCRAPEBOARD
-by blake andrews
+by barnyardia
 
 DON’T GET GOT (BOSHI EDITION)
 A GAME FOR 6 WII FIT BOARDS
