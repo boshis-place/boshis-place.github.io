@@ -27,6 +27,7 @@
 }
 
 .AboutMembers {
+  display: none;
   &-active {
     display: flex;
     flex-wrap: wrap;
