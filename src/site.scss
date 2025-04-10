@@ -78,10 +78,11 @@ a[class] {
 
   &-main {
     $main: &;
-    position: relative;
 
+    position: relative;
     margin-top: $spacing3;
     padding: $spacing3 $spacing4;
+
     @include mobile {
       margin-left: -$margin-mobile-horizontal;
       margin-right: -$margin-mobile-horizontal;
@@ -97,10 +98,6 @@ a[class] {
       transform: none;
       transition: transform 1s;
     }
-
-    &:hover::before {
-      //transform: skew(+0.05deg, -0.5deg);
-    }
   }
 
   &-border {
@@ -108,10 +105,6 @@ a[class] {
 
     transform: none;
     transition: transform 1s;
-
-    #{$main}:hover & {
-      //transform: skew(-0.05deg, +0.5deg);
-    }
   }
 }
 
