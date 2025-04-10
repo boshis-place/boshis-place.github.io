@@ -50,8 +50,9 @@
 
   position: relative;
 
-  &-image {
-    width: 100%;
+  &-svg > polyline,
+  &-svg > polygon {
+    opacity: 0.875;
   }
 
   &-svg * {
@@ -85,39 +86,39 @@
   }
 
   &-manhattan {
-    fill: #f9f1ed;
+    fill: #b2a571;
   }
 
   &-brooklyn {
-    fill: #fcf6ff;
+    fill: #8fb25b;
   }
 
   &-queens {
-    fill: #f4fef3;
+    fill: #93bba4;
   }
 
   &-eastRiver {
-    stroke: #2075fd;
+    stroke: #5597ff;
     stroke-width: 15px;
   }
 
   &-newtownCreek {
-    stroke: #5736ff;
+    stroke: #6dc8ff;
     stroke-width: 1.8px;
   }
 
   &-newtownCreekFork {
-    stroke: #43e0ff;
+    stroke: #52a6ff;
     stroke-width: 1px;
   }
 
   &-williamsburgBridge {
-    stroke: #d1d0c6;
+    stroke: #997c7c;
     stroke-width: 1.5px;
   }
 
   &-i278 {
-    stroke: #dbe6e6;
+    stroke: #697272;
     stroke-width: 1px;
   }
 
@@ -167,7 +168,7 @@
 
   &-train {
     > circle {
-      fill: #dcdcdc;
+      fill: #979797;
     }
 
     > text {
@@ -203,7 +204,7 @@
   }
 
   &-boshiHead {
-    fill: #5858ff;
+    fill: #5678ff;
   }
 
   &-boshiGlasses {
