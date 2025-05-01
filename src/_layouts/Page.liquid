@@ -52,7 +52,9 @@
       </main>
     </div>
 
-    {% render "nav/Nav" %}
+    {% if noNav == null %}
+      {% render "nav/Nav" %}
+    {% endif %}
 
     <div id="loading" class="Loading"></div>
   </body>

@@ -1,0 +1,168 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "shared" as *;
+
+// -- class references --
+$items: null;
+$item-label: null;
+
+// -- constants --
+$num-nav-items: 7;
+
+// -- selection --
+$page-class-by-name: (
+  events: ".Events",
+  about: ".About",
+  merch: ".Merch",
+);
+
+// -- styles --
+.Socials {
+  $radius: 100px;
+  $radius-label: 60px;
+  $rotate-speed: 100s;
+  height: 90%;
+
+  --max-scale: 1;
+
+  // position: fixed;
+  pointer-events: none;
+  z-index: 1;
+
+  &-content {
+    height: 100%;
+  }
+
+  &-title {
+    font-size: $font-size6;
+
+    @mixin desktop {
+      font-size: $font-size7;
+    }
+  }
+
+  &-items {
+    $items: & !global;
+    $inset: 100px;
+
+    --scale-radius: 0;
+    --scale-image: 0;
+
+    pointer-events: all;
+
+    position: relative;
+    width: calc($radius * var(--max-scale) * 2);
+    height: calc($radius * var(--max-scale) * 2);
+
+    @include mobile {
+      --scale-radius: 1;
+      --scale-image: 1;
+
+      right: -80px;
+    }
+
+    @include desktop {
+      top: $inset;
+      right: $inset;
+    }
+
+    &:hover {
+      --scale-radius: 1;
+      --scale-image: 1;
+    }
+  }
+
+  &-list {
+    @include flex-center;
+    margin: $spacing2;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &-itemImage {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+
+    > .Boshi {
+      transform: scale(calc(var(--max-scale) * 0.5));
+    }
+  }
+
+  &-itemLabel {
+    $item-label: & !global;
+
+    position: relative;
+  }
+
+  &-itemName {
+    animation: Rotate $rotate-speed linear infinite reverse backwards;
+
+    #{$items}:hover & {
+      animation-play-state: paused;
+    }
+  }
+
+  &-item {
+    position: relative;
+    pointer-events: all;
+    list-style-type: none;
+  }
+
+  @keyframes Rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.SocialsItem {
+  $c: &;
+  $hover-speed: 0.2s;
+
+  margin: $spacing3;
+
+  width: calc(300px * var(--max-scale));
+  height: calc(80px * var(--max-scale));
+
+  a[target="_blank"] {
+    cursor: alias;
+  }
+
+  &-link {
+    @include flex-center;
+
+    width: 100%;
+    height: 100%;
+    transition: transform $hover-speed;
+  }
+
+  &-image {
+    @include flex-center;
+
+    width: 150px;
+    height: 100%;
+  }
+
+  &-name {
+    display: block;
+    width: 150px;
+    color: $black;
+    font-size: calc($font-size1 * var(--max-scale));
+    text-shadow: $color-shadow-text 2px 0 2px;
+    text-align: center;
+    transition:
+      opacity $hover-speed,
+      filter $hover-speed;
+  }
+}
